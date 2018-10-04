@@ -4,14 +4,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import client.equipe3.polymtl.ca.applicationcafebistro.R;
-import client.equipe3.polymtl.ca.applicationcafebistro.service.IdentificationService;
+import client.equipe3.polymtl.ca.applicationcafebistro.component.ListMusicForUser;
 
 public class Home extends AppCompatActivity {
+
+    private ListMusicForUser listMusicUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        IdentificationService identificationService = new IdentificationService(getApplicationContext());
+        //IdentificationService identificationService =
+          //      new IdentificationService(getApplicationContext());
+
+        listMusicUser = findViewById(R.id.list_music);
+
     }
 }
