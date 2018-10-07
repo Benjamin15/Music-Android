@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ApplicationCafeBistro</string>
     <string name="title_activity_home">Home</string>
+    <string name="menu_options">Options</string>
+    <string name="delete_item">Supprimer</string>
+    <string name="see_item">Ouvrir</string>
 </resources>
