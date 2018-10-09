@@ -1,39 +1,36 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view;
 
-import android.app.ListActivity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 
-
 public class Explorer extends AppCompatActivity{
-
     /**
      * Repr�sente le texte qui s'affiche quand la liste est vide
      */
@@ -53,41 +50,35 @@ public class Explorer extends AppCompatActivity{
     private File mCurrentFile = null;
 
     /**
-     * Indique si l'utilisateur est � la racine ou pas
-     * pour savoir s'il veut quitter
+     * Fichier choisi
      */
-    private boolean mCountdown = false;
-
+    private File  mChosenFile = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //mList = (ListView) getListView();
+        setContentView(R.layout.explorer);
         mList = findViewById(R.id.directories);
 
         if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
             mEmpty = (TextView) mList.getEmptyView();
-            mEmpty.setText("Access to files not allowed");
+            mEmpty.setText(R.string.accesDenied);
         }else{
             registerForContextMenu(mList);
 
-            mCurrentFile = Environment.getExternalStorageDirectory();
-            mCurrentFile = Environment.getRootDirectory();
+            /*
+            *  mCurrentFile = Environment.getExternalStorageDirectory();
+            *  mCurrentFile = Environment.getRootDirectory();
+            * */
             mCurrentFile = new File(String.valueOf(getExternalFilesDir(Environment.DIRECTORY_MUSIC)));
             setTitle(mCurrentFile.getAbsolutePath());
 
             File[] files = mCurrentFile.listFiles();
-            ArrayList<File> list = new ArrayList<File>();
+            ArrayList<File> list = new ArrayList<>();
             if(files != null)
-                for(File file : files){
-                    list.add(file);
-                }
-
+                list.addAll(Arrays.asList(files));
 
             mAdapter = new FileAdapter(this, android.R.layout.simple_list_item_1, list);
-
             mList.setAdapter(mAdapter);
             mAdapter.sort();
 
@@ -95,17 +86,16 @@ public class Explorer extends AppCompatActivity{
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     File file = mAdapter.getItem(position);
-                    if(file.isDirectory())
+                    if(Objects.requireNonNull(file).isDirectory()){
                         updateDirectory(file);
+                    }
                     else
-                        displayItem(file);
+                        chooseItem(file);
                 }
             });
 
         }
-
     }
-
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo){
@@ -114,7 +104,7 @@ public class Explorer extends AppCompatActivity{
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
 
         File file = mAdapter.getItem(info.position);
-        if(!file.isDirectory())
+        if(!Objects.requireNonNull(file).isDirectory())
             inflater.inflate(R.menu.context_file, menu);
         else
             inflater.inflate(R.menu.context_dir, menu);
@@ -123,45 +113,60 @@ public class Explorer extends AppCompatActivity{
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        // On r�cup�re la position de l'item concern�
         File file = mAdapter.getItem(info.position);
         switch (item.getItemId()) {
-            case R.id.deleteItem:
-                mAdapter.remove(file);
-                file.delete();
+            case R.id.choose_file:
+                chooseItem(file);
                 return true;
-
-            case R.string.see_item:
-                displayItem(file);
+            case R.id.open_dir:
+                updateDirectory(file);
                 return true;
         }
         return super.onContextItemSelected(item);
     }
 
+    public void chooseItem(final File file){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.confirmation_message) + " '" + file.getName() + "' ?");
+        builder.setCancelable(false);
 
-    public void displayItem(File file){
-        Intent intent = new Intent(Intent.ACTION_VIEW);
+        builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mChosenFile = file;
+            }
+        });
 
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        String extension = file.getName().substring(file.getName().indexOf(".") + 1).toLowerCase();
-        extension = mime.getFileExtensionFromUrl(file.getAbsolutePath());
-        String type = mime.getMimeTypeFromExtension(extension);
-        type = mime.getMimeTypeFromExtension(extension);
-        intent.setDataAndType(Uri.fromFile(file), type);
+        builder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.setTitle(R.string.Confirmation);
+        builder.create().show();
 
     }
 
     public void updateDirectory(File file){
         setTitle(file.getAbsolutePath());
-        mCountdown = false;
         mCurrentFile = file;
         setEmpty();
         File[] files = mCurrentFile.listFiles();
         if(files != null)
             for(File fileInDir : files)
-                mAdapter.add(fileInDir);
-
+            {
+                if(fileInDir.isDirectory() || isMP3File(fileInDir.getName())){
+                    mAdapter.add(fileInDir);
+                }
+            }
         mAdapter.sort();
+    }
+
+    private boolean isMP3File(String name) {
+        String extension = name.substring(name.indexOf(".") + 1).toLowerCase();
+        return extension.equals(getString(R.string.mp3));
     }
 
     @Override
@@ -171,8 +176,7 @@ public class Explorer extends AppCompatActivity{
             if (parent != null)
                 updateDirectory(parent);
             else {
-                Toast.makeText(this, "You've already reached the root", Toast.LENGTH_SHORT).show();
-                mCountdown = true;
+                Toast.makeText(this, R.string.root, Toast.LENGTH_SHORT).show();
             }
             return true;
         }
@@ -187,8 +191,7 @@ public class Explorer extends AppCompatActivity{
     private class FileAdapter extends ArrayAdapter<File> {
 
         private LayoutInflater mInflater = null;
-
-        public FileAdapter(Context context, int textViewResourceId, List<File> objects){
+        FileAdapter(Context context, int textViewResourceId, List<File> objects){
             super(context, textViewResourceId, objects);
             mInflater = LayoutInflater.from(context);
         }
@@ -202,17 +205,12 @@ public class Explorer extends AppCompatActivity{
                 view= (TextView) mInflater.inflate(android.R.layout.simple_list_item_1, null);
 
             File item = getItem(position);
-            //Si c'est un r�pertoire, on choisit la couleur dans les pr�f�rences
-            /*if(item.isDirectory())
-                view.setTextColor(mColor);
-            else*/
-            // Sinon c'est du noir
             view.setTextColor(Color.BLACK);
             view.setText(item.getName());
             return view;
         }
 
-        public void sort(){
+        void sort(){
             super.sort(new FileComparator());
         }
         private class FileComparator implements Comparator<File> {
