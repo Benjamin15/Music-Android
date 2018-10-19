@@ -12,22 +12,28 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 
 
 public class IdentificationService {
     private String url ;
     private Context context;
+    private PrepareJsonObject prepareJsonObject;
 
     public IdentificationService(Context context) {
         this.context = context;
         this.url = context.getResources().getString(R.string.identification);
+        this.prepareJsonObject = new PrepareJsonObject();
     }
 
     public void identification(String login) throws JSONException {
         String macAddress = IdentificationManager.getMACAddress("eth0");
         String ipv4 = IdentificationManager.getIPAddress(true);
-        JSONObject requestJSON = createJsonObject(macAddress,ipv4,login);
+        Map<String,String> requestMap = createMap(macAddress,ipv4,login);
+        JSONObject requestJSON = prepareJsonObject.createJsonObject(requestMap);
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.start();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -46,11 +52,11 @@ public class IdentificationService {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public JSONObject createJsonObject(String macAddress, String ipAddress, String identifier) throws JSONException {
-        JSONObject JSONIdentification = new JSONObject();
-        JSONIdentification.put("ip",ipAddress);
-        JSONIdentification.put("MAC",macAddress);
-        JSONIdentification.put("nom",identifier);
-        return JSONIdentification;
+    public Map<String, String> createMap(String macAddress, String ipAddress, String identifier) {
+        Map<String, String> map = new HashMap<>();
+        map.put("ip",ipAddress);
+        map.put("MAC",macAddress);
+        map.put("nom",identifier);
+        return map;
     }
 }
