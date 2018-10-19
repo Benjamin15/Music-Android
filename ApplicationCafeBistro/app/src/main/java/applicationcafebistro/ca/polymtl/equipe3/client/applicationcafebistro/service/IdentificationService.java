@@ -29,6 +29,11 @@ public class IdentificationService {
         this.prepareJsonObject = new PrepareJsonObject();
     }
 
+    /**
+     * Send a get request with identification informations stored in a JSON Object
+     * @param login String  the client identifier
+     * @return void
+     */
     public void identification(String login) throws JSONException {
         String macAddress = IdentificationManager.getMACAddress("eth0");
         String ipv4 = IdentificationManager.getIPAddress(true);
@@ -52,6 +57,13 @@ public class IdentificationService {
         requestQueue.add(jsonObjectRequest);
     }
 
+    /**
+     * Create a Map from the identification informations
+     * @param macAddress  the String client's MAC address
+     * @param ipAddress   the String client's IP address
+     * @param identifier   the String client's identifier
+     * @return  address or empty string
+     */
     public Map<String, String> createMap(String macAddress, String ipAddress, String identifier) {
         Map<String, String> map = new HashMap<>();
         map.put("ip",ipAddress);
