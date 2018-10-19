@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ApplicationCafeBistro</string>
     <string name="title_activity_home">Home</string>
+    <string name="identification">http://132.207.89.35/usager/identification</string>
 </resources>

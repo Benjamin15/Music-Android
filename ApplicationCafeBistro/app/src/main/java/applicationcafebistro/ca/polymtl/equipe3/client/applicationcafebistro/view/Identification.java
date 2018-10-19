@@ -1,15 +1,11 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
-
-
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.IdentificationButton;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.IdentificationService;
@@ -24,7 +20,7 @@ public class Identification extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         identificationService = new IdentificationService(this);
         identificationButton  = findViewById(R.id.identificationButton);
-        final EditText text = (EditText) findViewById(R.id.identifier);
+        final EditText text = findViewById(R.id.identifier);
         text.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -33,14 +29,10 @@ public class Identification extends AppCompatActivity {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
-                // TODO Auto-generated method stub
             }
         });
 

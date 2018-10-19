@@ -8,9 +8,7 @@ import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by moguef on 2018-09-28.
- */
+
 
 public class IdentificationManager {
 
@@ -55,7 +53,7 @@ public class IdentificationManager {
             while((read=is.read(bytes)) != -1) {
                 if (count==0 && bytes[0]==(byte)0xEF && bytes[1]==(byte)0xBB && bytes[2]==(byte)0xBF ) {
                     isUTF8=true;
-                    baos.write(bytes, 3, read-3); // drop UTF8 bom marker
+                    baos.write(bytes, 3, read-3);
                 } else {
                     baos.write(bytes, 0, read);
                 }
@@ -86,14 +84,8 @@ public class IdentificationManager {
                 if (buf.length()>0) buf.deleteCharAt(buf.length()-1);
                 return buf.toString();
             }
-        } catch (Exception ignored) { } // for now eat exceptions
+        } catch (Exception ignored) { }
         return "";
-        /*try {
-            // this is so Linux hack
-            return loadFileAsString("/sys/class/net/" +interfaceName + "/address").toUpperCase().trim();
-        } catch (IOException ex) {
-            return null;
-        }*/
     }
 
     /**
@@ -109,9 +101,7 @@ public class IdentificationManager {
                 for (InetAddress addr : addrs) {
                     if (!addr.isLoopbackAddress()) {
                         String sAddr = addr.getHostAddress();
-                        //boolean isIPv4 = InetAddressUtils.isIPv4Address(sAddr);
                         boolean isIPv4 = sAddr.indexOf(':')<0;
-
                         if (useIPv4) {
                             if (isIPv4)
                                 return sAddr;
@@ -124,7 +114,7 @@ public class IdentificationManager {
                     }
                 }
             }
-        } catch (Exception ignored) { } // for now eat exceptions
+        } catch (Exception ignored) { }
         return "";
     }
 }
