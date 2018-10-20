@@ -19,7 +19,6 @@
         <activity android:name=".view.Identification">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,18 +26,15 @@
             android:name=".view.Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
         <activity android:name=".view.Explorer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <receiver
             android:name=".view.ExplorerReceiver"
             android:exported="false"
-
             >
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_REMOVED"/>
@@ -46,5 +42,4 @@
             </intent-filter>
         </receiver>
     </application>
-
 </manifest>

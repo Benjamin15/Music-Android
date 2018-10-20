@@ -2,29 +2,45 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.se
 
 
 import android.content.Context;
-import org.json.JSONArray;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.IdentificationManager.getIPAddress;
-import static applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.IdentificationManager.getMACAddress;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Created by moguef on 2018-09-28.
- */
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+
 
 public class IdentificationService {
-    private String url = "http://132.207.89.35/indentification";
+    private String url ;
+    private Context context;
+    private PrepareJsonObject prepareJsonObject;
 
     public IdentificationService(Context context) {
+        this.context = context;
+        this.url = context.getResources().getString(R.string.identification);
+        this.prepareJsonObject = new PrepareJsonObject();
     }
 
+    /**
+     * Send a get request with identification informations stored in a JSON Object
+     * @param login String  the client identifier
+     * @return void
+     */
     public void identification(String login) throws JSONException {
-        String macAddress = getMACAddress("eth0");
-        String ipv4 = getIPAddress(true); // IPv4
-        //String ipv6 = getIPAddress(false); // IPv6
-        JSONArray requestJSON = createJsonObject(macAddress,ipv4,login);
-    /*
+        String macAddress = IdentificationManager.getMACAddress("eth0");
+        String ipv4 = IdentificationManager.getIPAddress(true);
+        Map<String,String> requestMap = createMap(macAddress,ipv4,login);
+        JSONObject requestJSON = prepareJsonObject.createJsonObject(requestMap);
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.start();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, requestJSON, new Response.Listener<JSONObject>() {
 
@@ -36,24 +52,23 @@ public class IdentificationService {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
                     }
                 });
-           */
+        requestQueue.add(jsonObjectRequest);
     }
 
-    public JSONArray createJsonObject(String macAddress, String ipAddress, String identifier) throws JSONException {
-        JSONArray JSONIdentification = new JSONArray();
-        JSONObject macAddressObject = new JSONObject();
-        JSONObject ipAddressObject = new JSONObject();
-        JSONObject identifierObject = new JSONObject();
-        ipAddressObject.put("ip",ipAddress);
-        macAddressObject.put("MAC",macAddress);
-        identifierObject.put("nom",identifier);
-        JSONIdentification.put(ipAddressObject);
-        JSONIdentification.put(macAddressObject);
-        JSONIdentification.put(identifierObject);
-        String verification = JSONIdentification.toString();
-        return JSONIdentification;
+    /**
+     * Create a Map from the identification informations
+     * @param macAddress  the String client's MAC address
+     * @param ipAddress   the String client's IP address
+     * @param identifier   the String client's identifier
+     * @return  address or empty string
+     */
+    public Map<String, String> createMap(String macAddress, String ipAddress, String identifier) {
+        Map<String, String> map = new HashMap<>();
+        map.put("ip",ipAddress);
+        map.put("MAC",macAddress);
+        map.put("nom",identifier);
+        return map;
     }
 }
