@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFFFF"
+    tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.MusicDetails" >
+
+    <ListView
+        android:id="@+id/largeLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>
