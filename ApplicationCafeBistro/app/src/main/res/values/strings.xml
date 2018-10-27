@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">ApplicationCafeBistro</string>
     <string name="title_activity_home">Home</string>
-    <string name="identification">http://192.168.56.101:8080/usager/identification</string>
+    <string name="identification">http://132.207.89.35/usager/identification</string>
+    <string name="menu_options">Options</string>
+    <string name="choose_item">Choisir ce fichier</string>
+    <string name="accesDenied">Access to files not allowed</string>
+    <string name="open_dir">Ouvrir le dossier</string>
+    <string name="confirmation_message">Votre choix est fait?</string>
+    <string name="No">Non</string>
+    <string name="Yes">Oui</string>
+    <string name="root">Vous êtes à la racine!</string>
+    <string name="mp3">mp3</string>
+    <string name="Confirmation">Confirmation</string>
 </resources>
