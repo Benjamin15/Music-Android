@@ -37,7 +37,7 @@ public class DeleteSongService {
             e.printStackTrace();
         }
 
-        this.url= "http://132.207.89.35/usager/chanson/" + id+ no;
+        this.url= "http://132.207.89.35/usager/chanson/1/2";
         queue.start();
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url,
