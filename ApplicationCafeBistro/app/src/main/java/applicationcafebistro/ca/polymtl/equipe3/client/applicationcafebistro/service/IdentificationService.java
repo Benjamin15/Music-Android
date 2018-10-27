@@ -3,11 +3,13 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.se
 
 import android.content.Context;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,8 +43,9 @@ public class IdentificationService {
         JSONObject requestJSON = prepareJsonObject.createJsonObject(requestMap);
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.start();
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, requestJSON, new Response.Listener<JSONObject>() {
+                (Request.Method.POST, url + "?nom=kas", requestJSON, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -52,8 +55,17 @@ public class IdentificationService {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        System.out.println(error.networkResponse);
                     }
-                });
+                }){
+        };
+
+        try {
+            System.out.println(jsonObjectRequest.getHeaders());
+            System.out.println(jsonObjectRequest.getBody());
+        } catch (AuthFailureError authFailureError) {
+            authFailureError.printStackTrace();
+        }
         requestQueue.add(jsonObjectRequest);
     }
 
