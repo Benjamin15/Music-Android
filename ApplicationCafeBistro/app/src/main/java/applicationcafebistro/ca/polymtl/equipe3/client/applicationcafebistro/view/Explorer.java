@@ -1,5 +1,6 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -21,6 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.SendMusicService;
 
 public class Explorer extends AppCompatActivity{
     /**
@@ -50,6 +54,11 @@ public class Explorer extends AppCompatActivity{
     private File mCurrentFile = null;
 
     /**
+     * Représente le service chargé d'envoyer la musique sur le serveur
+     */
+    private SendMusicService sendMusicService;
+
+    /**
      * Fichier choisi
      */
     private File  mChosenFile = null;
@@ -58,6 +67,7 @@ public class Explorer extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.explorer);
+        sendMusicService = new SendMusicService(getApplicationContext());
         mList = findViewById(R.id.directories);
 
         if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
@@ -70,7 +80,7 @@ public class Explorer extends AppCompatActivity{
             *  mCurrentFile = Environment.getExternalStorageDirectory();
             *  mCurrentFile = Environment.getRootDirectory();
             * */
-            mCurrentFile = new File(String.valueOf(getExternalFilesDir(Environment.DIRECTORY_MUSIC)));
+            mCurrentFile = Environment.getExternalStorageDirectory();
             setTitle(mCurrentFile.getAbsolutePath());
 
             File[] files = mCurrentFile.listFiles();
@@ -134,6 +144,7 @@ public class Explorer extends AppCompatActivity{
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mChosenFile = file;
+                sendMusicService.sendMusic(file);
             }
         });
 

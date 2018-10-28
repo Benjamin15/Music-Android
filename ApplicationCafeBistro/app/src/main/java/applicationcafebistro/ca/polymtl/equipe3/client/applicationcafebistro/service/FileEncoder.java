@@ -9,7 +9,7 @@ import android.util.Base64;
 public class FileEncoder {
 
 
-    public String encodeFileToBase64(File file) {
+    public static String encodeFileToBase64(File file) {
         String encodedFile = null;
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
