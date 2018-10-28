@@ -28,14 +28,6 @@ public class DeleteSongService {
     public void deleteSong() {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this.context);
-        String id = "1/";
-        String no= "1";
-        try {
-            id = URLEncoder.encode(id.toString(), "UTF-8");
-            no= URLEncoder.encode(id.toString(), "UTF-8");
-        } catch (UnsupportedEncodingException e){
-            e.printStackTrace();
-        }
 
         this.url= "http://132.207.89.35/usager/chanson/1/2";
         queue.start();
