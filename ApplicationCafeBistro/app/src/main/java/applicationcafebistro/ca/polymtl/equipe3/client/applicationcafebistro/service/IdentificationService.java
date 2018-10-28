@@ -14,6 +14,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import	java.net.URLEncoder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,16 +39,23 @@ public class IdentificationService {
      * @param login String  the client identifier
      * @return void
      */
-    public void identification(String login) throws JSONException {
+    public void identification(String login) throws JSONException{
         String macAddress = IdentificationManager.getMACAddress("eth0");
         String ipv4 = IdentificationManager.getIPAddress(true);
         Map<String,String> requestMap = createMap(macAddress,ipv4,login);
         JSONObject requestJSON = prepareJsonObject.createJsonObject(requestMap);
         RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        String urlParameter = null;
+        try {
+            urlParameter = URLEncoder.encode(requestJSON.toString(),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         requestQueue.start();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, url + "?nom=kas", requestJSON, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, url +"?name=" + urlParameter, requestJSON, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
