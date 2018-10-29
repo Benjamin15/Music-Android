@@ -23,7 +23,7 @@ public class Home extends AppCompatActivity {
 
         listMusicUser = findViewById(R.id.list_music);
         CommunicationRest communication = new CommunicationRest(
-                "http://10.200.14.52:8080/usager/file/5",
+                getResources().getString(R.string.list_music_test) + "1",
                 "GET",
                 this.getApplicationContext(),
                 listMusicUser);
