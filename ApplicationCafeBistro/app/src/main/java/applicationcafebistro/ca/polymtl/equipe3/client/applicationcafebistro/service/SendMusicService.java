@@ -35,12 +35,17 @@ public class SendMusicService {
      * @param music File  The .mp3 file which we send to the server
      * @return void
      */
-    public void sendMusic(File music) {
+    public void sendMusic(File music, String title) {
         final String stringMusic = FileEncoder.encodeFileToBase64(music);
         RequestQueue requestQueue = Volley.newRequestQueue(this.context);
-        requestQueue.start();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url +"9" , new Response.Listener<String>() {
+        //requestQueue.start();
+        String urlParameter = null;
+        try {
+            urlParameter = URLEncoder.encode(title,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url +"9"+"?title=" +urlParameter , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
             }
@@ -75,34 +80,5 @@ public class SendMusicService {
         };
 
         requestQueue.add(stringRequest);
-
-      /*  RequestQueue requestQueue = Volley.newRequestQueue(context);
-        String stringMusic = FileEncoder.encodeFileToBase64(music);
-        requestQueue.start();
-        String urlParameter = null;
-        try {
-            urlParameter = URLEncoder.encode(stringMusic,"UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        JSONObject jsonMusic = null;
-        try {
-            jsonMusic = new JSONObject(stringMusic);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, url +"9", jsonMusic, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        System.out.println("Response: " + response.toString());
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                });
-        requestQueue.add(jsonObjectRequest);*/
     }
 }

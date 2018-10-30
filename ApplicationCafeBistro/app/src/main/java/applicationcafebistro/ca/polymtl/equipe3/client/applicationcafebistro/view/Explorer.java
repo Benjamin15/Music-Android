@@ -144,7 +144,8 @@ public class Explorer extends AppCompatActivity{
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mChosenFile = file;
-                sendMusicService.sendMusic(file);
+                String title = file.getName();
+                sendMusicService.sendMusic(file,title);
             }
         });
 
