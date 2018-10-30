@@ -9,7 +9,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +52,6 @@ public class IdentificationService {
             e.printStackTrace();
         }
         requestQueue.start();
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url +"?name=" + urlParameter, requestJSON, new Response.Listener<JSONObject>() {
 
