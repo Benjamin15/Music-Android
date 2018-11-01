@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Identification">
 
+
     <EditText
         android:id="@+id/identifier"
         android:layout_width="wrap_content"
@@ -38,5 +39,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.615" />
+
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.DeleteSongButton
+        android:id="@+id/deleteSongButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
