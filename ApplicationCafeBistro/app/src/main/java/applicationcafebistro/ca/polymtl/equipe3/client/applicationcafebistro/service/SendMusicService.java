@@ -9,12 +9,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -38,7 +35,6 @@ public class SendMusicService {
     public void sendMusic(File music, String title) {
         final String stringMusic = FileEncoder.encodeFileToBase64(music);
         RequestQueue requestQueue = Volley.newRequestQueue(this.context);
-        //requestQueue.start();
         String urlParameter = null;
         try {
             urlParameter = URLEncoder.encode(title,"UTF-8");
@@ -62,7 +58,7 @@ public class SendMusicService {
             @Override
             public byte[] getBody() throws AuthFailureError {
                 try {
-                    return stringMusic == null ? null : stringMusic.getBytes("utf-8");
+                    return stringMusic.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {
                     return null;
                 }
@@ -73,7 +69,6 @@ public class SendMusicService {
                 String responseString = "";
                 if (response != null) {
                     responseString = String.valueOf(response.statusCode);
-                    // can get more details such as response.headers
                 }
                 return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
             }
