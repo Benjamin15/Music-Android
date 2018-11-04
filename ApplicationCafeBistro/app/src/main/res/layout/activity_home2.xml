@@ -22,12 +22,9 @@
 
     <include layout="@layout/content_home" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ListMusicForUser
+        android:id="@+id/list_music"
+        android:layout_marginTop="@dimen/toolbar_margin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.design.widget.CoordinatorLayout>
