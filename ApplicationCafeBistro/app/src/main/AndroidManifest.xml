@@ -17,14 +17,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".view.Home"
+            android:name=".view.Identification"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
-        <activity android:name=".view.Identification">
+        <activity android:name=".view.Home">
         </activity>
         <activity android:name=".view.Explorer">
         </activity>
