@@ -28,7 +28,7 @@ public class Home extends AppCompatActivity {
                 this.getApplicationContext(),
                 listMusicUser);
         try {
-            communication.send((JSONObject) null);
+            communication.send(null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
