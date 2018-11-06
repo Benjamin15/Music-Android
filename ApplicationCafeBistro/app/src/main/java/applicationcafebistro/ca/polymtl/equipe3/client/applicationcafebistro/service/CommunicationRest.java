@@ -12,6 +12,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.Components;
 
 public class CommunicationRest {
@@ -36,14 +39,22 @@ public class CommunicationRest {
         this.component = null;
     }
 
-    public void send(JSONObject body) throws JSONException {
+    public void send(Map parameters) throws JSONException {
+        JSONObject body = null;
+        if (parameters != null ) {
+            System.out.println("create body");
+            body = new PrepareJsonObject().createJsonObject(parameters);
+            System.out.println(body.toString());
+        }
+        System.out.println("send");
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.start();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (type, url, body, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        if(component != null)
+                        System.out.println("Response");
+                        if (component != null)
                             component.update(response);
                     }
                 }, new Response.ErrorListener() {
@@ -52,6 +63,8 @@ public class CommunicationRest {
                     public void onErrorResponse(VolleyError error) {
                         System.out.println("error communication");
                         System.out.println(error.getMessage());
+                        //if (component != null)
+                          //  component.cancel();
                     }
                 });
         requestQueue.add(jsonObjectRequest);
