@@ -29,10 +29,6 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.lis
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.CommunicationRest;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.ServerWebSocketListener;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.WebSocket;
 
 public class ListMusicForUser extends ListView implements Components {
     int startPosition;
@@ -44,30 +40,23 @@ public class ListMusicForUser extends ListView implements Components {
     private DragListener dragListener;
     private RemoveListener removeListener;
     private boolean dragMode;
-    private OkHttpClient client;
 
     public ListMusicForUser(Context context) {
         super(context);
         musics = new ArrayList();
-        client = new OkHttpClient();
         initListener();
-        start();
     }
 
     public ListMusicForUser(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         musics = new ArrayList();
-        client = new OkHttpClient();
         initListener();
-        start();
     }
 
     public ListMusicForUser(Context context, AttributeSet attrs) {
         super(context, attrs);
         musics = new ArrayList();
-        client = new OkHttpClient();
         initListener();
-        start();
     }
 
     @Override
@@ -180,11 +169,11 @@ public class ListMusicForUser extends ListView implements Components {
     public void initListener() {
         dropListener = new DropListener() {
             public void onDrop(int from, int to) {
-                //ListAdapter adapter = getAdapter();
-                //if (adapter instanceof ListMusicAdminAdapter) {
-                //((ListMusicAdminAdapter)adapter).onDrop(from, to);
-                //invalidateViews();
-                //}
+                ListAdapter adapter = getAdapter();
+                if (adapter instanceof ListMusicAdminAdapter) {
+                    ((ListMusicAdminAdapter)adapter).onDrop(from, to);
+                    invalidateViews();
+                }
                 CommunicationRest communicationRest = new CommunicationRest(
                         getResources().getString(R.string.inversion),
                         "POST",
@@ -263,13 +252,5 @@ public class ListMusicForUser extends ListView implements Components {
         setAdapter(adapter);
         invalidateViews();
 
-    }
-
-    private void start() {
-        Request request = new Request.Builder().url("ws://echo.websocket.org").build();
-        ServerWebSocketListener listener = new ServerWebSocketListener();
-        WebSocket ws = client.newWebSocket(request, listener);
-
-        client.dispatcher().executorService().shutdown();
     }
 }
