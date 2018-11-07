@@ -37,5 +37,8 @@
                 <action android:name="android.intent.action.MEDIA_MOUNTED"/>
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".service.ServiceGetList"/>
     </application>
 </manifest>
