@@ -11,9 +11,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.listener.DropListener;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.listener.RemoveListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 
-public class ListMusicAdminAdapter extends ArrayAdapter<Music> {
+public class ListMusicAdminAdapter extends ArrayAdapter<Music> implements DropListener, RemoveListener {
     private List<Music> musics;
     private Context context;
     private int resource;
@@ -44,5 +46,19 @@ public class ListMusicAdminAdapter extends ArrayAdapter<Music> {
         textViewArtist.setText(music.getArtist());
 
         return view;
+    }
+
+    public void onRemove(int which) {
+        System.out.println("Adapter onRemove");
+        if (which < 0 || which > musics.size()) return;
+        musics.remove(which);
+    }
+
+    public void onDrop(int from, int to) {
+        System.out.println("Adapter onDrop");
+        System.out.println("from : " + from + "\n to : " + to);
+        Music temp = musics.get(from);
+        musics.remove(from);
+        musics.add(to,temp);
     }
 }

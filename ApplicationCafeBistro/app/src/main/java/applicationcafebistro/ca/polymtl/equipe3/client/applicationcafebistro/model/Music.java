@@ -65,4 +65,16 @@ public class Music {
     public void setOwner(boolean owner) {
         this.owner = owner;
     }
+
+    @Override
+    public String toString() {
+        return "Music{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", artist='" + artist + '\'' +
+                ", duration='" + duration + '\'' +
+                ", user=" + user +
+                ", owner=" + owner +
+                '}';
+    }
 }
