@@ -55,7 +55,7 @@ public class ServiceGetList extends Service {
                 this.getApplicationContext(),
                 Home.listMusicUser);
         try {
-            communication.send((JSONObject) null);
+            communication.send( null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
