@@ -3,6 +3,7 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.se
 import android.content.Context;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -73,6 +74,9 @@ public class SendMusicService {
                 return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
             }
         };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(stringRequest);
     }
 }

@@ -51,7 +51,7 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Intent intent = new Intent(this.context, Explorer.class);
+        Intent intent = new Intent(this.context, Home.class);
         context.startActivity(intent);
     }
     public void setLoginText(Editable editText){
