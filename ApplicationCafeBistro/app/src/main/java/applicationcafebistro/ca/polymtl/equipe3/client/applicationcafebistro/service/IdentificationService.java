@@ -50,7 +50,10 @@ public class IdentificationService {
             urlParameter = URLEncoder.encode(requestJSON.toString(),"UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        }
+        }/*
+        CommunicationRest communicationRest = new CommunicationRest(url +"?name=" + urlParameter,"GET",context);
+        communicationRest.send(requestJSON);*/
+
         requestQueue.start();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url +"?name=" + urlParameter, requestJSON, new Response.Listener<JSONObject>() {
