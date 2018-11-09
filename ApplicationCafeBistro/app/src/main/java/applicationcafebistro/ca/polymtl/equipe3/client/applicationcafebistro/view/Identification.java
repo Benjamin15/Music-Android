@@ -25,7 +25,7 @@ public class Identification extends AppCompatActivity {
         identificationService = new IdentificationService(this);
         deleteSongService = new DeleteSongService(this);
         identificationButton  = findViewById(R.id.identificationButton);
-        deleteButton= findViewById(R.id.deleteSongButton);
+        //deleteButton= findViewById(R.id.deleteSongButton);
         final EditText text = findViewById(R.id.identifier);
 
 
