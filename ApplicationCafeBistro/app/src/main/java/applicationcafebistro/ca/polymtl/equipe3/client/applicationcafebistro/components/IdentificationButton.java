@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import org.json.JSONException;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.IdentificationService;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home;
 
 

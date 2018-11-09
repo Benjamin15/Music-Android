@@ -6,25 +6,21 @@
     android:layout_height="match_parent"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
     <include layout="@layout/content_home" />
 
     <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ListMusicForUser
         android:id="@+id/list_music"
-        android:layout_marginTop="@dimen/toolbar_margin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_margin" />
+
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.AddMusicButton
+        android:id="@+id/floating_add_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_add_music" />
 </android.support.design.widget.CoordinatorLayout>

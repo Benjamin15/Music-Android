@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.QuitExplorerButton;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.SendMusicService;
 
 public class Explorer extends AppCompatActivity{
@@ -39,6 +40,8 @@ public class Explorer extends AppCompatActivity{
      * Repr�sente le texte qui s'affiche quand la liste est vide
      */
     private TextView mEmpty = null;
+
+    private QuitExplorerButton quitExplorerButton;
     /**
      * La liste qui contient nos fichiers et r�pertoires
      */
@@ -63,12 +66,17 @@ public class Explorer extends AppCompatActivity{
      */
     private File  mChosenFile = null;
 
+
+    public static Explorer instance = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.explorer);
+        QuitExplorerButton quitExplorerButton = findViewById(R.id.floating_quit_explorer);
         sendMusicService = new SendMusicService(getApplicationContext());
         mList = findViewById(R.id.directories);
+        instance = this;
 
         if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
             mEmpty = (TextView) mList.getEmptyView();
@@ -237,6 +245,12 @@ public class Explorer extends AppCompatActivity{
             }
 
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        instance = null;
     }
 
 }
