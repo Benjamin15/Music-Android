@@ -169,23 +169,32 @@ public class ListMusicForUser extends ListView implements Components {
     public void initListener() {
         dropListener = new DropListener() {
             public void onDrop(int from, int to) {
+                System.out.println("from : " + from);
+                System.out.println("to : " + to);
+                for (Music music : musics)
+                    System.out.println(music.getUser().getName());
                 ListAdapter adapter = getAdapter();
-                if (adapter instanceof ListMusicAdminAdapter) {
-                    ((ListMusicAdminAdapter)adapter).onDrop(from, to);
-                    invalidateViews();
-                }
                 CommunicationRest communicationRest = new CommunicationRest(
-                        getResources().getString(R.string.inversion),
+                        getResources().getString(R.string.inversion_test),
                         "POST",
                         getContext(),
                         null
                 );
+                System.out.println("une : " + musics.get(from).getId());
+                System.out.println("autre : " + musics.get(to).getId());
+                System.out.println(musics.get(from).getUser().getName());
+                System.out.println(musics.get(to).getUser().getName());
+
                 HashMap<String, Integer> parameters = new HashMap<>();
                 parameters.put(getResources().getString(R.string.inversion_first),
                         musics.get(from).getId());
                 parameters.put(getResources().getString(R.string.inversion_second),
                         musics.get(to).getId());
                 try {
+                    if (adapter instanceof ListMusicAdminAdapter) {
+                        ((ListMusicAdminAdapter)adapter).onDrop(from, to);
+                        invalidateViews();
+                    }
                     communicationRest.send(parameters);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -228,13 +237,14 @@ public class ListMusicForUser extends ListView implements Components {
 
     @Override
     public void update(JSONObject json) {
-        musics.clear();
         JSONArray array = null;
         try {
             array = json.getJSONArray("chansons");
         } catch (JSONException e) {
-            e.printStackTrace();
+            invalidateViews();
         }
+        musics.clear();
+
         for (int i = 0; i < array.length(); i++) {
             try {
                 JSONObject object = (JSONObject) array.get(i);

@@ -63,8 +63,6 @@ public class CommunicationRest {
                     public void onErrorResponse(VolleyError error) {
                         System.out.println("error communication");
                         System.out.println(error.getMessage());
-                        //if (component != null)
-                          //  component.cancel();
                     }
                 });
         requestQueue.add(jsonObjectRequest);
