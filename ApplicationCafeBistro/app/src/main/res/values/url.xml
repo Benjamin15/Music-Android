@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="list_music">http://132.207.89.35:80/usager/file/</string>
-    <string name="list_music_test">http://132.207.89.35:80/usager/file/</string>
+    <string name="list_music_test">http://10.200.2.103:8080/usager/file/</string>
     <string name="identification">http://132.207.89.35:80/usager/identification</string>
     <string name="inversion">http://132.207.89.35:80/superviseur/inversion</string>
+    <string name="inversion_test">http://10.200.2.103:8080/superviseur/inversion</string>
     <string name="send_music">http://132.207.89.35:80/usager/chanson/</string>
 </resources>
 

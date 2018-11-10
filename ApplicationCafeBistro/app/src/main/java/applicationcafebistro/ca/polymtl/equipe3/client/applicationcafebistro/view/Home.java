@@ -23,7 +23,6 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home2);
         addMusicButton = findViewById(R.id.floating_add_music);
         Intent intent = new Intent(Home.this, ServiceGetList.class);
-        intent.putExtra("listMusic", (Parcelable) listMusicUser);
         startService(intent);
         listMusicUser = findViewById(R.id.list_music);
     }
