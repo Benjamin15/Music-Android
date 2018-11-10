@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home">
-
     <include layout="@layout/content_home" />
 
     <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ListMusicForUser
