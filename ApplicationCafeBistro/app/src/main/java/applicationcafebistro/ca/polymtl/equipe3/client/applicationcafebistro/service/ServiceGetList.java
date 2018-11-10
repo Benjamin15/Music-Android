@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home;
@@ -52,7 +51,7 @@ public class ServiceGetList extends Service {
         CommunicationRest communication = new CommunicationRest(
                 getResources().getString(R.string.list_music_test) + "1",
                 "GET",
-                this.getApplicationContext(),
+                getApplicationContext(),
                 Home.listMusicUser);
         try {
             communication.send( null);

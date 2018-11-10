@@ -23,7 +23,7 @@ public class Identification extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         identificationService = new IdentificationService(this);
         identificationButton  = findViewById(R.id.identificationButton);
-        deleteButton= findViewById(R.id.deleteSongButton);
+        //deleteButton= findViewById(R.id.deleteSongButton);
         final EditText text = findViewById(R.id.identifier);
 
 

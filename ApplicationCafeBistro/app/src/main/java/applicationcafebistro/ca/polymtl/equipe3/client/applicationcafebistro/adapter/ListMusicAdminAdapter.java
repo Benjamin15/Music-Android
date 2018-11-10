@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
@@ -57,8 +58,6 @@ public class ListMusicAdminAdapter extends ArrayAdapter<Music> implements DropLi
     public void onDrop(int from, int to) {
         System.out.println("Adapter onDrop");
         System.out.println("from : " + from + "\n to : " + to);
-        Music temp = musics.get(from);
-        musics.remove(from);
-        musics.add(to,temp);
+        Collections.swap(musics, from, to);
     }
 }
