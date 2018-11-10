@@ -38,6 +38,9 @@ public class CommunicationRest {
         this.context = context;
         this.component = null;
     }
+    public void send() throws JSONException {
+        this.send(null);
+    }
 
     public void send(Map parameters) throws JSONException {
         JSONObject body = null;

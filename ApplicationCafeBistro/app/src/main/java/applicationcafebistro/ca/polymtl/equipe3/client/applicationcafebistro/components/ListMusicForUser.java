@@ -186,6 +186,10 @@ public class ListMusicForUser extends ListView implements Components {
                 System.out.println(musics.get(to).getUser().getName());
 
                 HashMap<String, Integer> parameters = new HashMap<>();
+                for (Music music : musics)
+                    System.out.println(music.getUser().getName());
+                System.out.println("une : " + musics.get(from).getId() + ", " + musics.get(from).getUser().getName());
+                System.out.println("autre : " + musics.get(to).getId() + ", " + musics.get(to).getUser().getName());
                 parameters.put(getResources().getString(R.string.inversion_first),
                         musics.get(from).getId());
                 parameters.put(getResources().getString(R.string.inversion_second),
@@ -257,6 +261,8 @@ public class ListMusicForUser extends ListView implements Components {
                 e.printStackTrace();
             }
         }
+        for (Music music : musics)
+            System.out.println(music.getUser().getName());
         ListMusicAdminAdapter adapter = new ListMusicAdminAdapter(getContext(),
                 R.layout.component_list_music_user, musics);
         setAdapter(adapter);

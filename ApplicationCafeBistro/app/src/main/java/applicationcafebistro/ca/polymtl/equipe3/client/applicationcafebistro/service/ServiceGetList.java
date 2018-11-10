@@ -15,7 +15,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 public class ServiceGetList extends Service {
     private static final String TAG = ServiceGetList.class.getSimpleName();
     private Handler mHandler;
-    public static final long DEFAULT_SYNC_INTERVAL = 5 * 1000;
+    public static final long DEFAULT_SYNC_INTERVAL = 5000;
 
     private Runnable runnableService = new Runnable() {
         @Override
