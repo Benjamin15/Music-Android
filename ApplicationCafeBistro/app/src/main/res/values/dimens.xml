@@ -1,5 +1,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="toolbar_margin">50dp</dimen>
+    <dimen name="snackbar_icon_padding">1dp</dimen>
 
 </resources>

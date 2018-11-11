@@ -6,6 +6,9 @@ import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
 import org.json.JSONException;
+
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarError;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarSuccess;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.IdentificationService;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home;
@@ -51,6 +54,8 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        SnackBarError.make(v, context, "connection reussi", 3000);
+        SnackBarError.show();
         Intent intent = new Intent(this.context, Home.class);
         context.startActivity(intent);
     }

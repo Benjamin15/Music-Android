@@ -15,13 +15,10 @@ public class Home extends AppCompatActivity {
 
     public static ListMusicForUser listMusicUser;
 
-    private AddMusicButton addMusicButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
-        addMusicButton = findViewById(R.id.floating_add_music);
         Intent intent = new Intent(Home.this, ServiceGetList.class);
         startService(intent);
         listMusicUser = findViewById(R.id.list_music);
