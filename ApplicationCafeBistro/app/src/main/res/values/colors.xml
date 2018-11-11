@@ -9,4 +9,6 @@
     <color name="list_group_title">#808080</color>
     <color name="colorError">#b50909</color>
     <color name="colorSuccess">#0ea001</color>
+    <color name="bg_row_background">#fa315b</color>
+
 </resources>

@@ -25,7 +25,7 @@ public class SendMusicService {
 
     public SendMusicService(Context context) {
         this.context = context;
-        this.url = context.getResources().getString(R.string.send_music);;
+        this.url = context.getResources().getString(R.string.send_music);
     }
 
     /**

@@ -52,7 +52,8 @@ public class ServiceGetList extends Service {
                 getResources().getString(R.string.list_music_test) + "1",
                 "GET",
                 getApplicationContext(),
-                Home.listMusicUser);
+                Home.listenerMusic
+                );
         try {
             communication.send( null);
         } catch (JSONException e) {

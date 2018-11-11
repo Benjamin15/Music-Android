@@ -22,7 +22,6 @@ import java.util.List;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.adapter.ListMusicAdminAdapter;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.adapter.ListMusicUserAdapter;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.listener.DragListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.listener.DropListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.listener.RemoveListener;
@@ -30,7 +29,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.mod
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.CommunicationRest;
 
-public class ListMusicForUser extends ListView implements Components {
+public class ListMusicForUser extends ListView implements ComponentsListener {
     int startPosition;
     int endPosition;
     int dragPointOffset;

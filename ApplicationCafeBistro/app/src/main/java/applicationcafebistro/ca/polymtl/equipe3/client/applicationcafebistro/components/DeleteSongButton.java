@@ -41,13 +41,13 @@ public class DeleteSongButton extends AppCompatImageButton implements View.OnCli
     @Override
     public void onClick(View v) {
         try {
-            CommunicationRest communication = new CommunicationRest(
+           /* CommunicationRest communication = new CommunicationRest(
                     getResources().getString(R.string.delete_music_test)
                     + music.getUser().getId() + "/" + music.getId(),
                     "DELETE",
                     context,
                     Home.listMusicUser);
-            communication.send();
+            communication.send();*/
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -2,6 +2,6 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.co
 
 import org.json.JSONObject;
 
-public interface Components {
+public interface ComponentsListener {
     public void update(JSONObject json);
 }

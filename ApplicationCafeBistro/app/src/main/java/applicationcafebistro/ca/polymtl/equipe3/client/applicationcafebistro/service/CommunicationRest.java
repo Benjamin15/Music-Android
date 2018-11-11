@@ -12,19 +12,18 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.Components;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 
 public class CommunicationRest {
 
     private String url;
     private int type;
     private Context context;
-    private Components component;
+    private ComponentsListener component;
 
-    public CommunicationRest(String url, String type, Context context, Components component) {
+    public CommunicationRest(String url, String type, Context context, ComponentsListener component) {
         this.url = url;
         this.type = getType(type);
         this.context = context;
@@ -72,8 +71,8 @@ public class CommunicationRest {
     }
 
     private int getType(String type) {
-        return type == "GET" ? Request.Method.GET
-                : type == "POST" ? Request.Method.POST
+        return type.equals("GET") ? Request.Method.GET
+                : type.equals("POST") ? Request.Method.POST
                 : Request.Method.DELETE;
     }
 }
