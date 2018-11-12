@@ -1,4 +1,4 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils;
 
 
 import java.net.InetAddress;
@@ -6,7 +6,10 @@ import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * this class contain some information about the device, like the userId, ths macAddress
+ * or the ip address
+ */
 public class DeviceInformation {
 
     static public int idUser;

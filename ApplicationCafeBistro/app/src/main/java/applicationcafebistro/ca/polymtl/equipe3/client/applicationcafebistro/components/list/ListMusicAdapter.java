@@ -1,5 +1,6 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +17,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.mod
 
 public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter {
     private final ArrayList<Music> cartListMusic;
-
+    private Context context;
     public ListMusicAdapter() {
         this.cartListMusic = new ArrayList<>();
     }
@@ -25,7 +26,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_music, parent, false);
-
+        context = itemView.getContext();
         return new MyViewHolder(itemView);
     }
 
@@ -36,9 +37,10 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         holder.artist.setText(music.getArtist());
         holder.duration.setText(music.getDuration());
         holder.suggest_by.setText(music.getUser().getName());
-        if (music.isOwner()) {
-            holder.viewForeground.setBackgroundColor(Color.rgb(252, 255, 136));
-        }
+        if (music.isOwner())
+            holder.viewForeground.setBackgroundResource(R.color.my_music_in_list);
+        else
+            holder.viewForeground.setBackgroundResource(R.color.other_music_in_list);
     }
 
     @Override

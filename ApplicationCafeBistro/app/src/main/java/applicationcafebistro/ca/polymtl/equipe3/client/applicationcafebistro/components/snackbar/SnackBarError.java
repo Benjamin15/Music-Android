@@ -7,10 +7,20 @@ import android.widget.TextView;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 
+/**
+ * This class is used to display an error message in the app.
+ */
 public class SnackBarError {
 
     private static Snackbar snackbar;
 
+    /**
+     * This method build the error message
+     * @param view
+     * @param context
+     * @param text
+     * @param duration
+     */
     public static void make(View view, Context context, String text, int duration) {
         snackbar = Snackbar.make(view, text, duration);
         View snackbarView = snackbar.getView();
@@ -20,6 +30,9 @@ public class SnackBarError {
         snackbar.getView().setBackgroundColor(view.getResources().getColor(R.color.colorError));
     }
 
+    /**
+     * this method display the error message
+     */
     public static void show() {
         snackbar.show();
     }

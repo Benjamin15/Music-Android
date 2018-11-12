@@ -9,8 +9,13 @@ import android.util.Log;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
+
+/**
+ * this class is a service which call the get list endpoint in the rest api
+ */
 public class ServiceGetList extends Service {
     private static final long DEFAULT_SYNC_INTERVAL = 5000;
     private static final String TAG = ServiceGetList.class.getSimpleName();
@@ -22,17 +27,13 @@ public class ServiceGetList extends Service {
             Log.i(TAG, "run");
 
             syncData();
-            // Repeat this runnable code block again every ... min
             mHandler.postDelayed(runnableService, DEFAULT_SYNC_INTERVAL);
         }
     };
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i(TAG, "start command");
-        // Create the Handler object
         mHandler = new Handler();
-        // Execute a runnable task as soon as possible
         mHandler.post(runnableService);
 
         return START_STICKY;
@@ -41,15 +42,14 @@ public class ServiceGetList extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.i(TAG, "onBind");
         return null;
     }
 
     private synchronized void syncData() {
-        Log.i(TAG, "syncData");
+        final String GET = "GET";
         CommunicationRest communication = new CommunicationRest(
                 getResources().getString(R.string.list_music_test) + Integer.toString(DeviceInformation.idUser),
-                "GET",
+                GET,
                 ListMusic.view,
                 ListMusic.listenerMusic
         );

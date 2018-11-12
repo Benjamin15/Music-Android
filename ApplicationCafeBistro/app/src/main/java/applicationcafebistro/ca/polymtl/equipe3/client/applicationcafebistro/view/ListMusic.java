@@ -40,7 +40,7 @@ public class ListMusic extends AppCompatActivity {
 
         Intent intent = new Intent(ListMusic.this, ServiceGetList.class);
         startService(intent);
-        SnackBarSuccess.make(view, getApplicationContext(), getIntent().getStringExtra("welcomeMessage"), 3000);
+        SnackBarSuccess.make(view, getApplicationContext(), getIntent().getStringExtra(getString(R.string.welcome_message_key)), 3000);
         SnackBarSuccess.show();
     }
 }

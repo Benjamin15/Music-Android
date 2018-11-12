@@ -1,4 +1,4 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils;
 
 
 import org.apache.commons.codec.binary.Base64;
@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * this class have some operation about file encoding, as encoding in base 64
+ */
 public class FileEncoder {
 
 

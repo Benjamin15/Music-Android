@@ -1,4 +1,4 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication;
 
 import android.content.Context;
 
@@ -17,7 +17,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarSuccess;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.exception.ManagerException;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.FileEncoder;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
+/**
+ * this class send a music to the server. We create this instead of used the generic class
+ * This class contains some operation which are not used in the other generic class
+ */
 public class SendMusicService {
 
     private final String url;
@@ -48,15 +57,24 @@ public class SendMusicService {
                 urlParameter, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                SnackBarSuccess.make(ListMusic.view, context, context.getString(R.string.music_add), 3000);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if (error.networkResponse != null) {
+                    int codeError = error.networkResponse.statusCode;
+                    String message = new String(error.networkResponse.data);
+                    System.out.println(codeError + message);
+                    ManagerException managerException = new ManagerException(codeError, message, ListMusic.view);
+                    managerException.findError();
+                    managerException.display();
+                }
             }
         }) {
             @Override
             public String getBodyContentType() {
-                return "application/json; charset=utf-8";
+                return context.getString(R.string.body_content_json);
             }
 
             @Override

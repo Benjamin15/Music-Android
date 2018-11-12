@@ -2,12 +2,16 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.co
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.View;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 
-public class AddMusicButton extends android.support.design.widget.FloatingActionButton implements View.OnClickListener {
+/**
+ * This button open the explorer activity when we click on it
+ */
+public class AddMusicButton extends FloatingActionButton implements View.OnClickListener {
     private final Context context;
 
     public AddMusicButton(Context context) {

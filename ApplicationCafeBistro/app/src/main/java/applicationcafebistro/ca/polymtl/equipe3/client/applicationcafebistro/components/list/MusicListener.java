@@ -1,5 +1,6 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
 import org.json.JSONArray;
@@ -13,27 +14,32 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
+/**
+ * This class is used to listen events in the listView(recycler)
+ * We implement delete (onSwiped), reverse (onMoved) and insert (update) function
+ */
 public class MusicListener implements RecyclerMusicTouchHelperListener, ComponentsListener {
 
     private final ListMusicAdapter adapter;
-
+    private Context context;
     public MusicListener(ListMusicAdapter adapter) {
         this.adapter = adapter;
     }
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        final String DELETE = "DELETE";
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
-            System.out.println("try to delete");
             CommunicationRest communication = new CommunicationRest(
                     ListMusic.view.getResources().getString(R.string.delete_music_test) + Integer.toString(DeviceInformation.idUser) + "/" +
                             adapter.getMusics().get(position).getId(),
-                    "DELETE",
+                    DELETE,
                     ListMusic.view);
             communication.send();
+            context = viewHolder.itemView.getContext();
             adapter.removeItem(viewHolder.getAdapterPosition());
         }
     }
@@ -50,7 +56,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         JSONArray array = null;
         ArrayList<Music> musics = new ArrayList<>();
         try {
-            array = json.getJSONArray("chansons");
+            array = json.getJSONArray(context.getString(R.string.chansons_json));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -58,10 +64,12 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
             for (int i = 0; i < array.length(); i++) {
                 try {
                     JSONObject object = (JSONObject) array.get(i);
-                    User user = new User(object.getString("proposeePar"));
-                    Music music = new Music(object.getInt("no"), object.getString("titre"),
-                            object.getString("artiste"), object.getString("duree"),
-                            user, object.getString("proprietaire").equals("1"));
+                    User user = new User(object.getString(context.getString(R.string.suggest_by_json)));
+                    Music music = new Music(object.getInt(context.getString(R.string.no_json)),
+                            object.getString(context.getString(R.string.title_json)),
+                            object.getString(context.getString(R.string.artist_json)),
+                            object.getString(context.getString(R.string.duration_json)),
+                            user, object.getString(context.getString(R.string.owner_json)).equals("1"));
                     musics.add(music);
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -30,8 +30,11 @@ import java.util.List;
 import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.SendMusicService;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.SendMusicService;
 
+/**
+ * this Activity is used to choice a mp3 file in the repository of the device
+ */
 public class Explorer extends AppCompatActivity {
     public static Explorer instance = null;
     /**
@@ -119,6 +122,10 @@ public class Explorer extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    /**
+     * this method is call when we choose a file. Then, we try to send it in the rest api.
+     * @param file
+     */
     private void chooseItem(final File file) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.confirmation_message) + " '" + file.getName() + "' ?");
@@ -144,6 +151,10 @@ public class Explorer extends AppCompatActivity {
 
     }
 
+    /**
+     * This method is called when we click on a directory, to display each other file and directory
+     * @param file
+     */
     public void updateDirectory(File file) {
         setTitle(file.getAbsolutePath());
         mCurrentFile = file;
@@ -158,6 +169,11 @@ public class Explorer extends AppCompatActivity {
         mAdapter.sort();
     }
 
+    /**
+     * this methode is used to know if a file is a mp3 file
+     * @param name
+     * @return
+     */
     private boolean isMP3File(String name) {
         String extension = name.substring(name.indexOf(".") + 1).toLowerCase();
         return extension.equals(getString(R.string.mp3));
@@ -188,6 +204,9 @@ public class Explorer extends AppCompatActivity {
         instance = null;
     }
 
+    /**
+     * this class is used to display each file and directory in the current directory
+     */
     private class FileAdapter extends ArrayAdapter<File> {
 
         private final LayoutInflater mInflater;
@@ -213,12 +232,24 @@ public class Explorer extends AppCompatActivity {
             return view;
         }
 
+        /**
+         * this methode is call to sort file in the directory
+         */
         void sort() {
             super.sort(new FileComparator());
         }
 
+        /**
+         * this class is used to compare 2 files
+         */
         private class FileComparator implements Comparator<File> {
 
+            /**
+             * this method is call to compare 2 files
+             * @param lhs
+             * @param rhs
+             * @return
+             */
             public int compare(File lhs, File rhs) {
 
                 if (lhs.isDirectory() && rhs.isFile())

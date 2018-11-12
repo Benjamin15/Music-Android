@@ -1,5 +1,8 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model;
 
+/**
+ * this class is the model of music
+ */
 public class Music {
 
     private int id;

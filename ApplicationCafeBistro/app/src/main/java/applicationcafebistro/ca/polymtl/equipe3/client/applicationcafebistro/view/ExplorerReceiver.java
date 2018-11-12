@@ -6,18 +6,12 @@ import android.content.Intent;
 
 import java.io.File;
 
+/**
+ * this class is used to clear or update the explorer.
+ */
 public class ExplorerReceiver extends BroadcastReceiver {
 
     private Explorer explorer = null;
-
-    public ExplorerReceiver() {
-        super();
-    }
-
-    public ExplorerReceiver(Explorer explorer) {
-        super();
-        this.explorer = explorer;
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {

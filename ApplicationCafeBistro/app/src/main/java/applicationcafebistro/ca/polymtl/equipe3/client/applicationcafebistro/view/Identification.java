@@ -8,7 +8,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.identify.IdentificationButton;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.IdentificationButton;
 
 public class Identification extends AppCompatActivity {
     private IdentificationButton identificationButton;

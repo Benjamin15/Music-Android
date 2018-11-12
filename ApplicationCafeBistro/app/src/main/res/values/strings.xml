@@ -15,4 +15,8 @@
     <string name="supprimer">supprimer</string>
     <string name="utf8">UTF-8</string>
     <string name="welcome_message_key">welcomeMessage</string>
+    <string name="eth0">eth0</string>
+    <string name="login_param">nom</string>
+    <string name="music_add">La musique a bien été ajouté à la liste</string>
+    <string name="body_content_json">application/json; charset=utf-8</string>
 </resources>

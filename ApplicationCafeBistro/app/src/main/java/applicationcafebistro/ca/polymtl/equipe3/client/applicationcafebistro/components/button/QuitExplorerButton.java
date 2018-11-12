@@ -7,6 +7,9 @@ import android.view.View;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 
+/**
+ * This button is use to quit the explorer activity
+ */
 public class QuitExplorerButton extends FloatingActionButton implements View.OnClickListener {
 
     public QuitExplorerButton(Context context) {

@@ -1,7 +1,8 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.identify;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.AppCompatButton;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -16,34 +17,30 @@ import java.util.HashMap;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 
-public class IdentificationButton extends android.support.v7.widget.AppCompatButton
+/**
+ * This button send the login to the server when we click on it
+ */
+public class IdentificationButton extends AppCompatButton
         implements View.OnClickListener, ComponentsListener {
-    private final Context context;
-    private String login;
 
-    /**
-     * The section number for the fragment owning this button.
-     */
+    private String login;
 
     public IdentificationButton(Context context) {
         super(context);
-        this.context = context;
         init();
     }
 
     public IdentificationButton(Context context, AttributeSet attrs) {
         super(context, attrs, android.support.v7.appcompat.R.attr.buttonStyle);
-        this.context = context;
         init();
     }
 
     public IdentificationButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.context = context;
         init();
     }
 
@@ -54,18 +51,19 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
     @Override
     public void onClick(View view) {
         try {
-            String macAddress = DeviceInformation.getMACAddress("eth0");
+            final String GET = "GET";
+            String macAddress = DeviceInformation.getMACAddress(getContext().getString(R.string.eth0));
             String ipv4 = DeviceInformation.getIPAddress(true);
             HashMap map = new HashMap();
-            map.put("ip", ipv4);
-            map.put("MAC", macAddress);
-            map.put("nom", login);
+            map.put(getContext().getString(R.string.ip), ipv4);
+            map.put(getContext().getString(R.string.mac), macAddress);
+            map.put(getContext().getString(R.string.login_param), login);
             JSONObject body = new JSONObject(map);
 
-            String urlParameter = URLEncoder.encode(body.toString(), "UTF-8");
+            String urlParameter = URLEncoder.encode(body.toString(), getContext().getString((R.string.utf8)));
             CommunicationRest communication = new CommunicationRest(
-                    getResources().getString(R.string.identification) + "?body=" + urlParameter,
-                    "GET",
+                    getResources().getString(R.string.identification) + getContext().getString(R.string.body) + urlParameter,
+                    GET,
                     view,
                     this);
             communication.send();
@@ -77,13 +75,11 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
     @Override
     public void update(JSONObject json) {
         try {
-            Intent intent = new Intent(this.context, ListMusic.class);
-            System.out.println(json.getString(getContext().getString(R.string.message_parameter)));
-            System.out.println(json.getString("identificateur"));
-            DeviceInformation.idUser = json.getInt("identificateur");
+            Intent intent = new Intent(getContext(), ListMusic.class);
+            DeviceInformation.idUser = json.getInt(getContext().getString(R.string.identify_json));
             intent.putExtra(getContext().getString(R.string.welcome_message_key),
                     json.getString(getContext().getString(R.string.message_parameter)));
-            context.startActivity(intent);
+            getContext().startActivity(intent);
         } catch (JSONException e) {
             e.printStackTrace();
         }

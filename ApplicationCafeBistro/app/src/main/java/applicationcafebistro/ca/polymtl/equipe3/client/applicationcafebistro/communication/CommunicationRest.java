@@ -14,7 +14,6 @@ import org.json.JSONObject;
 import java.util.Map;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarError;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.exception.ManagerException;
 
 public class CommunicationRest {
@@ -39,17 +38,21 @@ public class CommunicationRest {
         this.component = null;
     }
 
+    /**
+     * This method send a message to the rest api
+     */
     public void send() {
         this.send(null);
     }
 
+    /**
+     * this method send a message to the rest api with parameters in the body
+     * @param parameters
+     */
     public void send(Map parameters) {
         JSONObject body = null;
-        if (parameters != null) {
-            System.out.println("create body");
+        if (parameters != null)
             body = createJsonObject(parameters);
-            System.out.println(body.toString());
-        }
         RequestQueue requestQueue = Volley.newRequestQueue(view.getContext());
         requestQueue.start();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -60,7 +63,6 @@ public class CommunicationRest {
                             component.update(response);
                     }
                 }, new Response.ErrorListener() {
-
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error.networkResponse != null) {
@@ -70,20 +72,22 @@ public class CommunicationRest {
                             ManagerException managerException = new ManagerException(codeError, message, view);
                             managerException.findError();
                             managerException.display();
-                        } else {
-                            SnackBarError.make(view, view.getContext(), "Le serveur n'est pas accessible.", 3000);
-                            SnackBarError.show();
                         }
-                        System.out.println("error communication");
-                        System.out.println(error.getMessage());
                     }
                 });
         requestQueue.add(jsonObjectRequest);
     }
 
+    /**
+     * this methode transform the type to a Request.Method.type
+     * @param type
+     * @return
+     */
     private int getType(String type) {
-        return type.equals("GET") ? Request.Method.GET
-                : type.equals("POST") ? Request.Method.POST
+        final String GET = "GET";
+        final String POST = "POST";
+        return type.equals(GET) ? Request.Method.GET
+                : type.equals(POST) ? Request.Method.POST
                 : Request.Method.DELETE;
     }
 
