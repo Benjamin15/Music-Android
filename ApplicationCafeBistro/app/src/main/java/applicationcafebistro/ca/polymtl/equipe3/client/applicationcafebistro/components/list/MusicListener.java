@@ -9,10 +9,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 public class MusicListener implements RecyclerMusicTouchHelperListener, ComponentsListener {
@@ -64,7 +64,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
                 User user = new User(object.getString("proposeePar"));
                 Music music = new Music(object.getInt("no"), object.getString("titre"),
                         object.getString("artiste"), object.getString("duree"),
-                        user, object.getString("proprietaire") == "0" ? false : true);
+                        user, object.getString("proprietaire") != "0");
                 musics.add(music);
             } catch (JSONException e) {
                 e.printStackTrace();

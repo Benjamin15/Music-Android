@@ -1,11 +1,12 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view;
 
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.IdentificationButton;
 
@@ -16,7 +17,7 @@ public class Identification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        identificationButton  = findViewById(R.id.identificationButton);
+        identificationButton = findViewById(R.id.identificationButton);
         final EditText text = findViewById(R.id.login);
 
 

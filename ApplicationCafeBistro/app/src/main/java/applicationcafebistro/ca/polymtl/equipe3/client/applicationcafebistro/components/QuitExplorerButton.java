@@ -10,7 +10,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 public class QuitExplorerButton extends FloatingActionButton implements View.OnClickListener {
     private Context context;
 
-    public QuitExplorerButton(Context context){
+    public QuitExplorerButton(Context context) {
         super(context);
         this.context = context;
         init();
@@ -28,16 +28,17 @@ public class QuitExplorerButton extends FloatingActionButton implements View.OnC
         init();
     }
 
-    private void init(){
+    private void init() {
         setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(Explorer.instance != null) {
+        if (Explorer.instance != null) {
             try {
                 Explorer.instance.finish();
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         }
     }
 }

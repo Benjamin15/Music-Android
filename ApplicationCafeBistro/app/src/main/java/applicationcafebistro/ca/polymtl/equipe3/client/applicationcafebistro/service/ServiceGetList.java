@@ -14,10 +14,9 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 public class ServiceGetList extends Service {
+    public static final long DEFAULT_SYNC_INTERVAL = 5000;
     private static final String TAG = ServiceGetList.class.getSimpleName();
     private Handler mHandler;
-    public static final long DEFAULT_SYNC_INTERVAL = 5000;
-
     private Runnable runnableService = new Runnable() {
         @Override
         public void run() {
@@ -54,9 +53,9 @@ public class ServiceGetList extends Service {
                 "GET",
                 ListMusic.view,
                 ListMusic.listenerMusic
-                );
+        );
         try {
-            communication.send( null);
+            communication.send(null);
         } catch (JSONException e) {
             e.printStackTrace();
         }

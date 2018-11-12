@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 
-
-
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 
 public class AddMusicButton extends android.support.design.widget.FloatingActionButton implements View.OnClickListener {
     private Context context;
 
-    public AddMusicButton(Context context){
+    public AddMusicButton(Context context) {
         super(context);
         this.context = context;
         init();
@@ -30,7 +28,7 @@ public class AddMusicButton extends android.support.design.widget.FloatingAction
         init();
     }
 
-    private void init(){
+    private void init() {
         setOnClickListener(this);
     }
 

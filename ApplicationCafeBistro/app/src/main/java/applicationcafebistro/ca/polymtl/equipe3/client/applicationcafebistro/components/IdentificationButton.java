@@ -24,11 +24,12 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
         implements View.OnClickListener, ComponentsListener {
     private Context context;
     private String login;
+
     /**
      * The section number for the fragment owning this button.
      */
 
-    public IdentificationButton(Context context){
+    public IdentificationButton(Context context) {
         super(context);
         this.context = context;
         init();
@@ -46,7 +47,7 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
         init();
     }
 
-    private void init(){
+    private void init() {
         setOnClickListener(this);
     }
 
@@ -61,17 +62,16 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
             map.put("nom", login);
             JSONObject body = new JSONObject(map);
 
-            String urlParameter = URLEncoder.encode(body.toString(),"UTF-8");
+            String urlParameter = URLEncoder.encode(body.toString(), "UTF-8");
             CommunicationRest communication = new CommunicationRest(
-                    getResources().getString(R.string.identification) + "?body="+urlParameter,
+                    getResources().getString(R.string.identification) + "?body=" + urlParameter,
                     "GET",
                     view,
                     this);
             communication.send();
         } catch (JSONException e) {
             e.printStackTrace();
-        }
-        catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
@@ -91,7 +91,7 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
     }
 
 
-    public void setLoginText(Editable editText){
+    public void setLoginText(Editable editText) {
         this.login = editText.toString();
     }
 }

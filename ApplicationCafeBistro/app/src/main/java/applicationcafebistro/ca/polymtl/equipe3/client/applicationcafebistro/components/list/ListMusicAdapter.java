@@ -11,31 +11,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 
-public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter{
+public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter {
     private Context context;
     private ArrayList<Music> cartListMusic;
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, artist, duration, suggest_by;
-        public ImageView thumbnail;
-        public RelativeLayout viewBackground, viewForeground;
-
-        public MyViewHolder(View view) {
-            super(view);
-            title = view.findViewById(R.id.title);
-            artist = view.findViewById(R.id.artist);
-            duration = view.findViewById(R.id.duration);
-            suggest_by = view.findViewById(R.id.suggest_by);
-            thumbnail = view.findViewById(R.id.thumbnail);
-            viewBackground = view.findViewById(R.id.view_background);
-            viewForeground = view.findViewById(R.id.view_foreground);
-        }
-    }
-
 
     public ListMusicAdapter(Context context) {
         this.context = context;
@@ -91,15 +73,32 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     }
 
     public void addAll(ArrayList<Music> musics) {
-        for (Music music : musics)
-            cartListMusic.add(music);
+        cartListMusic.addAll(musics);
         notifyDataSetChanged();
     }
 
     public ArrayList<Music> getMusics() {
         return cartListMusic;
     }
+
     public boolean compare(ArrayList<Music> musics) {
         return musics.equals(cartListMusic);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, artist, duration, suggest_by;
+        public ImageView thumbnail;
+        public RelativeLayout viewBackground, viewForeground;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title = view.findViewById(R.id.title);
+            artist = view.findViewById(R.id.artist);
+            duration = view.findViewById(R.id.duration);
+            suggest_by = view.findViewById(R.id.suggest_by);
+            thumbnail = view.findViewById(R.id.thumbnail);
+            viewBackground = view.findViewById(R.id.view_background);
+            viewForeground = view.findViewById(R.id.view_foreground);
+        }
     }
 }

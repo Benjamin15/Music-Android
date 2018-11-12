@@ -5,7 +5,6 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.TextView;
 
-
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 
 public class SnackBarSuccess {

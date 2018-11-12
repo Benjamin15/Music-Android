@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer">
+
     <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.QuitExplorerButton
         android:id="@+id/floating_quit_explorer"
         android:layout_width="wrap_content"
@@ -14,8 +15,9 @@
         android:clickable="true"
         app:backgroundTint="@color/colorAccent"
         app:srcCompat="@drawable/ic_quit_explorer" />
+
     <ListView
         android:id="@+id/directories"
         android:layout_width="wrap_content"
-        android:layout_height="381dp"></ListView>
+        android:layout_height="381dp" />
 </android.support.design.widget.CoordinatorLayout>

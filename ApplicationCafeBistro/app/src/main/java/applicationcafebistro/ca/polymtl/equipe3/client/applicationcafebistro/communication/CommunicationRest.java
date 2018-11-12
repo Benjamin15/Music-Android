@@ -16,6 +16,7 @@ import java.util.Map;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarError;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.exception.ManagerException;
 
 public class CommunicationRest {
 
@@ -38,13 +39,14 @@ public class CommunicationRest {
         this.view = view;
         this.component = null;
     }
+
     public void send() throws JSONException {
         this.send(null);
     }
 
-    public void send(Map parameters) throws JSONException {
+    public void send(Map parameters) {
         JSONObject body = null;
-        if (parameters != null ) {
+        if (parameters != null) {
             System.out.println("create body");
             body = createJsonObject(parameters);
             System.out.println(body.toString());
@@ -66,6 +68,9 @@ public class CommunicationRest {
                             int codeError = error.networkResponse.statusCode;
                             String message = new String(error.networkResponse.data);
                             System.out.println(codeError + message);
+                            ManagerException managerException = new ManagerException(codeError, message, view);
+                            managerException.findError();
+                            managerException.display();
                         } else {
                             SnackBarError.make(view, view.getContext(), "Le serveur n'est pas accessible.", 3000);
                             SnackBarError.show();
@@ -85,10 +90,11 @@ public class CommunicationRest {
 
     /**
      * Create a JSON Object from a Map
-     * @param map   Map<String,String></String,String>
-     * @return  Json Object create from the map
+     *
+     * @param map Map<String,String></String,String>
+     * @return Json Object create from the map
      */
-    public JSONObject createJsonObject(Map<String,String>map) throws JSONException {
+    public JSONObject createJsonObject(Map<String, String> map) {
         JSONObject object = new JSONObject(map);
         return object;
     }

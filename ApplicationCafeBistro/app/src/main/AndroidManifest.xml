@@ -23,22 +23,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
-        <activity android:name=".view.ListMusic">
+            </intent-filter>
         </activity>
-        <activity android:name=".view.Explorer">
-        </activity>
+        <activity android:name=".view.ListMusic"/>
+        <activity android:name=".view.Explorer"/>
+
         <receiver
             android:name=".view.ExplorerReceiver"
-            android:exported="false"
-            >
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MEDIA_REMOVED"/>
-                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
             </intent-filter>
         </receiver>
 
-        <service
-            android:name=".service.ServiceGetList"/>
+        <service android:name=".service.ServiceGetList" />
     </application>
 </manifest>

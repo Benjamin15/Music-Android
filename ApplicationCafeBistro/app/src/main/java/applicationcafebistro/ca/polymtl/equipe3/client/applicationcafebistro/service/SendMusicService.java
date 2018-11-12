@@ -2,7 +2,6 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.se
 
 import android.content.Context;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -16,11 +15,12 @@ import com.android.volley.toolbox.Volley;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 
 public class SendMusicService {
 
-    private String url ;
+    private String url;
     private Context context;
 
     public SendMusicService(Context context) {
@@ -30,6 +30,7 @@ public class SendMusicService {
 
     /**
      * Send a post request with music.mp3 encoded in Base64
+     *
      * @param music File  The .mp3 file which we send to the server
      * @return void
      */
@@ -38,11 +39,11 @@ public class SendMusicService {
         RequestQueue requestQueue = Volley.newRequestQueue(this.context);
         String urlParameter = null;
         try {
-            urlParameter = URLEncoder.encode(title,"UTF-8");
+            urlParameter = URLEncoder.encode(title, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url +"483923496"+"?title=" +urlParameter , new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url + "483923496" + "?title=" + urlParameter, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
             }

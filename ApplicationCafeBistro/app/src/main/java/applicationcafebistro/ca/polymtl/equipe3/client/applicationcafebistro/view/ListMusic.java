@@ -1,18 +1,14 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.Menu;
 import android.view.View;
-
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.ListMusicAdapter;
@@ -23,10 +19,9 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.ser
 
 public class ListMusic extends AppCompatActivity {
 
+    private static final String TAG = ListMusic.class.getSimpleName();
     public static MusicListener listenerMusic;
     public static View view;
-
-    private static final String TAG = ListMusic.class.getSimpleName();
     private RecyclerView recyclerView;
     private ListMusicAdapter mAdapter;
 

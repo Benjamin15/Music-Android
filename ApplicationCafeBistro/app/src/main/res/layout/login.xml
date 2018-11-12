@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Identification"
-    android:background="@drawable/main_header_selector">
+    android:background="@drawable/main_header_selector"
+    tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Identification">
 
 
     <EditText
         android:id="@+id/login"
         android:layout_width="313dp"
         android:layout_height="66dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:contentDescription="Login"
         android:ems="10"
         android:hint="Login"
@@ -30,10 +30,10 @@
         android:id="@+id/identificationButton"
         android:layout_width="314dp"
         android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:capitalize="words"
         android:text="Sign up"
