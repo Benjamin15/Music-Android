@@ -7,17 +7,16 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import org.json.JSONException;
-
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 public class ServiceGetList extends Service {
-    public static final long DEFAULT_SYNC_INTERVAL = 5000;
+    private static final long DEFAULT_SYNC_INTERVAL = 5000;
     private static final String TAG = ServiceGetList.class.getSimpleName();
     private Handler mHandler;
-    private Runnable runnableService = new Runnable() {
+
+    private final Runnable runnableService = new Runnable() {
         @Override
         public void run() {
             Log.i(TAG, "run");

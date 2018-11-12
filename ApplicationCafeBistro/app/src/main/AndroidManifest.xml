@@ -25,8 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ListMusic"/>
-        <activity android:name=".view.Explorer"/>
+        <activity android:name=".view.ListMusic" />
+        <activity android:name=".view.Explorer" />
 
         <receiver
             android:name=".view.ExplorerReceiver"

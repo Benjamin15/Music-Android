@@ -8,7 +8,7 @@ import android.view.View;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 
 public class AddMusicButton extends android.support.design.widget.FloatingActionButton implements View.OnClickListener {
-    private Context context;
+    private final Context context;
 
     public AddMusicButton(Context context) {
         super(context);

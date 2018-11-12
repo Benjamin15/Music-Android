@@ -21,9 +21,13 @@ public class ExplorerReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(Intent.ACTION_MEDIA_REMOVED))
-            explorer.setEmpty();
-        else if (intent.getAction().equals(Intent.ACTION_MEDIA_MOUNTED))
-            explorer.updateDirectory(new File(intent.getData().toString()));
+        if (intent != null) {
+            if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_MEDIA_REMOVED))
+                explorer.setEmpty();
+            else if (intent.getAction().equals(Intent.ACTION_MEDIA_MOUNTED)) {
+                if (intent.getData() != null)
+                    explorer.updateDirectory(new File(intent.getData().toString()));
+            }
+        }
     }
 }

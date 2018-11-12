@@ -9,7 +9,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -20,10 +19,10 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.exc
 
 public class CommunicationRest {
 
-    private String url;
-    private int type;
-    private View view;
-    private ComponentsListener component;
+    private final String url;
+    private final int type;
+    private final View view;
+    private final ComponentsListener component;
 
     public CommunicationRest(String url, String type, View view, ComponentsListener component) {
         this.url = url;
@@ -40,7 +39,7 @@ public class CommunicationRest {
         this.component = null;
     }
 
-    public void send(){
+    public void send() {
         this.send(null);
     }
 
@@ -94,7 +93,7 @@ public class CommunicationRest {
      * @param map Map<String,String></String,String>
      * @return Json Object create from the map
      */
-    public JSONObject createJsonObject(Map<String, String> map) {
+    private JSONObject createJsonObject(Map<String, String> map) {
         JSONObject object = new JSONObject(map);
         return object;
     }

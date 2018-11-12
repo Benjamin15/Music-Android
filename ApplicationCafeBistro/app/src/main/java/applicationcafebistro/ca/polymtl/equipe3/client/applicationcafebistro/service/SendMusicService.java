@@ -20,8 +20,8 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 
 public class SendMusicService {
 
-    private String url;
-    private Context context;
+    private final String url;
+    private final Context context;
 
     public SendMusicService(Context context) {
         this.context = context;
@@ -71,8 +71,9 @@ public class SendMusicService {
                 String responseString = "";
                 if (response != null) {
                     responseString = String.valueOf(response.statusCode);
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
                 }
-                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                return null;
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,

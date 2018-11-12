@@ -19,7 +19,6 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.ser
 
 public class ListMusic extends AppCompatActivity {
 
-    private static final String TAG = ListMusic.class.getSimpleName();
     public static MusicListener listenerMusic;
     public static View view;
     private RecyclerView recyclerView;

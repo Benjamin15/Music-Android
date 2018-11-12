@@ -22,7 +22,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 
 public class IdentificationButton extends android.support.v7.widget.AppCompatButton
         implements View.OnClickListener, ComponentsListener {
-    private Context context;
+    private final Context context;
     private String login;
 
     /**

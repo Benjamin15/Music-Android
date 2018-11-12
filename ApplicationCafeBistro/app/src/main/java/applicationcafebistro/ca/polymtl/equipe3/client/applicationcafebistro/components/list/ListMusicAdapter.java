@@ -17,8 +17,8 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 
 public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter {
-    private Context context;
-    private ArrayList<Music> cartListMusic;
+    private final Context context;
+    private final ArrayList<Music> cartListMusic;
 
     public ListMusicAdapter(Context context) {
         this.context = context;
@@ -40,9 +40,9 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         holder.artist.setText(music.getArtist());
         holder.duration.setText(music.getDuration());
         holder.suggest_by.setText(music.getUser().getName());
-        if(music.isOwner()){
-            holder.viewForeground.setBackgroundColor(Color.rgb(252,255,136));
-        };
+        if (music.isOwner()) {
+            holder.viewForeground.setBackgroundColor(Color.rgb(252, 255, 136));
+        }
     }
 
     @Override
@@ -53,11 +53,6 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     public void removeItem(int position) {
         cartListMusic.remove(position);
         notifyItemRemoved(position);
-    }
-
-    public void addItem(Music item) {
-        cartListMusic.add(item);
-        notifyItemInserted(cartListMusic.size() - 1);
     }
 
     @Override
@@ -90,9 +85,8 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, artist, duration, suggest_by;
-        public ImageView thumbnail;
-        public RelativeLayout viewBackground, viewForeground;
+        private final TextView title, artist, duration, suggest_by;
+        private final RelativeLayout viewForeground;
 
         public MyViewHolder(View view) {
             super(view);
@@ -100,8 +94,6 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
             artist = view.findViewById(R.id.artist);
             duration = view.findViewById(R.id.duration);
             suggest_by = view.findViewById(R.id.suggest_by);
-            thumbnail = view.findViewById(R.id.thumbnail);
-            viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
         }
     }

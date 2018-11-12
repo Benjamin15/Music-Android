@@ -38,7 +38,6 @@ public class Explorer extends AppCompatActivity {
      * Repr�sente le texte qui s'affiche quand la liste est vide
      */
     private TextView mEmpty = null;
-    private QuitExplorerButton quitExplorerButton;
     /**
      * La liste qui contient nos fichiers et r�pertoires
      */
@@ -58,13 +57,11 @@ public class Explorer extends AppCompatActivity {
     /**
      * Fichier choisi
      */
-    private File mChosenFile = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.explorer);
-        QuitExplorerButton quitExplorerButton = findViewById(R.id.floating_quit_explorer);
         sendMusicService = new SendMusicService(getApplicationContext());
         mList = findViewById(R.id.directories);
         instance = this;
@@ -133,7 +130,7 @@ public class Explorer extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-    public void chooseItem(final File file) {
+    private void chooseItem(final File file) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.confirmation_message) + " '" + file.getName() + "' ?");
         builder.setCancelable(false);
@@ -141,7 +138,6 @@ public class Explorer extends AppCompatActivity {
         builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                mChosenFile = file;
                 String title = file.getName();
                 sendMusicService.sendMusic(file, title);
             }
@@ -205,7 +201,7 @@ public class Explorer extends AppCompatActivity {
 
     private class FileAdapter extends ArrayAdapter<File> {
 
-        private LayoutInflater mInflater = null;
+        private LayoutInflater mInflater;
 
         FileAdapter(Context context, int textViewResourceId, List<File> objects) {
             super(context, textViewResourceId, objects);
@@ -213,7 +209,7 @@ public class Explorer extends AppCompatActivity {
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-            TextView view = null;
+            TextView view;
 
             if (convertView != null)
                 view = (TextView) convertView;
@@ -222,7 +218,8 @@ public class Explorer extends AppCompatActivity {
             view.setTextColor(Color.BLACK);
 
             File item = getItem(position);
-            view.setText(item.getName());
+            if (item != null)
+                view.setText(item.getName());
             return view;
         }
 

@@ -8,7 +8,7 @@ import android.view.View;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 
 public class QuitExplorerButton extends FloatingActionButton implements View.OnClickListener {
-    private Context context;
+    private final Context context;
 
     public QuitExplorerButton(Context context) {
         super(context);
@@ -38,6 +38,7 @@ public class QuitExplorerButton extends FloatingActionButton implements View.OnC
             try {
                 Explorer.instance.finish();
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

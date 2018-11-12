@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">CafeBistro</string>
     <string name="title_activity_home">CafeBistro</string>
-    <string name="menu_options">Options</string>
     <string name="choose_item">Choisir ce fichier</string>
     <string name="accesDenied">Access to files not allowed</string>
     <string name="open_dir">Ouvrir le dossier</string>

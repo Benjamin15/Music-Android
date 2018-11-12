@@ -18,7 +18,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 
 public class MusicListener implements RecyclerMusicTouchHelperListener, ComponentsListener {
 
-    ListMusicAdapter adapter;
+    private final ListMusicAdapter adapter;
 
     public MusicListener(ListMusicAdapter adapter) {
         this.adapter = adapter;
@@ -29,7 +29,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
             System.out.println("try to delete");
             CommunicationRest communication = new CommunicationRest(
-                    ListMusic.view.getResources().getString(R.string.delete_music_test) + Integer.toString(DeviceInformation.idUser)+ "/" +
+                    ListMusic.view.getResources().getString(R.string.delete_music_test) + Integer.toString(DeviceInformation.idUser) + "/" +
                             adapter.getMusics().get(position).getId(),
                     "DELETE",
                     ListMusic.view);
@@ -52,25 +52,25 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         try {
             array = json.getJSONArray("chansons");
         } catch (JSONException e) {
-            // Bandeau erreur
+            e.printStackTrace();
         }
-
-        for (int i = 0; i < array.length(); i++) {
-            try {
-                JSONObject object = (JSONObject) array.get(i);
-                User user = new User(object.getString("proposeePar"));
-                Music music = new Music(object.getInt("no"), object.getString("titre"),
-                        object.getString("artiste"), object.getString("duree"),
-                        user, object.getString("proprietaire").equals("1"));
-                musics.add(music);
-            } catch (JSONException e) {
-                e.printStackTrace();
+        if (array != null) {
+            for (int i = 0; i < array.length(); i++) {
+                try {
+                    JSONObject object = (JSONObject) array.get(i);
+                    User user = new User(object.getString("proposeePar"));
+                    Music music = new Music(object.getInt("no"), object.getString("titre"),
+                            object.getString("artiste"), object.getString("duree"),
+                            user, object.getString("proprietaire").equals("1"));
+                    musics.add(music);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
-        }
-        if (!adapter.compare(musics)) {
-            System.out.println("changement");
-            adapter.clear();
-            adapter.addAll(musics);
+            if (!adapter.compare(musics)) {
+                adapter.clear();
+                adapter.addAll(musics);
+            }
         }
     }
 }

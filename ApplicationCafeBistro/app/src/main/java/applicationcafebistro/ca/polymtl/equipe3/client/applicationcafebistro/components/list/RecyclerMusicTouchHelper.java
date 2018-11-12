@@ -10,7 +10,7 @@ import android.view.View;
  */
 
 public class RecyclerMusicTouchHelper extends ItemTouchHelper.SimpleCallback {
-    private RecyclerMusicTouchHelperListener listener;
+    private final RecyclerMusicTouchHelperListener listener;
 
     public RecyclerMusicTouchHelper(int dragDirs, int swipeDirs, RecyclerMusicTouchHelperListener listener) {
         super(dragDirs, swipeDirs);
@@ -60,11 +60,6 @@ public class RecyclerMusicTouchHelper extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         listener.onSwiped(viewHolder, direction, viewHolder.getAdapterPosition());
-    }
-
-    @Override
-    public int convertToAbsoluteDirection(int flags, int layoutDirection) {
-        return super.convertToAbsoluteDirection(flags, layoutDirection);
     }
 
     @Override
