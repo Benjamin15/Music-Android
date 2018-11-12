@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
@@ -29,25 +30,16 @@ import java.util.List;
 import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.QuitExplorerButton;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.SendMusicService;
 
 public class Explorer extends AppCompatActivity {
     public static Explorer instance = null;
     /**
-     * Repr�sente le texte qui s'affiche quand la liste est vide
-     */
-    private TextView mEmpty = null;
-    /**
-     * La liste qui contient nos fichiers et r�pertoires
-     */
-    private ListView mList = null;
-    /**
-     * Notre Adapter personnalis� qui lie les fichiers � la liste
+     * Notre Adapter personnalise qui lie les fichiers a la liste
      */
     private FileAdapter mAdapter = null;
     /**
-     * Repr�sente le r�pertoire actuel
+     * Represente le repertoire actuel
      */
     private File mCurrentFile = null;
     /**
@@ -63,19 +55,14 @@ public class Explorer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.explorer);
         sendMusicService = new SendMusicService(getApplicationContext());
-        mList = findViewById(R.id.directories);
+        ListView mList = findViewById(R.id.directories);
         instance = this;
 
         if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            mEmpty = (TextView) mList.getEmptyView();
+            TextView mEmpty = (TextView) mList.getEmptyView();
             mEmpty.setText(R.string.accesDenied);
         } else {
             registerForContextMenu(mList);
-
-            /*
-             *  mCurrentFile = Environment.getExternalStorageDirectory();
-             *  mCurrentFile = Environment.getRootDirectory();
-             * */
             mCurrentFile = Environment.getExternalStorageDirectory();
             setTitle(mCurrentFile.getAbsolutePath());
 
@@ -119,13 +106,15 @@ public class Explorer extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         File file = mAdapter.getItem(info.position);
-        switch (item.getItemId()) {
-            case R.id.choose_file:
-                chooseItem(file);
-                return true;
-            case R.id.open_dir:
-                updateDirectory(file);
-                return true;
+        if (file != null) {
+            switch (item.getItemId()) {
+                case R.id.choose_file:
+                    chooseItem(file);
+                    return true;
+                case R.id.open_dir:
+                    updateDirectory(file);
+                    return true;
+            }
         }
         return super.onContextItemSelected(item);
     }
@@ -201,14 +190,15 @@ public class Explorer extends AppCompatActivity {
 
     private class FileAdapter extends ArrayAdapter<File> {
 
-        private LayoutInflater mInflater;
+        private final LayoutInflater mInflater;
 
         FileAdapter(Context context, int textViewResourceId, List<File> objects) {
             super(context, textViewResourceId, objects);
             mInflater = LayoutInflater.from(context);
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @NonNull
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             TextView view;
 
             if (convertView != null)

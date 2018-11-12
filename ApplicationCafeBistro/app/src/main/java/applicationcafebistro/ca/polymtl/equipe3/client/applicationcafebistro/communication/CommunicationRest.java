@@ -94,7 +94,6 @@ public class CommunicationRest {
      * @return Json Object create from the map
      */
     private JSONObject createJsonObject(Map<String, String> map) {
-        JSONObject object = new JSONObject(map);
-        return object;
+        return new JSONObject(map);
     }
 }

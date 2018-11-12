@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer">
 
-    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.QuitExplorerButton
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.QuitExplorerButton
         android:id="@+id/floating_quit_explorer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:clickable="true"
+        android:focusable="true"
         app:backgroundTint="@color/colorAccent"
         app:srcCompat="@drawable/ic_quit_explorer" />
 

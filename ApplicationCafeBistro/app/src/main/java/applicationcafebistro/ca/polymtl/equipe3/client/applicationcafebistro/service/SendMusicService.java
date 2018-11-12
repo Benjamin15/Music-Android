@@ -32,18 +32,20 @@ public class SendMusicService {
      * Send a post request with music.mp3 encoded in Base64
      *
      * @param music File  The .mp3 file which we send to the server
-     * @return void
+     *
      */
     public void sendMusic(File music, String title) {
         final String stringMusic = FileEncoder.encodeFileToBase64(music);
         RequestQueue requestQueue = Volley.newRequestQueue(this.context);
         String urlParameter = null;
         try {
-            urlParameter = URLEncoder.encode(title, "UTF-8");
+            urlParameter = URLEncoder.encode(title, context.getString(R.string.utf8));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url + Integer.toString(DeviceInformation.idUser) + "?title=" + urlParameter, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url +
+                Integer.toString(DeviceInformation.idUser) + context.getString(R.string.param_title) +
+                urlParameter, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
             }
@@ -60,7 +62,7 @@ public class SendMusicService {
             @Override
             public byte[] getBody() {
                 try {
-                    return stringMusic.getBytes("utf-8");
+                    return stringMusic.getBytes(context.getString(R.string.utf8));
                 } catch (UnsupportedEncodingException uee) {
                     return null;
                 }
@@ -68,7 +70,7 @@ public class SendMusicService {
 
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                String responseString = "";
+                String responseString;
                 if (response != null) {
                     responseString = String.valueOf(response.statusCode);
                     return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));

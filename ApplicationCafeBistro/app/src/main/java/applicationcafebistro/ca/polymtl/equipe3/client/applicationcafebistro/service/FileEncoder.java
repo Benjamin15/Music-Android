@@ -15,9 +15,9 @@ public class FileEncoder {
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             byte[] bytes = new byte[(int) file.length()];
-            fileInputStream.read(bytes);
-            encodedFile = new String(Base64.encodeBase64(bytes));
-
+            int size = fileInputStream.read(bytes);
+            if (size != -1 )
+                encodedFile = new String(Base64.encodeBase64(bytes));
         } catch (IOException e) {
             e.printStackTrace();
         }

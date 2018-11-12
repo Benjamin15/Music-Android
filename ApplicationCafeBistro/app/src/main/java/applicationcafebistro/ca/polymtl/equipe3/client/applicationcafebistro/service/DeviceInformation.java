@@ -63,7 +63,8 @@ public class DeviceInformation {
                     }
                 }
             }
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return "";
     }

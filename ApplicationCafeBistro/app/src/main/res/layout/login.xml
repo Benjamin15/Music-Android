@@ -16,9 +16,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="Login"
         android:ems="10"
-        android:hint="Login"
+        android:hint="@string/login_text"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.IdentificationButton
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.identify.IdentificationButton
         android:id="@+id/identificationButton"
         android:layout_width="314dp"
         android:layout_height="28dp"
@@ -35,8 +34,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorAccent"
-        android:capitalize="words"
-        android:text="Sign up"
+        android:text="@string/sign_up"
         android:textColor="@android:color/white"
         app:barrierAllowsGoneWidgets="false"
         app:layout_constraintBottom_toBottomOf="parent"

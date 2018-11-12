@@ -25,9 +25,10 @@
         android:id="@+id/floating_add_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:clickable="true"
+        android:focusable="true"
         app:backgroundTint="@color/colorAccent"
         app:srcCompat="@drawable/ic_add_music" />
 

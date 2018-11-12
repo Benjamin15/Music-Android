@@ -21,15 +21,13 @@ public class ListMusic extends AppCompatActivity {
 
     public static MusicListener listenerMusic;
     public static View view;
-    private RecyclerView recyclerView;
-    private ListMusicAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_music);
-        recyclerView = findViewById(R.id.recycler_view);
-        mAdapter = new ListMusicAdapter(this);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        ListMusicAdapter mAdapter = new ListMusicAdapter();
         listenerMusic = new MusicListener(mAdapter);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);

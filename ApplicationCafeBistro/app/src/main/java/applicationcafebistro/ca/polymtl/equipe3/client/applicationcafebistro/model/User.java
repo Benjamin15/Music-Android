@@ -16,11 +16,10 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        this.id = id;
     }
 
     public int getId() {
-        return this.getId();
+        return id;
     }
 
     public void setId(int id) {

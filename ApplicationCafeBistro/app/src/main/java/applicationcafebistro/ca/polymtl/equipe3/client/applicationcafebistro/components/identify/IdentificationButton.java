@@ -1,4 +1,4 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.identify;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +12,10 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.Map;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
@@ -56,7 +56,7 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
         try {
             String macAddress = DeviceInformation.getMACAddress("eth0");
             String ipv4 = DeviceInformation.getIPAddress(true);
-            Map<String, String> map = new HashMap();
+            HashMap map = new HashMap();
             map.put("ip", ipv4);
             map.put("MAC", macAddress);
             map.put("nom", login);
@@ -78,10 +78,11 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
     public void update(JSONObject json) {
         try {
             Intent intent = new Intent(this.context, ListMusic.class);
-            System.out.println(json.getString("message"));
+            System.out.println(json.getString(getContext().getString(R.string.message_parameter)));
             System.out.println(json.getString("identificateur"));
             DeviceInformation.idUser = json.getInt("identificateur");
-            intent.putExtra("welcomeMessage", json.getString("message"));
+            intent.putExtra(getContext().getString(R.string.welcome_message_key),
+                    json.getString(getContext().getString(R.string.message_parameter)));
             context.startActivity(intent);
         } catch (JSONException e) {
             e.printStackTrace();
