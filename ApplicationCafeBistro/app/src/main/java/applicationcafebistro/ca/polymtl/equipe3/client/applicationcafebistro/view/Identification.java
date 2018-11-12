@@ -5,26 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Button;
 import android.widget.EditText;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.DeleteSongButton;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.IdentificationButton;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.IdentificationService;
 
 public class Identification extends AppCompatActivity {
     private IdentificationButton identificationButton;
-    private IdentificationService identificationService;
-    private DeleteSongButton deleteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        identificationService = new IdentificationService(this);
+        setContentView(R.layout.login);
         identificationButton  = findViewById(R.id.identificationButton);
-        //deleteButton= findViewById(R.id.deleteSongButton);
-        final EditText text = findViewById(R.id.identifier);
+        final EditText text = findViewById(R.id.login);
 
 
         text.addTextChangedListener(new TextWatcher() {
@@ -41,6 +34,5 @@ public class Identification extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-
     }
 }

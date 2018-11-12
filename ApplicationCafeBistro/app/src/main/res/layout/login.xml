@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/identifier"
+        android:id="@+id/login"
         android:layout_width="313dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"

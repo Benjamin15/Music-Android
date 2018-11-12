@@ -1,6 +1,6 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication;
 
-import android.content.Context;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,26 +15,27 @@ import org.json.JSONObject;
 import java.util.Map;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarError;
 
 public class CommunicationRest {
 
     private String url;
     private int type;
-    private Context context;
+    private View view;
     private ComponentsListener component;
 
-    public CommunicationRest(String url, String type, Context context, ComponentsListener component) {
+    public CommunicationRest(String url, String type, View view, ComponentsListener component) {
         this.url = url;
         this.type = getType(type);
-        this.context = context;
+        this.view = view;
         this.component = component;
     }
 
 
-    public CommunicationRest(String url, String type, Context context) {
+    public CommunicationRest(String url, String type, View view) {
         this.url = url;
         this.type = getType(type);
-        this.context = context;
+        this.view = view;
         this.component = null;
     }
     public void send() throws JSONException {
@@ -45,17 +46,15 @@ public class CommunicationRest {
         JSONObject body = null;
         if (parameters != null ) {
             System.out.println("create body");
-            body = new PrepareJsonObject().createJsonObject(parameters);
+            body = createJsonObject(parameters);
             System.out.println(body.toString());
         }
-        System.out.println("send");
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        RequestQueue requestQueue = Volley.newRequestQueue(view.getContext());
         requestQueue.start();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (type, url, body, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        System.out.println("Response");
                         if (component != null)
                             component.update(response);
                     }
@@ -63,6 +62,14 @@ public class CommunicationRest {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        if (error.networkResponse != null) {
+                            int codeError = error.networkResponse.statusCode;
+                            String message = new String(error.networkResponse.data);
+                            System.out.println(codeError + message);
+                        } else {
+                            SnackBarError.make(view, view.getContext(), "Le serveur n'est pas accessible.", 3000);
+                            SnackBarError.show();
+                        }
                         System.out.println("error communication");
                         System.out.println(error.getMessage());
                     }
@@ -74,5 +81,15 @@ public class CommunicationRest {
         return type.equals("GET") ? Request.Method.GET
                 : type.equals("POST") ? Request.Method.POST
                 : Request.Method.DELETE;
+    }
+
+    /**
+     * Create a JSON Object from a Map
+     * @param map   Map<String,String></String,String>
+     * @return  Json Object create from the map
+     */
+    public JSONObject createJsonObject(Map<String,String>map) throws JSONException {
+        JSONObject object = new JSONObject(map);
+        return object;
     }
 }

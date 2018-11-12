@@ -12,8 +12,8 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.CommunicationRest;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 public class MusicListener implements RecyclerMusicTouchHelperListener, ComponentsListener {
 
@@ -22,16 +22,17 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
     public MusicListener(ListMusicAdapter adapter) {
         this.adapter = adapter;
     }
+
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
             try {
                 System.out.println("try to delete");
                 CommunicationRest communication = new CommunicationRest(
-                        Home.context.getResources().getString(R.string.delete_music_test) + "1/" +
+                        ListMusic.view.getResources().getString(R.string.delete_music_test) + "1/" +
                                 adapter.getMusics().get(position).getId(),
                         "DELETE",
-                        Home.context);
+                        ListMusic.view);
                 communication.send();
                 adapter.removeItem(viewHolder.getAdapterPosition());
             } catch (JSONException e) {

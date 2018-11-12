@@ -1,13 +1,13 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components;
 
 import android.content.Context;
-import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.View;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 
-public class QuitExplorerButton extends android.support.design.widget.FloatingActionButton implements View.OnClickListener {
+public class QuitExplorerButton extends FloatingActionButton implements View.OnClickListener {
     private Context context;
 
     public QuitExplorerButton(Context context){

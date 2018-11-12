@@ -18,8 +18,8 @@ public class FileEncoder {
             encodedFile = new String(Base64.encode(bytes, Base64.DEFAULT));
 
 
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return encodedFile;

@@ -10,7 +10,8 @@ import android.util.Log;
 import org.json.JSONException;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 public class ServiceGetList extends Service {
     private static final String TAG = ServiceGetList.class.getSimpleName();
@@ -51,8 +52,8 @@ public class ServiceGetList extends Service {
         CommunicationRest communication = new CommunicationRest(
                 getResources().getString(R.string.list_music_test) + "1",
                 "GET",
-                getApplicationContext(),
-                Home.listenerMusic
+                ListMusic.view,
+                ListMusic.listenerMusic
                 );
         try {
             communication.send( null);

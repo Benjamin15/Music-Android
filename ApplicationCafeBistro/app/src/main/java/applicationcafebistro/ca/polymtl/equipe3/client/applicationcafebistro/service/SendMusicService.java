@@ -57,7 +57,7 @@ public class SendMusicService {
             }
 
             @Override
-            public byte[] getBody() throws AuthFailureError {
+            public byte[] getBody() {
                 try {
                     return stringMusic.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {

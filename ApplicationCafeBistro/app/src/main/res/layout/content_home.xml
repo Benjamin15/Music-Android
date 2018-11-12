@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Home"
-    tools:showIn="@layout/activity_home2">
+    tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic"
+    tools:showIn="@layout/list_music">
 
 </android.support.constraint.ConstraintLayout>

@@ -8,7 +8,9 @@ import java.util.List;
 
 
 
-public class IdentificationManager {
+public class DeviceInformation {
+
+    static public int idUser;
 
     /**
      * Returns MAC address of the given interface name.

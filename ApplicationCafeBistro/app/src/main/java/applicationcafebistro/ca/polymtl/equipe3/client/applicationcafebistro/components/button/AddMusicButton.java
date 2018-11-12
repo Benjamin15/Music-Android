@@ -1,4 +1,4 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button;
 
 import android.content.Context;
 import android.content.Intent;

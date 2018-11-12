@@ -20,7 +20,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     private Context context;
     private ArrayList<Music> cartListMusic;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, artist, duration;
+        public TextView title, artist, duration, suggest_by;
         public ImageView thumbnail;
         public RelativeLayout viewBackground, viewForeground;
 
@@ -29,6 +29,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
             title = view.findViewById(R.id.title);
             artist = view.findViewById(R.id.artist);
             duration = view.findViewById(R.id.duration);
+            suggest_by = view.findViewById(R.id.suggest_by);
             thumbnail = view.findViewById(R.id.thumbnail);
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
@@ -55,6 +56,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         holder.title.setText(music.getTitle());
         holder.artist.setText(music.getArtist());
         holder.duration.setText(music.getDuration());
+        holder.suggest_by.setText(music.getUser().getName());
     }
 
     @Override
