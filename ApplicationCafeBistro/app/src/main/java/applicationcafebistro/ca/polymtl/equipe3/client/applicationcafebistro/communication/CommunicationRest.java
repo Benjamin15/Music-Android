@@ -40,7 +40,7 @@ public class CommunicationRest {
         this.component = null;
     }
 
-    public void send() throws JSONException {
+    public void send(){
         this.send(null);
     }
 

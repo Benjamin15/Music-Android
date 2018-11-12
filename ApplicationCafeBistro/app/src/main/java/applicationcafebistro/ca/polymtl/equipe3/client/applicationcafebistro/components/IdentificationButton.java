@@ -69,8 +69,6 @@ public class IdentificationButton extends android.support.v7.widget.AppCompatBut
                     view,
                     this);
             communication.send();
-        } catch (JSONException e) {
-            e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

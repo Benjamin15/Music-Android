@@ -54,10 +54,6 @@ public class ServiceGetList extends Service {
                 ListMusic.view,
                 ListMusic.listenerMusic
         );
-        try {
-            communication.send(null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        communication.send(null);
     }
 }
