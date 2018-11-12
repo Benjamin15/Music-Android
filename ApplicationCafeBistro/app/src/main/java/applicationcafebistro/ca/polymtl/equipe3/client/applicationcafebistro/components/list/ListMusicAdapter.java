@@ -1,6 +1,7 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,9 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         holder.artist.setText(music.getArtist());
         holder.duration.setText(music.getDuration());
         holder.suggest_by.setText(music.getUser().getName());
+        if(music.isOwner()){
+            holder.viewForeground.setBackgroundColor(Color.rgb(252,255,136));
+        };
     }
 
     @Override

@@ -61,7 +61,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
                 User user = new User(object.getString("proposeePar"));
                 Music music = new Music(object.getInt("no"), object.getString("titre"),
                         object.getString("artiste"), object.getString("duree"),
-                        user, object.getString("proprietaire") != "0");
+                        user, object.getString("proprietaire").equals("1"));
                 musics.add(music);
             } catch (JSONException e) {
                 e.printStackTrace();
