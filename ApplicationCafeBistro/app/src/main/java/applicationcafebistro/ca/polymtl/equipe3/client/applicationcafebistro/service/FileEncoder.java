@@ -4,7 +4,7 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.se
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import android.util.Base64;
+import org.apache.commons.codec.binary.Base64;
 
 public class FileEncoder {
 
@@ -15,8 +15,7 @@ public class FileEncoder {
             FileInputStream fileInputStream = new FileInputStream(file);
             byte[] bytes = new byte[(int) file.length()];
             fileInputStream.read(bytes);
-            encodedFile = new String(Base64.encode(bytes, Base64.DEFAULT));
-
+            encodedFile = new String(Base64.encodeBase64(bytes));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -24,5 +23,4 @@ public class FileEncoder {
 
         return encodedFile;
     }
-
 }
