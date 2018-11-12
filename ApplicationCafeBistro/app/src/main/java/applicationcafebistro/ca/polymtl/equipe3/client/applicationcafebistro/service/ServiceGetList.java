@@ -49,7 +49,7 @@ public class ServiceGetList extends Service {
     private synchronized void syncData() {
         Log.i(TAG, "syncData");
         CommunicationRest communication = new CommunicationRest(
-                getResources().getString(R.string.list_music_test) + "1",
+                getResources().getString(R.string.list_music_test) + Integer.toString(DeviceInformation.idUser),
                 "GET",
                 ListMusic.view,
                 ListMusic.listenerMusic

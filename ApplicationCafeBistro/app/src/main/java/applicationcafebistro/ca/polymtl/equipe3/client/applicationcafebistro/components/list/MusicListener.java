@@ -13,6 +13,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 public class MusicListener implements RecyclerMusicTouchHelperListener, ComponentsListener {
@@ -28,7 +29,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
             System.out.println("try to delete");
             CommunicationRest communication = new CommunicationRest(
-                    ListMusic.view.getResources().getString(R.string.delete_music_test) + "1/" +
+                    ListMusic.view.getResources().getString(R.string.delete_music_test) + Integer.toString(DeviceInformation.idUser)+ "/" +
                             adapter.getMusics().get(position).getId(),
                     "DELETE",
                     ListMusic.view);

@@ -14,11 +14,13 @@ public class ManagerException {
     public ManagerException(int codeError, String message, View view) {
         this.codeError = codeError;
         this.message = message;
+        this.view = view;
     }
 
     public ManagerException(int codeError, View view) {
         this.codeError = codeError;
         message = "";
+        this.view = view;
     }
 
     public void findError() {
