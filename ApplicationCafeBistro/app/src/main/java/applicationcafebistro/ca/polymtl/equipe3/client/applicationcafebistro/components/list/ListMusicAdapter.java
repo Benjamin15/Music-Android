@@ -12,6 +12,7 @@ import java.util.Collections;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 
 public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter {
     private final ArrayList<Music> cartListMusic;
@@ -33,6 +34,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         holder.artist.setText(music.getArtist());
         holder.duration.setText(music.getDuration());
         holder.suggest_by.setText(music.getUser().getName());
+        System.out.println("idUser : " + DeviceInformation.idUser);
         if (music.isOwner())
             holder.viewForeground.setBackgroundResource(R.color.my_music_in_list);
         else

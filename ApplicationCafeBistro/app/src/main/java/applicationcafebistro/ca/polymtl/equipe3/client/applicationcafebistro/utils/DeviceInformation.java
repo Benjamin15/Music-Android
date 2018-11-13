@@ -24,17 +24,24 @@ public class DeviceInformation {
         try {
             List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
             for (NetworkInterface intf : interfaces) {
+                System.out.println("interface");
                 if (interfaceName != null) {
                     if (!intf.getName().equalsIgnoreCase(interfaceName)) continue;
                 }
                 byte[] mac = intf.getHardwareAddress();
-                if (mac == null) return "";
+                System.out.println("mac : " + mac);
+                if (mac==null) {
+                    System.out.println("mac null");
+                    return "A5:D5:C3:15:19:89";
+                }
                 StringBuilder buf = new StringBuilder();
-                for (byte aMac : mac) buf.append(String.format("%02X:", aMac));
-                if (buf.length() > 0) buf.deleteCharAt(buf.length() - 1);
+                for (byte aMac : mac) buf.append(String.format("%02X:",aMac));
+                if (buf.length()>0) buf.deleteCharAt(buf.length()-1);
+                System.out.println("buf " + buf);
                 return buf.toString();
             }
         } catch (Exception ignored) {
+            System.out.println("Exception");
         }
         return "";
     }
