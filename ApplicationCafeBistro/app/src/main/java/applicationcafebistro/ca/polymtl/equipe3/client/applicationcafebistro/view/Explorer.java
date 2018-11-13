@@ -136,6 +136,7 @@ public class Explorer extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 String title = file.getName();
                 sendMusicService.sendMusic(file, title);
+                finish();
             }
         });
 
