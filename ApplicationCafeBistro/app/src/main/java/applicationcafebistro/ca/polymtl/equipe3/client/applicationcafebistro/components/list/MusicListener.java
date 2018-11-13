@@ -15,6 +15,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Identification;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 /**
@@ -24,7 +25,6 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 public class MusicListener implements RecyclerMusicTouchHelperListener, ComponentsListener {
 
     private final ListMusicAdapter adapter;
-    private Context context;
     public MusicListener(ListMusicAdapter adapter) {
         this.adapter = adapter;
     }
@@ -39,7 +39,6 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
                     DELETE,
                     ListMusic.view);
             communication.send();
-            context = viewHolder.itemView.getContext();
             adapter.removeItem(viewHolder.getAdapterPosition());
         }
     }
@@ -54,6 +53,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
     @Override
     public void update(JSONObject json) {
         JSONArray array = null;
+        Context context = Identification.context;
         ArrayList<Music> musics = new ArrayList<>();
         try {
             array = json.getJSONArray(context.getString(R.string.chansons_json));

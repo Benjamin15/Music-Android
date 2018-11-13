@@ -5,5 +5,4 @@
     <string name="ip">ip</string>
     <string name="mac">MAC</string>
     <string name="body">\?body=</string>
-    <string name="suggest_by_json">proposeePar</string>
 </resources>
