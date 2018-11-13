@@ -5,7 +5,7 @@
     <string name="error_403">L\'accés vous a été refusé</string>
     <string name="error_405">Vous ne pouvez pas supprimer cette chanson</string>
     <string name="error_409">L\'une des chansons ne se trouve plus dans la file d\'attente</string>
-    <string name="error_413">La chanson est trop longue, veuillez en choisir une autre</string>
+    <string name="error_413">La chanson est trop longue, file pleine ou limite atteinte</string>
     <string name="error_415">Veuillez choisir un fichier mp3 valide</string>
     <string name="error_500">Le serveur n\'est pas disponible pour l\'instant</string>
 
