@@ -1,7 +1,5 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.mod
 
 public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter {
     private final ArrayList<Music> cartListMusic;
-    private Context context;
     public ListMusicAdapter() {
         this.cartListMusic = new ArrayList<>();
     }
@@ -26,7 +23,6 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_music, parent, false);
-        context = itemView.getContext();
         return new MyViewHolder(itemView);
     }
 

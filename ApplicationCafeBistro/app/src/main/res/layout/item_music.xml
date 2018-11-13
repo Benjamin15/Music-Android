@@ -27,8 +27,8 @@
             android:layout_marginEnd="@dimen/padd_10"
             android:layout_toStartOf="@id/delete_icon"
             android:text="@string/supprimer"
-            android:textColor="#fff"
-            android:textSize="13sp" />
+            android:textColor="@color/other_music_in_list"
+            android:textSize="@dimen/little_text" />
 
     </RelativeLayout>
 
@@ -55,8 +55,8 @@
             android:layout_toEndOf="@id/thumbnail"
             android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
-            android:maxLines="2"
-            android:textSize="17sp" />
+            android:maxLines="@integer/max_line_music_item"
+            android:textSize="@dimen/medium_text" />
 
         <TextView
             android:id="@+id/artist"
@@ -64,25 +64,23 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@id/title"
-            android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/thumbnail"
-            android:textSize="12sp" />
+            android:textSize="@dimen/little_text" />
 
         <TextView
             android:id="@+id/suggest_by"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/thumbnail"
-            android:textSize="12sp" />
+            android:textSize="@dimen/little_text" />
 
         <TextView
             android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@id/thumbnail"
+            android:layout_alignParentEnd="true"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 

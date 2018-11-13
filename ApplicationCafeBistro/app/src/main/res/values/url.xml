@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="list_music_test">http://10.200.21.242:8080/usager/file/</string>
-    <string name="identification">http://10.200.21.242:8080/usager/identification</string>
-    <string name="delete_music_test">http://10.200.21.242:8080/superviseur/chanson/</string>
-    <string name="send_music">http://10.200.21.242:8080/usager/chanson/</string>
+    <string name="list_music">http://132.207.89.35:80/usager/file/</string>
+    <string name="identification">http://132.207.89.35:80/usager/identification</string>
+    <string name="delete_music">http://132.207.89.35:80/superviseur/chanson/</string>
+    <string name="send_music">http://132.207.89.35:80/usager/chanson/</string>
 </resources>
 
