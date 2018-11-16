@@ -7,7 +7,11 @@
     android:background="@drawable/main_header_selector"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Identification">
 
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/cafe_login"/>
     <EditText
         android:id="@+id/login"
         android:layout_width="313dp"
@@ -33,7 +37,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/transparent"
         android:text="@string/sign_up"
         android:textColor="@android:color/white"
         app:barrierAllowsGoneWidgets="false"

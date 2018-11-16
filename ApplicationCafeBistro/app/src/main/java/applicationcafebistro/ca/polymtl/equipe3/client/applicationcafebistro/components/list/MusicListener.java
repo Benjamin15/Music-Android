@@ -52,7 +52,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
 
     @Override
     public void update(JSONObject json) {
-        JSONArray array = null;
+        JSONArray array = new JSONArray();
         Context context = Identification.context;
         ArrayList<Music> musics = new ArrayList<>();
         try {

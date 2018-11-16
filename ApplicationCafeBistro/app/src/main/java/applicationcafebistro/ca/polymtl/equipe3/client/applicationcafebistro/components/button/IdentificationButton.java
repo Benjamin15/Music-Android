@@ -52,7 +52,7 @@ public class IdentificationButton extends AppCompatButton
     public void onClick(View view) {
         try {
             final String GET = "GET";
-            String macAddress = DeviceInformation.getMACAddress("eth0");
+            String macAddress = DeviceInformation.getMACAddress("wlan0");
             String ipv4 = DeviceInformation.getIPAddress(true);
             HashMap map = new HashMap();
             System.out.println("MAC :" + macAddress);
