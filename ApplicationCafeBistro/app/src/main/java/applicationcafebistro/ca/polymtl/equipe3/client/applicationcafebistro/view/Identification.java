@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.IdentificationButton;
@@ -14,6 +17,8 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 public class Identification extends AppCompatActivity {
     private IdentificationButton identificationButton;
     public static Context context;
+    private LinearLayout top,bottom;
+    private Animation upToDown,downToUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +26,12 @@ public class Identification extends AppCompatActivity {
         context = getApplicationContext();
         identificationButton = findViewById(R.id.identificationButton);
         final EditText text = findViewById(R.id.login);
+        top = findViewById(R.id.top_animation);
+        bottom = findViewById(R.id.bottom_animation);
+        upToDown = AnimationUtils.loadAnimation(this,R.anim.up_to_down);
+        downToUp = AnimationUtils.loadAnimation(this,R.anim.down_to_up);
+        top.setAnimation(upToDown);
+        bottom.setAnimation(downToUp);
 
 
         text.addTextChangedListener(new TextWatcher() {

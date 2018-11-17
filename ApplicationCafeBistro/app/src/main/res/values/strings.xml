@@ -10,15 +10,19 @@
     <string name="root">Vous êtes à la racine!</string>
     <string name="mp3">mp3</string>
     <string name="Confirmation">Confirmation</string>
-    <string name="login_text">Login</string>
-    <string name="sign_up">Sign up</string>
+    <string name="login_text">Name</string>
+    <string name="sign_up">Submit now</string>
     <string name="supprimer">supprimer</string>
     <string name="utf8">UTF-8</string>
     <string name="welcome_message_key">welcomeMessage</string>
+    <string name="login_welcome_message1">Welcome To Cafe Elevation</string>
+    <string name="login_welcome_message2">Get started with our Playlist !</string>
     <string name="eth0">eth0</string>
     <string name="login_param">nom</string>
     <string name="music_add">La musique a bien été ajouté à la liste</string>
     <string name="body_content_json">application/json; charset=utf-8</string>
     <string name="drawer_state_open">Open</string>
     <string name="drawer_state_close">Close</string>
+    <string name="management">Management</string>
+    <string name="statistics">Statistics</string>
 </resources>

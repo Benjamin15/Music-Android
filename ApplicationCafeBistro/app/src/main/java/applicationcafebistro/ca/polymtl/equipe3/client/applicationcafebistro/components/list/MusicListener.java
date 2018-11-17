@@ -52,8 +52,8 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
 
     @Override
     public void update(JSONObject json) {
-        JSONArray array = new JSONArray();
-        Context context = Identification.context;
+        JSONArray array = null;
+        Context context = ListMusic.view.getContext();
         ArrayList<Music> musics = new ArrayList<>();
         try {
             array = json.getJSONArray(context.getString(R.string.chansons_json));
