@@ -52,7 +52,7 @@ public class IdentificationButton extends AppCompatButton
     public void onClick(View view) {
         try {
             final String GET = "GET";
-            String macAddress = DeviceInformation.getMACAddress("eth0");
+            String macAddress = DeviceInformation.getMACAddress(getContext().getString(R.string.interface_device));
             String ipv4 = DeviceInformation.getIPAddress(true);
             HashMap map = new HashMap();
             System.out.println("MAC :" + macAddress);
@@ -61,7 +61,7 @@ public class IdentificationButton extends AppCompatButton
             map.put(getContext().getString(R.string.login_param), login);
             JSONObject body = new JSONObject(map);
 
-            String urlParameter = URLEncoder.encode(body.toString(), getContext().getString((R.string.utf8)));
+            String urlParameter = URLEncoder.encode(body.toString(), getContext().getString(R.string.utf8));
             CommunicationRest communication = new CommunicationRest(
                     getResources().getString(R.string.identification) + getContext().getString(R.string.body) + urlParameter,
                     GET,

@@ -32,7 +32,6 @@ public class DeviceInformation {
                 System.out.println("mac : " + mac);
                 if (mac==null) {
                     System.out.println("mac null");
-                    return "A5:D5:C3:15:19:89";
                 }
                 StringBuilder buf = new StringBuilder();
                 for (byte aMac : mac) buf.append(String.format("%02X:",aMac));
