@@ -37,6 +37,7 @@ public class ListMusic extends AppCompatActivity {
         drawerLayout = (DrawerLayout)findViewById(((R.id.drawer)));
         toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.drawer_state_open,
                 R.string.drawer_state_close);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black_color));
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -27,7 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ListMusic" />
-        <activity android:name=".view.Explorer" />
+            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".view.ExplorerReceiver"

@@ -65,7 +65,7 @@ public class IdentificationButton extends AppCompatButton
         if(!login .equals(getContext().getString(R.string.admin_username))) {
             try {
                 final String GET = "GET";
-                String macAddress = DeviceInformation.getMACAddress("eth0");
+                String macAddress = DeviceInformation.getMACAddress(getResources().getString(R.string.wlan0));
                 String ipv4 = DeviceInformation.getIPAddress(true);
                 HashMap map = new HashMap();
                 System.out.println("MAC :" + macAddress);
