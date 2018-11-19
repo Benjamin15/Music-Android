@@ -12,7 +12,10 @@
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
     </style>
-
+    <style name="AppearDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/up_to_down</item>
+        <item name="android:windowExitAnimation">@anim/current_position_to_down</item>
+    </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 </resources>

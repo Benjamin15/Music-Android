@@ -15,4 +15,5 @@
     <color name="primary_dark">#372833</color>
     <color name="black_color">#000</color>
     <color name="light_darker_orange">#c6c4c2</color>
+    <color name="admin_login_dialog">#232323</color>
 </resources>
