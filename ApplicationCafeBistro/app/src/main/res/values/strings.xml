@@ -26,4 +26,6 @@
     <string name="drawer_state_close">Close</string>
     <string name="management">Management</string>
     <string name="statistics">Statistics</string>
+    <string name="username">username</string>
+    <string name="password">mot_de_passe</string>
 </resources>

@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.AppCompatButton;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +34,7 @@ public class IdentificationButton extends AppCompatButton
 
     private String login;
     private Dialog dialog;
+    private AdminLoginButton adminLoginButton;
 
     public IdentificationButton(Context context) {
         super(context);
@@ -83,6 +86,22 @@ public class IdentificationButton extends AppCompatButton
             }
         }else{
             dialog.show();
+            adminLoginButton = dialog.findViewById(R.id.admin_login_button);
+            final EditText adminPassword = (EditText) dialog.findViewById(R.id.admin_password);
+            adminPassword.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    adminLoginButton.setLoginText(adminPassword.getText());
+                }
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
         }
     }
 

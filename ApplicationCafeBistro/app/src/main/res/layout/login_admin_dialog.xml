@@ -39,7 +39,8 @@
             android:hint="PASSWORD"
             android:padding="20dp"/>
     </LinearLayout>
-        <Button
+        <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.AdminLoginButton
+            android:id="@+id/admin_login_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/button_admin_login_style"
