@@ -28,4 +28,5 @@
     <string name="statistics">Statistics</string>
     <string name="username">username</string>
     <string name="password">mot_de_passe</string>
+    <string name="admin_welcome_message">Admin privileges have been accorded to you</string>
 </resources>

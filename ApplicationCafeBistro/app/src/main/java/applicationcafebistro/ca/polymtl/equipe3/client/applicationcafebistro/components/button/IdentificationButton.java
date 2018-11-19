@@ -73,7 +73,6 @@ public class IdentificationButton extends AppCompatButton
                 map.put(getContext().getString(R.string.mac), macAddress);
                 map.put(getContext().getString(R.string.login_param), login);
                 JSONObject body = new JSONObject(map);
-
                 String urlParameter = URLEncoder.encode(body.toString(), getContext().getString((R.string.utf8)));
                 CommunicationRest communication = new CommunicationRest(
                         getResources().getString(R.string.identification) + getContext().getString(R.string.body) + urlParameter,
@@ -85,9 +84,10 @@ public class IdentificationButton extends AppCompatButton
                 e.printStackTrace();
             }
         }else{
-            dialog.show();
             adminLoginButton = dialog.findViewById(R.id.admin_login_button);
             final EditText adminPassword = (EditText) dialog.findViewById(R.id.admin_password);
+            adminPassword.clearFocus();
+            dialog.show();
             adminPassword.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {

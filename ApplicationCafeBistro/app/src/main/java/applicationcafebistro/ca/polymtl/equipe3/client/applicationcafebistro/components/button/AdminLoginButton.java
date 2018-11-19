@@ -1,11 +1,13 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.AppCompatButton;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -13,6 +15,8 @@ import java.util.HashMap;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 public class AdminLoginButton extends AppCompatButton
         implements View.OnClickListener, ComponentsListener {
@@ -52,7 +56,11 @@ public class AdminLoginButton extends AppCompatButton
 
     @Override
     public void update(JSONObject json) {
-
+            Intent intent = new Intent(getContext(), ListMusic.class);
+            DeviceInformation.isAdmin = true;
+            intent.putExtra(getContext().getString(R.string.welcome_message_key),
+                    getContext().getString(R.string.admin_welcome_message));
+            getContext().startActivity(intent);
     }
 
     public void setLoginText(Editable editText) {
