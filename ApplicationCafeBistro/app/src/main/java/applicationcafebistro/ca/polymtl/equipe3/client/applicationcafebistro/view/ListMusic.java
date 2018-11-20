@@ -3,6 +3,8 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vi
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,21 +29,18 @@ public class ListMusic extends AppCompatActivity {
     public static View view;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+    private TabLayout tabLayout;
+    private ViewPagerAdapter viewPagerAdapter;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_music);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        NavigationView adminMenu = findViewById(R.id.navigation);
-        adminMenu.setItemIconTintList(null);
-        drawerLayout = (DrawerLayout)findViewById(((R.id.drawer)));
-        toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.drawer_state_open,
-                R.string.drawer_state_close);
-        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black_color));
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        initNavigationMenu();
+        initViewPager();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ListMusicAdapter mAdapter = new ListMusicAdapter();
+        //RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        /*ListMusicAdapter mAdapter = new ListMusicAdapter();
         listenerMusic = new MusicListener(mAdapter);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -55,9 +54,29 @@ public class ListMusic extends AppCompatActivity {
         Intent intent = new Intent(ListMusic.this, ServiceGetList.class);
         startService(intent);
         SnackBarSuccess.make(view, getApplicationContext(), getIntent().getStringExtra(getString(R.string.welcome_message_key)), 3000);
-        SnackBarSuccess.show();
+        SnackBarSuccess.show();*/
     }
-
+    private void initViewPager(){
+        tabLayout = findViewById(R.id.tabLayout_id);
+        viewPager = findViewById(R.id.viewpager_id);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new FragmentCommonList(),getResources().getString(R.string.common_list));
+        viewPagerAdapter.addFragment(new FragmentPersonalList(),getResources().getString(R.string.personal_list));
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_common);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_personal);
+    }
+    private void initNavigationMenu(){
+        NavigationView adminMenu = findViewById(R.id.navigation);
+        adminMenu.setItemIconTintList(null);
+        drawerLayout = (DrawerLayout)findViewById(((R.id.drawer)));
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.drawer_state_open,
+                R.string.drawer_state_close);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black_color));
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(toggle.onOptionsItemSelected(item)){
