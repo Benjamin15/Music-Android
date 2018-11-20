@@ -3,7 +3,7 @@
     <color name="colorPrimary">#171923</color>
     <color name="colorPrimaryDark">#131628</color>
     <color name="colorAccent">#ffe100</color>
-    <color name="lighterColorAccent">#fff4a0</color>
+    <color name="lighterColorAccent">#292929</color>
     <color name="colorError">#B50909</color>
     <color name="colorSuccess">#0EA001</color>
     <color name="bg_row_background">#FA315B</color>
@@ -16,5 +16,6 @@
     <color name="primary_dark">#372833</color>
     <color name="black_color">#000</color>
     <color name="light_darker_orange">#c6c4c2</color>
+    <color name="lighterGrey">#a4a4a4</color>
     <color name="admin_login_dialog">#232323</color>
 </resources>

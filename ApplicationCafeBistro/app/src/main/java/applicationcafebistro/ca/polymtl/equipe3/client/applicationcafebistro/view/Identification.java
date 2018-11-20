@@ -36,8 +36,6 @@ public class Identification extends AppCompatActivity {
         downToUp = AnimationUtils.loadAnimation(this,R.anim.down_to_up);
         top.setAnimation(upToDown);
         bottom.setAnimation(downToUp);
-
-
         text.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {

@@ -38,7 +38,6 @@ public class ListMusic extends AppCompatActivity {
         setContentView(R.layout.list_music);
         initNavigationMenu();
         initViewPager();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //RecyclerView recyclerView = findViewById(R.id.recycler_view);
         /*ListMusicAdapter mAdapter = new ListMusicAdapter();
         listenerMusic = new MusicListener(mAdapter);
@@ -66,6 +65,7 @@ public class ListMusic extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_common);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_personal);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     private void initNavigationMenu(){
         NavigationView adminMenu = findViewById(R.id.navigation);
