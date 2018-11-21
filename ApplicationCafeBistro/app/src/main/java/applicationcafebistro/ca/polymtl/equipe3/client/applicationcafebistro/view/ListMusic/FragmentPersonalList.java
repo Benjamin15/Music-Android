@@ -1,4 +1,4 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 
 public class FragmentPersonalList extends Fragment {
-    View view;
+    private View view;
 
     public FragmentPersonalList(){
 

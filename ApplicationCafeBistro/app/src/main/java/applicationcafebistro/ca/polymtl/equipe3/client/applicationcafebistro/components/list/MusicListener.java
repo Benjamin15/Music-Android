@@ -15,8 +15,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Identification;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 /**
  * This class is used to listen events in the listView(recycler)
@@ -30,7 +29,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
     }
 
     @Override
-    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int position) {
         final String DELETE = "DELETE";
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
             CommunicationRest communication = new CommunicationRest(

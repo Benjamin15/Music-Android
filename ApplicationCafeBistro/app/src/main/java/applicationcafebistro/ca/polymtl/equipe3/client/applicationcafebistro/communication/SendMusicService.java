@@ -21,7 +21,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.exception.ManagerException;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.FileEncoder;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 /**
  * this class send a music to the server. We create this instead of used the generic class

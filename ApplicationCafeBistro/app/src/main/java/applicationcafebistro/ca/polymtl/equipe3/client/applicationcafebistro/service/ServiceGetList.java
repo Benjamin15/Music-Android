@@ -10,7 +10,7 @@ import android.util.Log;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 
 /**
@@ -54,5 +54,11 @@ public class ServiceGetList extends Service {
                 ListMusic.listenerMusic
         );
         communication.send(null);
+    }
+
+    @Override
+    public void onDestroy() {
+        mHandler.removeCallbacks(runnableService);
+        super.onDestroy();
     }
 }

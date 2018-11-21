@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -16,7 +15,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 public class AdminLoginButton extends AppCompatButton
         implements View.OnClickListener, ComponentsListener {

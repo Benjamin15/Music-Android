@@ -1,4 +1,4 @@
-package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view;
+package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -74,7 +74,7 @@ public class Explorer extends AppCompatActivity {
             if (files != null)
                 list.addAll(Arrays.asList(files));
 
-            mAdapter = new FileAdapter(this, android.R.layout.simple_list_item_1, list);
+            mAdapter = new FileAdapter(this, list);
             mList.setAdapter(mAdapter);
             mAdapter.sort();
 
@@ -212,8 +212,8 @@ public class Explorer extends AppCompatActivity {
 
         private final LayoutInflater mInflater;
 
-        FileAdapter(Context context, int textViewResourceId, List<File> objects) {
-            super(context, textViewResourceId, objects);
+        FileAdapter(Context context, List<File> objects) {
+            super(context, android.R.layout.simple_list_item_1, objects);
             mInflater = LayoutInflater.from(context);
         }
 

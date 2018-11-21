@@ -18,12 +18,13 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 
 /**
@@ -55,7 +56,7 @@ public class IdentificationButton extends AppCompatButton
         setOnClickListener(this);
         dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.login_admin_dialog);
         dialog.getWindow().getAttributes().windowAnimations = R.style.AppearDialogAnimation;
     }
@@ -85,7 +86,7 @@ public class IdentificationButton extends AppCompatButton
             }
         }else{
             adminLoginButton = dialog.findViewById(R.id.admin_login_button);
-            final EditText adminPassword = (EditText) dialog.findViewById(R.id.admin_password);
+            final EditText adminPassword = dialog.findViewById(R.id.admin_password);
             adminPassword.clearFocus();
             dialog.show();
             adminPassword.addTextChangedListener(new TextWatcher() {

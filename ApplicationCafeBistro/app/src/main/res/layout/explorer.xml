@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer">
+    tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer.Explorer">
 
     <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.QuitExplorerButton
         android:id="@+id/floating_quit_explorer"

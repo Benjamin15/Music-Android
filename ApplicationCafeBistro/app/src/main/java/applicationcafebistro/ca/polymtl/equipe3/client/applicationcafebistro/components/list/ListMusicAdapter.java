@@ -84,7 +84,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         private final TextView title, artist, duration, suggest_by;
         public final RelativeLayout viewForeground;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             artist = view.findViewById(R.id.artist);
