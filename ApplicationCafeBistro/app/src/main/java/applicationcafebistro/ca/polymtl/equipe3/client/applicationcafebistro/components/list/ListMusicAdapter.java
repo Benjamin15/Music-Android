@@ -47,7 +47,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     }
 
     public void removeItem(int position) {
-        if(cartListMusic.get(position).getId() == DeviceInformation.idUser || DeviceInformation.isAdmin){
+        if(cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin){
             cartListMusic.remove(position);
             notifyItemRemoved(position);
         }
@@ -55,7 +55,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
 
     @Override
     public void onItemDismiss(int position) {
-        if(cartListMusic.get(position).getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
+        if(cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
             cartListMusic.remove(position);
             notifyItemRemoved(position);
         }
