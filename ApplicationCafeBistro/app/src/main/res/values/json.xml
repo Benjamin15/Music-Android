@@ -8,4 +8,5 @@
     <string name="duration_json">duree</string>
     <string name="owner_json">proprietaire</string>
     <string name="suggest_by_json">proposeePar</string>
+    <string name="user_id">IdProprietaire</string>
 </resources>

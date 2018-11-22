@@ -63,7 +63,9 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
             for (int i = 0; i < array.length(); i++) {
                 try {
                     JSONObject object = (JSONObject) array.get(i);
-                    User user = new User(object.getString(context.getString(R.string.suggest_by_json)));
+                    User user = new User(object.getString(context.getString(
+                            R.string.suggest_by_json)),Integer.parseInt(object.getString(
+                                    context.getString(R.string.user_id))));
                     Music music = new Music(object.getInt(context.getString(R.string.no_json)),
                             object.getString(context.getString(R.string.title_json)),
                             object.getString(context.getString(R.string.artist_json)),
