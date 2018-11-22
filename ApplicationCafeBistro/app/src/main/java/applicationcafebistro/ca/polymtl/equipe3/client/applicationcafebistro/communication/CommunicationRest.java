@@ -1,5 +1,6 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication;
 
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.android.volley.Request;
@@ -22,12 +23,22 @@ public class CommunicationRest {
     private final int type;
     private final View view;
     private final ComponentsListener component;
+    private final ComponentsListener secondComponent;
+
+    public CommunicationRest(String url, String type, View view, ComponentsListener component, @Nullable ComponentsListener componentTwo) {
+        this.url = url;
+        this.type = getType(type);
+        this.view = view;
+        this.component = component;
+        this.secondComponent = componentTwo;
+    }
 
     public CommunicationRest(String url, String type, View view, ComponentsListener component) {
         this.url = url;
         this.type = getType(type);
         this.view = view;
         this.component = component;
+        this.secondComponent = null;
     }
 
 
@@ -36,6 +47,7 @@ public class CommunicationRest {
         this.type = getType(type);
         this.view = view;
         this.component = null;
+        this.secondComponent = null;
     }
 
     /**
@@ -61,6 +73,8 @@ public class CommunicationRest {
                     public void onResponse(JSONObject response) {
                         if (component != null)
                             component.update(response);
+                        if(secondComponent != null)
+                            secondComponent.update(response);
                     }
                 }, new Response.ErrorListener() {
                     @Override

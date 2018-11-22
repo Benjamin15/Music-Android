@@ -24,8 +24,10 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 public class MusicListener implements RecyclerMusicTouchHelperListener, ComponentsListener {
 
     private final ListMusicAdapter adapter;
-    public MusicListener(ListMusicAdapter adapter) {
+    private String fragmentType;
+    public MusicListener(ListMusicAdapter adapter,String fragment) {
         this.adapter = adapter;
+        fragmentType = fragment;
     }
 
     @Override
@@ -49,6 +51,54 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         }
     }
 
+    private void fillCommonList(JSONArray array,ArrayList<Music> musics,Context context){
+        for (int i = 0; i < array.length(); i++) {
+            try {
+                JSONObject object = (JSONObject) array.get(i);
+                User user = new User(object.getString(context.getString(
+                        R.string.suggest_by_json)),Integer.parseInt(object.getString(
+                        context.getString(R.string.user_id))));
+                Music music = craftMusic(object,user,context);
+                musics.add(music);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!adapter.compare(musics)) {
+            adapter.clear();
+            adapter.addAll(musics);
+        }
+    }
+
+    private void fillPrivateList(JSONArray array,ArrayList<Music> musics,Context context){
+        for (int i = 0; i < array.length(); i++) {
+            try {
+                JSONObject object = (JSONObject) array.get(i);
+                User user = new User(object.getString(context.getString(
+                        R.string.suggest_by_json)),Integer.parseInt(object.getString(
+                        context.getString(R.string.user_id))));
+                if(user.getId()== DeviceInformation.idUser) {
+                    Music music = craftMusic(object,user,context);
+                    musics.add(music);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!adapter.compare(musics)) {
+            adapter.clear();
+            adapter.addAll(musics);
+        }
+    }
+    private Music craftMusic(JSONObject object,User user, Context context) throws JSONException {
+        Music music = new Music(object.getInt(context.getString(R.string.no_json)),
+                object.getString(context.getString(R.string.title_json)),
+                object.getString(context.getString(R.string.artist_json)),
+                object.getString(context.getString(R.string.duration_json)),
+                user, object.getString(context.getString(R.string.owner_json)).equals("1"));
+        return music;
+    }
+
     @Override
     public void update(JSONObject json) {
         JSONArray array = null;
@@ -59,27 +109,10 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (array != null) {
-            for (int i = 0; i < array.length(); i++) {
-                try {
-                    JSONObject object = (JSONObject) array.get(i);
-                    User user = new User(object.getString(context.getString(
-                            R.string.suggest_by_json)),Integer.parseInt(object.getString(
-                                    context.getString(R.string.user_id))));
-                    Music music = new Music(object.getInt(context.getString(R.string.no_json)),
-                            object.getString(context.getString(R.string.title_json)),
-                            object.getString(context.getString(R.string.artist_json)),
-                            object.getString(context.getString(R.string.duration_json)),
-                            user, object.getString(context.getString(R.string.owner_json)).equals("1"));
-                    musics.add(music);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (!adapter.compare(musics)) {
-                adapter.clear();
-                adapter.addAll(musics);
-            }
-        }
+        if (array != null && fragmentType.equals(context.getString(R.string.common_list))) {
+            fillCommonList(array,musics,context);
+        }if(array != null && fragmentType.equals(context.getString(R.string.personal_list))){
+            fillPrivateList(array,musics,context);
     }
+}
 }

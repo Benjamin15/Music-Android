@@ -19,7 +19,6 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.ser
 
 public class ListMusic extends AppCompatActivity {
 
-    public static MusicListener listenerMusic;
     public static View view;
     private ActionBarDrawerToggle toggle;
     private TabLayout tabLayout;
@@ -32,17 +31,6 @@ public class ListMusic extends AppCompatActivity {
         setContentView(R.layout.list_music);
         initNavigationMenu();
         initViewPager();
-        /*RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        ListMusicAdapter mAdapter = new ListMusicAdapter();
-        listenerMusic = new MusicListener(mAdapter);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        recyclerView.setAdapter(mAdapter);
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerMusicTouchHelper(0, ItemTouchHelper.LEFT, listenerMusic);
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
-        */
         view = getWindow().getDecorView().getRootView();
         intent = new Intent(ListMusic.this, ServiceGetList.class);
         startService(intent);

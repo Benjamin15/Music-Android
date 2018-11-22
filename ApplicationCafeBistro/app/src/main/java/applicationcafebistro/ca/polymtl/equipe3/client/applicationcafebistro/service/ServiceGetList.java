@@ -10,6 +10,8 @@ import android.util.Log;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.FragmentCommonList;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.FragmentPersonalList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 
@@ -51,7 +53,7 @@ public class ServiceGetList extends Service {
                 getResources().getString(R.string.list_music) + Integer.toString(DeviceInformation.idUser),
                 GET,
                 ListMusic.view,
-                ListMusic.listenerMusic
+                FragmentCommonList.listenerMusic,FragmentPersonalList.listenerMusic
         );
         communication.send(null);
     }

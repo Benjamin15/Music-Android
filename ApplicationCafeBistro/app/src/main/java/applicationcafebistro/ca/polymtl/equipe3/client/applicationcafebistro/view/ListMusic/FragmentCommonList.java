@@ -24,6 +24,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.ser
 public class FragmentCommonList extends Fragment {
 
     private View view;
+    public static MusicListener listenerMusic;
     public FragmentCommonList(){
 
     }
@@ -40,13 +41,13 @@ public class FragmentCommonList extends Fragment {
     private void initRecyclerView(){
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         ListMusicAdapter mAdapter = new ListMusicAdapter();
-        ListMusic.listenerMusic = new MusicListener(mAdapter);
+        listenerMusic = new MusicListener(mAdapter,getContext().getString(R.string.common_list));
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(mAdapter);
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerMusicTouchHelper(0, ItemTouchHelper.LEFT, ListMusic.listenerMusic);
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerMusicTouchHelper(0, ItemTouchHelper.LEFT, listenerMusic);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
     }
     @Nullable
