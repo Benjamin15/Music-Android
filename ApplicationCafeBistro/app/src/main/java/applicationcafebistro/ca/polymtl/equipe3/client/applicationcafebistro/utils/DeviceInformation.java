@@ -3,6 +3,7 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.ut
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class DeviceInformation {
 
     static public int idUser;
+    static public boolean isAdmin;
 
     /**
      * Returns MAC address of the given interface name.
@@ -29,7 +31,7 @@ public class DeviceInformation {
                     if (!intf.getName().equalsIgnoreCase(interfaceName)) continue;
                 }
                 byte[] mac = intf.getHardwareAddress();
-                System.out.println("mac : " + mac);
+                System.out.println("mac : " + Arrays.toString(mac));
                 if (mac==null) {
                     System.out.println("mac null");
                     return "A5:D5:C3:15:19:89";

@@ -6,7 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.View;
 
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.Explorer.Explorer;
 
 /**
  * This button open the explorer activity when we click on it

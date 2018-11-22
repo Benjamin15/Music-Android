@@ -10,14 +10,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_coffee"
+        android:icon="@drawable/ic_coffee_cup"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:largeHeap="true"
+        >
         <activity
             android:name=".view.Identification"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,11 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ListMusic" />
-        <activity android:name=".view.Explorer" />
+        <activity android:name=".view.ListMusic.ListMusic"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.Explorer.Explorer"
+            android:screenOrientation="portrait"/>
 
         <receiver
-            android:name=".view.ExplorerReceiver"
+            android:name=".view.Explorer.ExplorerReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_REMOVED" />

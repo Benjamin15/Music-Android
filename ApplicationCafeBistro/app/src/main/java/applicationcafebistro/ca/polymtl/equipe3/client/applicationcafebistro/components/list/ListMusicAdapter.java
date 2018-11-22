@@ -35,7 +35,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         holder.duration.setText(music.getDuration());
         holder.suggest_by.setText(music.getUser().getName());
         System.out.println("idUser : " + DeviceInformation.idUser);
-        if (music.isOwner())
+        if (music.getUser().getId() == DeviceInformation.idUser)
             holder.viewForeground.setBackgroundResource(R.color.my_music_in_list);
         else
             holder.viewForeground.setBackgroundResource(R.color.other_music_in_list);
@@ -47,14 +47,18 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     }
 
     public void removeItem(int position) {
-        cartListMusic.remove(position);
-        notifyItemRemoved(position);
+        if(cartListMusic.get(position).getId() == DeviceInformation.idUser || DeviceInformation.isAdmin){
+            cartListMusic.remove(position);
+            notifyItemRemoved(position);
+        }
     }
 
     @Override
     public void onItemDismiss(int position) {
-        cartListMusic.remove(position);
-        notifyItemRemoved(position);
+        if(cartListMusic.get(position).getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
+            cartListMusic.remove(position);
+            notifyItemRemoved(position);
+        }
     }
 
     @Override
@@ -84,7 +88,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
         private final TextView title, artist, duration, suggest_by;
         public final RelativeLayout viewForeground;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             artist = view.findViewById(R.id.artist);

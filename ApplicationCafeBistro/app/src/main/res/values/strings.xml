@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">CafeBistro</string>
-    <string name="title_activity_home">CafeBistro</string>
+    <string name="app_name">Café-Bistro Élévation</string>
+    <string name="title_activity_home">Café-Bistro Élévation</string>
     <string name="choose_item">Choisir ce fichier</string>
     <string name="accesDenied">Access to files not allowed</string>
     <string name="open_dir">Ouvrir le dossier</string>
@@ -10,13 +10,25 @@
     <string name="root">Vous êtes à la racine!</string>
     <string name="mp3">mp3</string>
     <string name="Confirmation">Confirmation</string>
-    <string name="login_text">Login</string>
-    <string name="sign_up">Sign up</string>
+    <string name="login_text">Name</string>
+    <string name="admin_username">admin</string>
+    <string name="sign_up">Submit now</string>
     <string name="supprimer">supprimer</string>
     <string name="utf8">UTF-8</string>
     <string name="welcome_message_key">welcomeMessage</string>
-    <string name="eth0">eth0</string>
-    <string name="login_param">nom</string>
+    <string name="login_welcome_message1">Welcome To Cafe Elevation</string>
+    <string name="login_welcome_message2">Get started with our Playlist !</string>
+    <string name="wlan0">wlan0</string>
+    <string name="login_param">name</string>
     <string name="music_add">La musique a bien été ajouté à la liste</string>
     <string name="body_content_json">application/json; charset=utf-8</string>
+    <string name="drawer_state_open">Open</string>
+    <string name="drawer_state_close">Close</string>
+    <string name="management">Management</string>
+    <string name="statistics">Statistics</string>
+    <string name="username">username</string>
+    <string name="password">mot_de_passe</string>
+    <string name="personal_list">favorites</string>
+    <string name="common_list">Playlist</string>
+    <string name="admin_welcome_message">Admin privileges have been accorded to you</string>
 </resources>
