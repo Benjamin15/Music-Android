@@ -5,4 +5,6 @@
     <string name="ip">ip</string>
     <string name="mac">mac</string>
     <string name="body">\?body=</string>
+    <string name="username">usager</string>
+    <string name="password">mot_de_passe</string>
 </resources>
