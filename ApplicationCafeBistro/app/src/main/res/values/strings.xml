@@ -14,6 +14,7 @@
     <string name="admin_username">admin</string>
     <string name="sign_up">Submit now</string>
     <string name="supprimer">supprimer</string>
+    <string name="banish">banish</string>
     <string name="utf8">UTF-8</string>
     <string name="welcome_message_key">welcomeMessage</string>
     <string name="login_welcome_message1">Welcome To Cafe Elevation</string>

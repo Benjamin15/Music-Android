@@ -110,6 +110,15 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
                 fillTabIcons();
                 }
                 break;
+            case R.id.statistics:
+                if(!viewPagerAdapter.checkIfContains(getResources().getString(R.string.statistics))) {
+                    viewPagerAdapter.addFragment(new FragmentBlackList(), getResources().getString(R.string.statistics));
+                    icons.add(R.drawable.ic_statistics_fragment);
+                    viewPagerAdapter.notifyDataSetChanged();
+                    viewPager.setCurrentItem(icons.size()-1);
+                    fillTabIcons();
+                }
+                break;
         }
         return true;
     }
