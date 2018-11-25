@@ -55,9 +55,17 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         for (int i = 0; i < array.length(); i++) {
             try {
                 JSONObject object = (JSONObject) array.get(i);
-                User user = new User(object.getString(context.getString(
-                        R.string.suggest_by_json)),Integer.parseInt(object.getString(
-                        context.getString(R.string.user_id))));
+                User user;
+                if(!DeviceInformation.isAdmin) {
+                    user = new User(object.getString(context.getString(
+                            R.string.suggest_by_json)), Integer.parseInt(object.getString(
+                            context.getString(R.string.user_id))));
+                }else{
+                    user = new User(object.getString(context.getString(
+                            R.string.user_ip)),object.getString(context.getString(
+                            R.string.user_mac)),Integer.parseInt(object.getString(context.getString(
+                            R.string.user_id))));
+                }
                 Music music = craftMusic(object,user,context);
                 musics.add(music);
             } catch (JSONException e) {
@@ -77,7 +85,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
                 User user = new User(object.getString(context.getString(
                         R.string.suggest_by_json)),Integer.parseInt(object.getString(
                         context.getString(R.string.user_id))));
-                if(user.getId()== DeviceInformation.idUser) {
+                if(user.getId()== DeviceInformation.idUser ) {
                     Music music = craftMusic(object,user,context);
                     musics.add(music);
                 }

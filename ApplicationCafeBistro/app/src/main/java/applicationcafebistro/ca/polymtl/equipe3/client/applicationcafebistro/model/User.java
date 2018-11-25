@@ -18,6 +18,12 @@ public class User {
         this.id = id;
     }
 
+    public User(String ip, String mac, int id) {
+        this.ip = ip;
+        this.mac = mac;
+        this.id = id;
+    }
+
     public User(String name, int id) {
         this.name = name;
         this.id = id;

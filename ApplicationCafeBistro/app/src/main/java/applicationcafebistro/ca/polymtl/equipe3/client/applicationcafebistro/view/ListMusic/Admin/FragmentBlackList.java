@@ -26,7 +26,7 @@ public class FragmentBlackList extends Fragment {
     private View view;
     public static UserListener listenerUsers;
 
-    public FragmentBlackList(){
+    public FragmentBlackList() {
 
     }
 
@@ -34,15 +34,17 @@ public class FragmentBlackList extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    private void initSnackBar(){
+
+    private void initSnackBar() {
         Intent intent = new Intent(getActivity(), ServiceGetList.class);
         SnackBarSuccess.make(view, getContext(), intent.getStringExtra(getString(R.string.welcome_message_key)), 3000);
         SnackBarSuccess.show();
     }
-    private void initRecyclerView(){
+
+    private void initRecyclerView() {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_black_list);
         ListUserAdapter mAdapter = new ListUserAdapter();
-        listenerUsers = new UserListener(mAdapter,getContext().getString(R.string.black_list));
+        listenerUsers = new UserListener(mAdapter, getContext().getString(R.string.black_list));
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -51,10 +53,11 @@ public class FragmentBlackList extends Fragment {
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerUserTouchHelper(0, ItemTouchHelper.LEFT, listenerUsers);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.blacklist_fragment,container,false);
+        view = inflater.inflate(R.layout.blacklist_fragment, container, false);
         initRecyclerView();
         initRecyclerView();
         final String GET = "GET";
@@ -62,10 +65,10 @@ public class FragmentBlackList extends Fragment {
                 getResources().getString(R.string.list_users),
                 GET,
                 view,
-                FragmentUsersList.listenerUsers,FragmentBlackList.listenerUsers
+                FragmentUsersList.listenerUsers, FragmentBlackList.listenerUsers
         );
         communication.send(null);
-      //  initSnackBar();
+        //  initSnackBar();
         return view;
     }
 }

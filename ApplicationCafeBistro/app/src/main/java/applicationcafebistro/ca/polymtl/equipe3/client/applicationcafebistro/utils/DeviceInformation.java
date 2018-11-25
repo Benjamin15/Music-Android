@@ -14,7 +14,7 @@ import java.util.List;
 public class DeviceInformation {
 
     static public int idUser;
-    static public boolean isAdmin;
+    static public boolean isAdmin = true;
 
     /**
      * Returns MAC address of the given interface name.

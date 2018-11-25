@@ -27,7 +27,7 @@
     <string name="drawer_state_close">Close</string>
     <string name="management">Management</string>
     <string name="statistics">Statistics</string>
-    <string name="username">username</string>
+    <string name="username">usager</string>
     <string name="password">mot_de_passe</string>
     <string name="personal_list">favorites</string>
     <string name="common_list">Playlist</string>

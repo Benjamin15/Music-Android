@@ -13,7 +13,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 public class FragmentStatistics extends Fragment {
     private View view;
 
-    public FragmentStatistics(){
+    public FragmentStatistics() {
 
     }
 
@@ -25,7 +25,7 @@ public class FragmentStatistics extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.blacklist_fragment,container,false);
+        view = inflater.inflate(R.layout.blacklist_fragment, container, false);
         return view;
     }
 }

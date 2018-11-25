@@ -49,14 +49,33 @@ public class ServiceGetList extends Service {
 
     private synchronized void syncData() {
         final String GET = "GET";
-        CommunicationRest communication = new CommunicationRest(
-                getResources().getString(R.string.list_music) + Integer.toString(DeviceInformation.idUser),
-                GET,
-                ListMusic.view,
-                FragmentCommonList.listenerMusic,FragmentPersonalList.listenerMusic
-        );
-        communication.send(null);
+        if (DeviceInformation.isAdmin) {
+            getFile(GET, getResources().getString(R.string.list_music_admin), "");
+        } else {
+            getFile(GET, getResources().getString(R.string.list_music), Integer.toString(DeviceInformation.idUser));
+        }
     }
+
+    private void getFile(String GET, String url, String id) {
+        if (!id.equals("")) {
+            CommunicationRest communication = new CommunicationRest(
+                    url + id,
+                    GET,
+                    ListMusic.view,
+                    FragmentCommonList.listenerMusic, FragmentPersonalList.listenerMusic
+            );
+            communication.send(null);
+        } if(id.equals("")) {
+            CommunicationRest communication = new CommunicationRest(
+                    url,
+                    GET,
+                    ListMusic.view,
+                    FragmentCommonList.listenerMusic
+            );
+            communication.send(null);
+        }
+    }
+
 
     @Override
     public void onDestroy() {
