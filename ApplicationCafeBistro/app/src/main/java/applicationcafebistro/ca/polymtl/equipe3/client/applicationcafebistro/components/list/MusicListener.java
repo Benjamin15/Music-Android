@@ -62,6 +62,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
                             context.getString(R.string.user_id))));
                 }else{
                     user = new User(object.getString(context.getString(
+                            R.string.suggest_by_json)),object.getString(context.getString(
                             R.string.user_ip)),object.getString(context.getString(
                             R.string.user_mac)),Integer.parseInt(object.getString(context.getString(
                             R.string.user_id))));
