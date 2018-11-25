@@ -2,17 +2,19 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/personal_list_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/personal_list_fragment"
     android:background="@drawable/musical_background_personal_list"
+    android:orientation="vertical"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.FragmentPersonalList">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical" />
+
     <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.AddMusicButton
         android:id="@+id/floating_add_music"
         android:layout_width="wrap_content"
@@ -21,6 +23,6 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"
-        app:backgroundTint="@color/colorAccent"
+        app:backgroundTint="@color/black_color"
         app:srcCompat="@drawable/ic_add_music" />
 </android.support.design.widget.CoordinatorLayout>

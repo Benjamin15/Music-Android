@@ -1,68 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/list_music"
-    >
-
+    tools:showIn="@layout/users_list_fragment">
     <RelativeLayout
-        android:id="@+id/view_background"
+        android:id="@+id/user_item_banish_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_row_background">
-
+        android:background="@color/dark_gray">
         <ImageView
-            android:id="@+id/delete_icon"
-            android:layout_width="@dimen/ic_delete"
-            android:layout_height="@dimen/ic_delete"
+            android:id="@+id/block_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/padd_10"
-            android:src="@drawable/ic_delete"
-            android:contentDescription="delete_icon"/>
-
+            android:src="@drawable/ic_blocked_users_list_24dp"
+            android:contentDescription="block_icon"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/padd_10"
-            android:layout_toStartOf="@id/delete_icon"
-            android:text="@string/supprimer"
-            android:textColor="@color/other_music_in_list"
+            android:layout_toStartOf="@id/block_icon"
+            android:text="@string/banish"
+            android:textColor="@color/white"
             android:textSize="@dimen/little_text" />
-
     </RelativeLayout>
-
     <RelativeLayout
-        android:id="@+id/view_foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:id="@+id/user_item_view_layout"
+        android:background="@color/admin_login_dialog"
         android:padding="@dimen/padd_10">
-
         <ImageView
-            android:id="@+id/thumbnail"
+            android:id="@+id/user_icon"
             android:layout_width="@dimen/thumbnail"
             android:layout_height="@dimen/thumbnail"
             android:layout_marginEnd="@dimen/activity_padding_horizontal"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_music"
-            android:contentDescription="music_icon"/>
-
+            android:src="@drawable/ic_user_icon"
+            />
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/thumbnail"
             android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
             android:maxLines="@integer/max_line_music_item"
-            android:textSize="@dimen/medium_text" />
-
+            android:textSize="@dimen/medium_text"/>
         <TextView
-            android:id="@+id/artist"
+            android:id="@+id/mac"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -72,7 +65,7 @@
             android:textSize="@dimen/medium_text" />
 
         <TextView
-            android:id="@+id/suggest_by"
+            android:id="@+id/ip"
             android:layout_marginTop="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,14 +73,6 @@
             android:layout_toEndOf="@id/thumbnail"
             android:textSize="@dimen/little_text" />
 
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
-
     </RelativeLayout>
+
 </FrameLayout>

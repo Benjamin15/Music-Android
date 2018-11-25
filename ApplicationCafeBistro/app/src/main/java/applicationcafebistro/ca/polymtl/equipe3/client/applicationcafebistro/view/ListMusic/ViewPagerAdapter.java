@@ -35,4 +35,13 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
         fragmentList.add(fragment);
         titlesList.add(title);
     }
+
+    public boolean checkIfContains(String title){
+        for(int i=0;i<titlesList.size();i++){
+            if(title == titlesList.get(i)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
