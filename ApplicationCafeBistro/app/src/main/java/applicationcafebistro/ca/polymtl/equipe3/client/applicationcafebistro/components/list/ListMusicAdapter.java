@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,9 +14,11 @@ import java.util.Collections;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.Music;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter {
     private final ArrayList<Music> cartListMusic;
+
     public ListMusicAdapter() {
         this.cartListMusic = new ArrayList<>();
     }
@@ -30,10 +33,15 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Music music = cartListMusic.get(position);
-        holder.title.setText(music.getTitle());
-        holder.artist.setText(music.getArtist());
-        holder.duration.setText(music.getDuration());
-        holder.suggest_by.setText(music.getUser().getName());
+        holder.title.setText("Titre :" + music.getTitle());
+        holder.artist.setText("Artiste :" + music.getArtist());
+        holder.duration.setText("Durée :" + music.getDuration());
+        holder.suggest_by.setText("Proposée par :" + music.getUser().getName());
+        if (DeviceInformation.isAdmin) {
+            holder.mac.setText("Mac :" + music.getUser().getMac());
+            holder.ip.setText("Id :" + Integer.toString(music.getUser().getId()));
+            holder.id.setText("Ip :" + music.getUser().getIp());
+        }
         System.out.println("idUser : " + DeviceInformation.idUser);
         if (music.getUser().getId() == DeviceInformation.idUser)
             holder.viewForeground.setBackgroundResource(R.color.my_music_in_list);
@@ -47,7 +55,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     }
 
     public void removeItem(int position) {
-        if(cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin){
+        if (cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
             cartListMusic.remove(position);
             notifyItemRemoved(position);
         }
@@ -55,7 +63,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
 
     @Override
     public void onItemDismiss(int position) {
-        if(cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
+        if (cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
             cartListMusic.remove(position);
             notifyItemRemoved(position);
         }
@@ -85,7 +93,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private final TextView title, artist, duration, suggest_by;
+        private final TextView title, artist, duration, suggest_by, mac, ip, id;
         public final RelativeLayout viewForeground;
 
         MyViewHolder(View view) {
@@ -95,6 +103,14 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
             duration = view.findViewById(R.id.duration);
             suggest_by = view.findViewById(R.id.suggest_by);
             viewForeground = view.findViewById(R.id.view_foreground);
+            mac = view.findViewById(R.id.mac_user);
+            ip = view.findViewById(R.id.ip_user);
+            id = view.findViewById(R.id.id_user);
+            if (!DeviceInformation.isAdmin) {
+                mac.setVisibility(View.GONE);
+                ip.setVisibility(View.GONE);
+                id.setVisibility(View.GONE);
+            }
         }
     }
 }
