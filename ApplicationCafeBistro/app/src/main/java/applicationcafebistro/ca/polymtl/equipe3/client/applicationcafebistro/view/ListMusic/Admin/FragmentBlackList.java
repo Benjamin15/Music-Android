@@ -59,7 +59,6 @@ public class FragmentBlackList extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.blacklist_fragment, container, false);
         initRecyclerView();
-        initRecyclerView();
         final String GET = "GET";
         CommunicationRest communication = new CommunicationRest(
                 getResources().getString(R.string.list_users),

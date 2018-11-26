@@ -46,7 +46,7 @@ public class UserListener implements RecyclerUserTouchHelperListener, Components
     }
     private void restRequest(String url,String POST,int position, Context context){
         CommunicationRest communication = new CommunicationRest(
-                ListMusic.view.getResources().getString(R.string.block_user),
+                url,
                 POST,
                 ListMusic.view);
         HashMap map = new HashMap();
@@ -58,7 +58,7 @@ public class UserListener implements RecyclerUserTouchHelperListener, Components
     @Override
     public void onMoved(RecyclerView.ViewHolder viewHolder, int positionStart, int positionEnd) {
         if (viewHolder instanceof ListUserAdapter.MyViewHolder) {
-            adapter.onItemMove(positionStart, positionEnd);
+           // adapter.onItemMove(positionStart, positionEnd);
         }
     }
 
