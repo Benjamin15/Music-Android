@@ -32,6 +32,10 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.MyView
         holder.name.setText("Nom :" + user.getName());
         holder.ip.setText("Adresse ip :" + user.getIp());
         holder.mac.setText("Adresse mac :" + user.getMac());
+        if(user.getIsBlocked()){
+            holder.viewBackground.setBackgroundResource(R.color.colorSuccess);
+            holder.textView.setText(R.string.unban);
+        }
 
     }
 
@@ -74,7 +78,8 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private final TextView name, ip, mac;
-        public final RelativeLayout userItemView;
+        public final RelativeLayout userItemView, viewBackground;
+        private TextView textView;
 
         MyViewHolder(View view) {
             super(view);
@@ -82,6 +87,8 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.MyView
             ip = view.findViewById(R.id.ip);
             mac = view.findViewById(R.id.mac);
             userItemView = view.findViewById(R.id.view_foreground);
+            viewBackground = view.findViewById(R.id.view_background);
+            textView = view.findViewById(R.id.user_text_view);
         }
     }
 }

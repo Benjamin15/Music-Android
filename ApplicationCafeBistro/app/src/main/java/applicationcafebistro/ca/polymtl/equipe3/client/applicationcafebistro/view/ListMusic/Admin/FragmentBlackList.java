@@ -23,7 +23,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.ser
 
 public class FragmentBlackList extends Fragment {
 
-    private View view;
+    public static  View view;
     public static UserListener listenerUsers;
 
     public FragmentBlackList() {
@@ -44,7 +44,7 @@ public class FragmentBlackList extends Fragment {
     private void initRecyclerView() {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_black_list);
         ListUserAdapter mAdapter = new ListUserAdapter();
-        listenerUsers = new UserListener(mAdapter, getContext().getString(R.string.black_list));
+        listenerUsers = new UserListener(mAdapter, getContext().getString(R.string.black_list),getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
