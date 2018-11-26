@@ -34,13 +34,23 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int position) {
         final String DELETE = "DELETE";
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
-            CommunicationRest communication = new CommunicationRest(
-                    ListMusic.view.getResources().getString(R.string.delete_music) + Integer.toString(DeviceInformation.idUser) + "/" +
-                            adapter.getMusics().get(position).getId(),
-                    DELETE,
-                    ListMusic.view);
-            communication.send();
-            adapter.removeItem(viewHolder.getAdapterPosition());
+            if(!DeviceInformation.isAdmin) {
+                CommunicationRest communication = new CommunicationRest(
+                        ListMusic.view.getResources().getString(R.string.delete_music) + Integer.toString(DeviceInformation.idUser) + "/" +
+                                adapter.getMusics().get(position).getId(),
+                        DELETE,
+                        ListMusic.view);
+                communication.send();
+                adapter.removeItem(viewHolder.getAdapterPosition());
+            }else{
+                CommunicationRest communication = new CommunicationRest(
+                        ListMusic.view.getResources().getString(R.string.delete_music_admin) +
+                                adapter.getMusics().get(position).getId(),
+                        DELETE,
+                        ListMusic.view);
+                communication.send();
+                adapter.removeItem(viewHolder.getAdapterPosition());
+            }
         }
     }
 
