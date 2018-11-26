@@ -1,5 +1,6 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import java.util.List;
 import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.dialog.DialogAdapter;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.MusicListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.ServiceGetList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
@@ -117,33 +120,46 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
         switch(item.getItemId()){
             case R.id.user_list:
                 if(!viewPagerAdapter.checkIfContains(getResources().getString(R.string.users_list))) {
-                    viewPagerAdapter.addFragment(new FragmentUsersList(), getResources().getString(R.string.users_list));
-                    icons.add(R.drawable.ic_view_list_tab_black_24dp);
-                    viewPagerAdapter.notifyDataSetChanged();
-                    viewPager.setCurrentItem(icons.size()-1);
-                    fillTabIcons();
+                    createFragment(new FragmentUsersList(),getResources().getString(
+                            R.string.users_list),R.drawable.ic_view_list_tab_black_24dp);
                 }
                 break;
             case R.id.banned_users_list:
                 if(!viewPagerAdapter.checkIfContains(getResources().getString(R.string.black_list))) {
-                    viewPagerAdapter.addFragment(new FragmentBlackList(), getResources().getString(R.string.black_list));
-                    icons.add(R.drawable.ic_block_black_tab_24dp);
-                    viewPagerAdapter.notifyDataSetChanged();
-                    viewPager.setCurrentItem(icons.size()-1);
-                    fillTabIcons();
+                    createFragment(new FragmentBlackList(),getResources().getString(
+                            R.string.black_list),R.drawable.ic_block_black_tab_24dp);
                 }
                 break;
             case R.id.statistics:
                 if(!viewPagerAdapter.checkIfContains(getResources().getString(R.string.statistics))) {
-                    viewPagerAdapter.addFragment(new FragmentStatistics(), getResources().getString(R.string.statistics));
-                    icons.add(R.drawable.ic_statistics_fragment);
-                    viewPagerAdapter.notifyDataSetChanged();
-                    viewPager.setCurrentItem(icons.size()-1);
-                    fillTabIcons();
+                    createFragment(new FragmentStatistics(),getResources().getString(
+                            R.string.statistics),R.drawable.ic_statistics_fragment);
                 }
+                break;
+            case R.id.settings:
+                Dialog dialog = new Dialog(ListMusic.this);
+                DialogAdapter dialogAdapter = new DialogAdapter(dialog);
+                break;
+            case R.id.logout:
+                DeviceInformation.isAdmin = false;
+                final String POST = "POST";
+                CommunicationRest communication = new CommunicationRest(
+                        getResources().getString(R.string.logout_admin),
+                        POST,
+                        view);
+                communication.send();
+                finish();
                 break;
         }
         return true;
+    }
+
+    private void createFragment(Fragment fragment,String fragmentName, int drawable){
+        viewPagerAdapter.addFragment(fragment, fragmentName);
+        icons.add(drawable);
+        viewPagerAdapter.notifyDataSetChanged();
+        viewPager.setCurrentItem(icons.size()-1);
+        fillTabIcons();
     }
 
     private void fillTabIcons(){
