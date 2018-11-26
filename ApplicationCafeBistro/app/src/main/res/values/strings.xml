@@ -35,4 +35,6 @@
     <string name="users_list">Users</string>
     <string name="black_list">BlackList</string>
     <string name="admin_welcome_message">Admin privileges have been accorded to you</string>
+    <string name="volume_status_string">Volume: </string>
+    <string name="mute_status_string">Sourdine: </string>
 </resources>

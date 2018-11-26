@@ -81,6 +81,7 @@ public class FragmentCommonList extends Fragment {
         else{
             layout.removeView(getView().findViewById(R.id.floating_sound_button));
             layout.removeView(getView().findViewById(R.id.seekBar));
+            layout.removeView(getView().findViewById(R.id.floating_get_volume_button));
         }
     }
 }

@@ -54,5 +54,16 @@
         app:backgroundTint="@color/black_color"
         app:srcCompat="@drawable/ic_add_music" />
 
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.VolumeStatusButton
+        android:id="@+id/floating_get_volume_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_get_volume" />
+
 
 </android.support.design.widget.CoordinatorLayout>
