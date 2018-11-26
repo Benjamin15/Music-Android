@@ -6,6 +6,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.ListMusicAdapter;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 
 
 public class RecyclerUserTouchHelper extends ItemTouchHelper.SimpleCallback {
@@ -18,7 +19,9 @@ public class RecyclerUserTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        listener.onMoved(viewHolder, viewHolder.getAdapterPosition(), target.getAdapterPosition());
+        if(DeviceInformation.isAdmin) {
+            listener.onMoved(viewHolder, viewHolder.getAdapterPosition(), target.getAdapterPosition());
+        }
         return false;
     }
 
@@ -60,7 +63,7 @@ public class RecyclerUserTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public boolean isLongPressDragEnabled() {
-        return true;
+        return DeviceInformation.isAdmin;
     }
 
     @Override

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="list_music">http://192.168.2.54:8080/usager/file/</string>
-    <string name="list_music_admin">http://192.168.2.54:8080/superviseur/file</string>
-    <string name="list_users">http://192.168.2.54:8080/superviseur/usager</string>
-    <string name="identification">http://192.168.2.54:8080/usager/identification</string>
-    <string name="delete_music">http://192.168.2.54:8080/usager/chanson/</string>
-    <string name="block_user">http://192.168.2.54:8080/superviseur/bloquer</string>
-    <string name="unblock_user">http://192.168.2.54:8080/superviseur/debloquer</string>
-    <string name="delete_music_admin">http://192.168.2.54:8080/superviseur/chanson/</string>
-    <string name="send_music">http://192.168.2.54:8080/usager/chanson/</string>
-    <string name="log_admin">http://192.168.2.54:8080/superviseur/login/</string>
-    <string name="reverse">http://192.168.2.54:8080/superviseur/inversion</string>
-    <string name="logout_admin">http://192.168.2.54:8080/superviseur/logout</string>
-    <string name="admin_password">http://192.168.2.54:8080/superviseur/changement_mdp</string>
+    <string name="list_music">http://192.168.2.48:8080/usager/file/</string>
+    <string name="list_music_admin">http://192.168.2.48:8080/superviseur/file</string>
+    <string name="list_users">http://192.168.2.48:8080/superviseur/usager</string>
+    <string name="identification">http://192.168.2.48:8080/usager/identification</string>
+    <string name="delete_music">http://192.168.2.48:8080/usager/chanson/</string>
+    <string name="block_user">http://192.168.2.48:8080/superviseur/bloquer</string>
+    <string name="unblock_user">http://192.168.2.48:8080/superviseur/debloquer</string>
+    <string name="delete_music_admin">http://192.168.2.48:8080/superviseur/chanson/</string>
+    <string name="send_music">http://192.168.2.48:8080/usager/chanson/</string>
+    <string name="log_admin">http://192.168.2.48:8080/superviseur/login/</string>
+    <string name="reverse">http://192.168.2.48:8080/superviseur/inversion</string>
+    <string name="logout_admin">http://192.168.2.48:8080/superviseur/logout</string>
+    <string name="admin_password">http://192.168.2.48:8080/superviseur/changement_mdp</string>
 </resources>
 
