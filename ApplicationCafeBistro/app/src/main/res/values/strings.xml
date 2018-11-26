@@ -14,7 +14,7 @@
     <string name="admin_username">admin</string>
     <string name="sign_up">Submit now</string>
     <string name="supprimer">supprimer</string>
-    <string name="banish">banish</string>
+    <string name="banish">Banish</string>
     <string name="utf8">UTF-8</string>
     <string name="welcome_message_key">welcomeMessage</string>
     <string name="login_welcome_message1">Welcome To Cafe Elevation</string>
@@ -27,8 +27,10 @@
     <string name="drawer_state_close">Close</string>
     <string name="management">Management</string>
     <string name="statistics">Statistics</string>
-    <string name="username">username</string>
+    <string name="username">usager</string>
     <string name="password">mot_de_passe</string>
+    <string name="old">ancien</string>
+    <string name="newpassword">nouveau</string>
     <string name="personal_list">favorites</string>
     <string name="common_list">Playlist</string>
     <string name="users_list">Users</string>

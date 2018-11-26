@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/list_music"
-    >
+    tools:showIn="@layout/list_music">
 
     <RelativeLayout
         android:id="@+id/view_background"
@@ -20,8 +19,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/padd_10"
-            android:src="@drawable/ic_delete"
-            android:contentDescription="delete_icon"/>
+            android:contentDescription="delete_icon"
+            android:src="@drawable/ic_delete" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,9 +46,9 @@
             android:layout_width="@dimen/thumbnail"
             android:layout_height="@dimen/thumbnail"
             android:layout_marginEnd="@dimen/activity_padding_horizontal"
+            android:contentDescription="music_icon"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_music"
-            android:contentDescription="music_icon"/>
+            android:src="@drawable/ic_music" />
 
         <TextView
             android:id="@+id/title"
@@ -65,29 +64,53 @@
             android:id="@+id/artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/title"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="3dp"
-            android:layout_below="@id/title"
             android:layout_toEndOf="@id/thumbnail"
             android:textSize="@dimen/medium_text" />
 
         <TextView
             android:id="@+id/suggest_by"
-            android:layout_marginTop="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="37dp"
             android:layout_toEndOf="@id/thumbnail"
-            android:textSize="@dimen/little_text" />
+            android:textSize="@dimen/medium_text" />
 
         <TextView
             android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/colorAccent"
+            android:layout_alignParentBottom="true"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ip_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_toEndOf="@id/thumbnail"
+            android:textSize="@dimen/little_text" />
+
+        <TextView
+            android:id="@+id/mac_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/thumbnail"
+            android:textSize="@dimen/little_text" />
+
+        <TextView
+            android:id="@+id/id_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="37dp"
+            android:layout_toEndOf="@id/thumbnail"
+            android:textSize="@dimen/little_text"/>
 
     </RelativeLayout>
 </FrameLayout>

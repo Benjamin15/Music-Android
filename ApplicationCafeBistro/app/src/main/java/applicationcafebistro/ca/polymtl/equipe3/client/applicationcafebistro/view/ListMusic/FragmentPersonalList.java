@@ -1,6 +1,7 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,12 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.ListMusicAdapter;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.MusicListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.RecyclerMusicTouchHelper;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarSuccess;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.ServiceGetList;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 
 public class FragmentPersonalList extends Fragment {
     private View view;
@@ -53,5 +57,18 @@ public class FragmentPersonalList extends Fragment {
         initRecyclerView();
         initSnackBar();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        adjustInterface();
+    }
+
+    private void adjustInterface(){
+        if(DeviceInformation.isAdmin){
+            CoordinatorLayout layout = getView().findViewById(R.id.personal_list_fragment);
+            layout.removeView(getView().findViewById(R.id.floating_add_music));
+        }
     }
 }

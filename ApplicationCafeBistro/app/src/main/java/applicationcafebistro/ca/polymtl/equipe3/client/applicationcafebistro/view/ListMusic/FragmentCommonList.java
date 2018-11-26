@@ -1,6 +1,7 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.RecyclerMusicTouchHelper;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.snackbar.SnackBarSuccess;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.ServiceGetList;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 
 
 public class FragmentCommonList extends Fragment {
@@ -50,6 +52,13 @@ public class FragmentCommonList extends Fragment {
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerMusicTouchHelper(0, ItemTouchHelper.LEFT, listenerMusic);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        adjustInterface();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,5 +66,12 @@ public class FragmentCommonList extends Fragment {
         initRecyclerView();
         initSnackBar();
         return view;
+    }
+
+    private void adjustInterface(){
+        if(DeviceInformation.isAdmin){
+            CoordinatorLayout layout = getView().findViewById(R.id.common_list_fragment);
+            layout.removeView(getView().findViewById(R.id.floating_add_music));
+        }
     }
 }

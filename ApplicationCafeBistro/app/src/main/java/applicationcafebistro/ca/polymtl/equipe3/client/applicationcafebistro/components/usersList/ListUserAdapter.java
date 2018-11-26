@@ -14,6 +14,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.mod
 
 public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.MyViewHolder> implements UserTouchHelperAdapter {
     private final ArrayList<User> cartListUser;
+
     public ListUserAdapter() {
         this.cartListUser = new ArrayList<>();
     }
@@ -28,9 +29,9 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final User user = cartListUser.get(position);
-        holder.name.setText(user.getName());
-        holder.ip.setText(user.getIp());
-        holder.mac.setText(user.getMac());
+        holder.name.setText("Nom :" + user.getName());
+        holder.ip.setText("Adresse ip :" + user.getIp());
+        holder.mac.setText("Adresse mac :" + user.getMac());
 
     }
 
@@ -40,14 +41,14 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.MyView
     }
 
     public void removeItem(int position) {
-            cartListUser.remove(position);
-            notifyItemRemoved(position);
+        cartListUser.remove(position);
+        notifyItemRemoved(position);
     }
 
     @Override
     public void onItemDismiss(int position) {
-            cartListUser.remove(position);
-            notifyItemRemoved(position);
+        cartListUser.remove(position);
+        notifyItemRemoved(position);
     }
 
     @Override
@@ -80,7 +81,7 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.MyView
             name = view.findViewById(R.id.name);
             ip = view.findViewById(R.id.ip);
             mac = view.findViewById(R.id.mac);
-            userItemView = view.findViewById(R.id.user_item_view_layout);
+            userItemView = view.findViewById(R.id.view_foreground);
         }
     }
 }

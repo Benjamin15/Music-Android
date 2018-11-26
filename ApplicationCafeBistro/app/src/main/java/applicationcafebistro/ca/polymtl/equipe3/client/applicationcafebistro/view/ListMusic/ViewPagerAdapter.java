@@ -31,14 +31,14 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
         return titlesList.size();
     }
 
-    public void addFragment(Fragment fragment,String title){
+    public void addFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         titlesList.add(title);
     }
 
-    public boolean checkIfContains(String title){
-        for(int i=0;i<titlesList.size();i++){
-            if(title == titlesList.get(i)){
+    public boolean checkIfContains(String title) {
+        for (int i = 0; i < titlesList.size(); i++) {
+            if (title == titlesList.get(i)) {
                 return true;
             }
         }

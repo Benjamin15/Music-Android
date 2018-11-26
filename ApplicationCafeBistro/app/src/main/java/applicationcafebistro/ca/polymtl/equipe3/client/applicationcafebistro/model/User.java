@@ -18,14 +18,20 @@ public class User {
         this.id = id;
     }
 
+    public User(String ip, String mac, int id) {
+        this.ip = ip;
+        this.mac = mac;
+        this.id = id;
+    }
+
     public User(String name, int id) {
         this.name = name;
         this.id = id;
     }
 
-    public User(String name, int id,String mac,boolean isBlocked) {
+    public User(String name, String ip,String mac,boolean isBlocked) {
         this.name = name;
-        this.id = id;
+        this.ip = ip;
         this.mac = mac;
         this.isBlocked = isBlocked;
     }
