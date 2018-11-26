@@ -68,13 +68,15 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
         viewPagerAdapter.addFragment(new FragmentCommonList(),getResources().getString(R.string.common_list));
         if(!DeviceInformation.isAdmin){
             viewPagerAdapter.addFragment(new FragmentPersonalList(),getResources().getString(R.string.personal_list));
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic_personal);
-            icons.add(R.drawable.ic_personal);
         }
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         Objects.requireNonNull(tabLayout.getTabAt(0)).setIcon(R.drawable.ic_common);
         icons.add(R.drawable.ic_common);
+        if(!DeviceInformation.isAdmin){
+            tabLayout.getTabAt(1).setIcon(R.drawable.ic_personal);
+            icons.add(R.drawable.ic_personal);
+        }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

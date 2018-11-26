@@ -18,6 +18,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 
 public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyViewHolder> implements MusicTouchHelperAdapter {
     private final ArrayList<Music> cartListMusic;
+
     public ListMusicAdapter() {
         this.cartListMusic = new ArrayList<>();
     }
@@ -32,13 +33,15 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Music music = cartListMusic.get(position);
-        holder.title.setText("Titre :"+ music.getTitle());
-        holder.artist.setText("Artiste :"+music.getArtist());
-        holder.duration.setText("Durée :"+music.getDuration());
-        holder.suggest_by.setText("Proposée par :"+music.getUser().getName());
-        holder.mac.setText("Mac :"+music.getUser().getMac());
-        holder.ip.setText("Id :"+Integer.toString(music.getUser().getId()));
-        holder.id.setText("Ip :"+music.getUser().getIp());
+        holder.title.setText("Titre :" + music.getTitle());
+        holder.artist.setText("Artiste :" + music.getArtist());
+        holder.duration.setText("Durée :" + music.getDuration());
+        holder.suggest_by.setText("Proposée par :" + music.getUser().getName());
+        if (DeviceInformation.isAdmin) {
+            holder.mac.setText("Mac :" + music.getUser().getMac());
+            holder.ip.setText("Id :" + Integer.toString(music.getUser().getId()));
+            holder.id.setText("Ip :" + music.getUser().getIp());
+        }
         System.out.println("idUser : " + DeviceInformation.idUser);
         if (music.getUser().getId() == DeviceInformation.idUser)
             holder.viewForeground.setBackgroundResource(R.color.my_music_in_list);
@@ -52,7 +55,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     }
 
     public void removeItem(int position) {
-        if(cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin){
+        if (cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
             cartListMusic.remove(position);
             notifyItemRemoved(position);
         }
@@ -60,7 +63,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
 
     @Override
     public void onItemDismiss(int position) {
-        if(cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
+        if (cartListMusic.get(position).getUser().getId() == DeviceInformation.idUser || DeviceInformation.isAdmin) {
             cartListMusic.remove(position);
             notifyItemRemoved(position);
         }
@@ -103,6 +106,11 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
             mac = view.findViewById(R.id.mac_user);
             ip = view.findViewById(R.id.ip_user);
             id = view.findViewById(R.id.id_user);
+            if (!DeviceInformation.isAdmin) {
+                mac.setVisibility(View.GONE);
+                ip.setVisibility(View.GONE);
+                id.setVisibility(View.GONE);
+            }
         }
     }
 }

@@ -74,7 +74,7 @@
             android:id="@+id/suggest_by"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="37dp"
             android:layout_toEndOf="@id/thumbnail"
             android:textSize="@dimen/medium_text" />
 
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="280dp"
-            android:layout_marginTop="60dp"
+            android:layout_alignParentBottom="true"
             android:layout_toEndOf="@id/thumbnail"
             android:textSize="@dimen/little_text" />
 
@@ -108,9 +108,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="280dp"
+            android:layout_marginTop="37dp"
             android:layout_toEndOf="@id/thumbnail"
-            android:textSize="@dimen/little_text"
-            android:layout_marginTop="120dp"/>
+            android:textSize="@dimen/little_text"/>
 
     </RelativeLayout>
 </FrameLayout>
