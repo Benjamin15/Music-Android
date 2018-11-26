@@ -11,7 +11,8 @@
     <string name="suggest_by_json">proposeePar</string>
     <string name="user_id">IdProprietaire</string>
     <string name="user_name">name</string>
+    <string name="user_nom">nom</string>
     <string name="user_ip">ip</string>
     <string name="user_mac">mac</string>
-    <string name="user_blocked">isBlocked</string>
+    <string name="user_blocked">is_blocked</string>
 </resources>
