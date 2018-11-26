@@ -90,6 +90,7 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
         if(DeviceInformation.isAdmin) {
             toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black_color));
         }else {
+            toggle.setDrawerIndicatorEnabled(false);
             toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorAccent));
         }
         drawerLayout.addDrawerListener(toggle);
