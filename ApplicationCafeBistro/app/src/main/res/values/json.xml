@@ -14,4 +14,7 @@
     <string name="user_ip">ip</string>
     <string name="user_mac">mac</string>
     <string name="user_blocked">isBlocked</string>
+    <string name="volume">volume</string>
+    <string name="sourdine">sourdine</string>
+
 </resources>

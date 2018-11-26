@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_line_music_item">2</integer>
+    <integer name="third">33</integer>
+    <integer name="two_thirds">66</integer>
+
+</resources>

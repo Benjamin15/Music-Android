@@ -12,6 +12,7 @@
     <string name="Confirmation">Confirmation</string>
     <string name="login_text">Name</string>
     <string name="admin_username">admin</string>
+    <string name="pc">pc</string>
     <string name="sign_up">Submit now</string>
     <string name="supprimer">supprimer</string>
     <string name="banish">banish</string>
