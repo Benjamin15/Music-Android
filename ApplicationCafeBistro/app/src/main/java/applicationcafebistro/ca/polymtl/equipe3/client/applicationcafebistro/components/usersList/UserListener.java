@@ -54,6 +54,14 @@ public class UserListener implements RecyclerUserTouchHelperListener, Components
         map.put(context.getString(R.string.mac), adapter.getUsers().get(position).getMac());
         map.put(context.getString(R.string.user_name), adapter.getUsers().get(position).getName());
         communication.send(map);
+        final String GET = "GET";
+        CommunicationRest communicationUpdate = new CommunicationRest(
+                ListMusic.view.getResources().getString(R.string.list_users),
+                GET,
+                ListMusic.view,
+                FragmentUsersList.listenerUsers, FragmentBlackList.listenerUsers
+        );
+        communicationUpdate.send(null);
     }
     @Override
     public void onMoved(RecyclerView.ViewHolder viewHolder, int positionStart, int positionEnd) {

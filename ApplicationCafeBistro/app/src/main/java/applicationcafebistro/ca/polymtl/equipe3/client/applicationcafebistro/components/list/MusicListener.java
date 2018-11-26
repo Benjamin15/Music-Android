@@ -73,14 +73,6 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
                         ListMusic.view);
                 communication.send(body);
                 adapter.onItemMove(positionStart, positionEnd);
-                final String GET = "GET";
-                CommunicationRest communicationUpdate = new CommunicationRest(
-                        ListMusic.view.getResources().getString(R.string.list_users),
-                        GET,
-                        ListMusic.view,
-                        FragmentUsersList.listenerUsers, FragmentBlackList.listenerUsers
-                );
-                communicationUpdate.send(null);
             }
         }
     }
