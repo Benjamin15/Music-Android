@@ -33,7 +33,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 public class IdentificationButton extends AppCompatButton
         implements View.OnClickListener, ComponentsListener {
 
-    private String login;
+    private String login = " ";
     private Dialog dialog;
     private AdminLoginButton adminLoginButton;
 
@@ -50,6 +50,7 @@ public class IdentificationButton extends AppCompatButton
     public IdentificationButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+        this.login = "";
     }
 
     private void init() {
