@@ -14,23 +14,24 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.model.User;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentBlackList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentUsersList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 public class UserListener implements RecyclerUserTouchHelperListener, ComponentsListener {
 
     private final ListUserAdapter adapter;
+    private Context context;
     private String fragmentType;
-    public UserListener(ListUserAdapter adapter,String fragment) {
+    public UserListener(ListUserAdapter adapter,String fragment,Context context) {
         this.adapter = adapter;
         fragmentType = fragment;
+        this.context = context;
     }
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int position) {
         final String POST = "POST";
-        Context context = FragmentUsersList.view.getContext();
         if (viewHolder instanceof ListUserAdapter.MyViewHolder) {
             if(fragmentType.equals(context.getString(R.string.users_list)) ) {
                 restRequest(ListMusic.view.getResources().getString(R.string.block_user),POST,
@@ -45,7 +46,7 @@ public class UserListener implements RecyclerUserTouchHelperListener, Components
     }
     private void restRequest(String url,String POST,int position, Context context){
         CommunicationRest communication = new CommunicationRest(
-                ListMusic.view.getResources().getString(R.string.block_user),
+                url,
                 POST,
                 ListMusic.view);
         HashMap map = new HashMap();
@@ -57,7 +58,7 @@ public class UserListener implements RecyclerUserTouchHelperListener, Components
     @Override
     public void onMoved(RecyclerView.ViewHolder viewHolder, int positionStart, int positionEnd) {
         if (viewHolder instanceof ListUserAdapter.MyViewHolder) {
-            adapter.onItemMove(positionStart, positionEnd);
+           // adapter.onItemMove(positionStart, positionEnd);
         }
     }
 
@@ -65,7 +66,7 @@ public class UserListener implements RecyclerUserTouchHelperListener, Components
         for (int i = 0; i < array.length(); i++) {
             try {
                 JSONObject object = (JSONObject) array.get(i);
-                if(object.getBoolean(context.getString(R.string.user_blocked))) {
+                if(object.getInt(context.getString(R.string.user_blocked)) == 1) {
                     User user = craftUser(object, context);
                     users.add(user);
                 }
@@ -106,7 +107,6 @@ public class UserListener implements RecyclerUserTouchHelperListener, Components
     @Override
     public void update(JSONObject json) {
         JSONArray array = null;
-        Context context = FragmentUsersList.view.getContext();
         ArrayList<User> users = new ArrayList<>();
         try {
             array = json.getJSONArray(context.getString(R.string.users_json));
