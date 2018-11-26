@@ -5,5 +5,7 @@
     <string name="delete_music">http://132.207.89.35:80/superviseur/chanson/</string>
     <string name="send_music">http://132.207.89.35:80/usager/chanson/</string>
     <string name="log_admin">http://192.168.2.54:8080/superviseur/login/</string>
+    <string name="reverse">http://192.168.2.54:8080/superviseur/inversion</string>
+
 </resources>
 

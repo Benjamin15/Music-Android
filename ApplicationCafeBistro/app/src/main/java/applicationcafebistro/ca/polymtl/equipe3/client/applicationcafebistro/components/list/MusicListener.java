@@ -8,6 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
@@ -46,7 +48,16 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
 
     @Override
     public void onMoved(RecyclerView.ViewHolder viewHolder, int positionStart, int positionEnd) {
+        final String POST = "POST";
+        Map body = new HashMap<String, Integer>();
+        body.put("une", adapter.getMusics().get(positionStart).getId());
+        body.put("autre", adapter.getMusics().get(positionEnd).getId());
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
+            CommunicationRest communication = new CommunicationRest(
+                    ListMusic.view.getResources().getString(R.string.reverse),
+                    POST,
+                    ListMusic.view);
+            communication.send(body);
             adapter.onItemMove(positionStart, positionEnd);
         }
     }
