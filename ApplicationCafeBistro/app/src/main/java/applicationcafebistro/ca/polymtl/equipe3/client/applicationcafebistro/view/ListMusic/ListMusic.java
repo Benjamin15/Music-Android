@@ -2,15 +2,11 @@ package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vi
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Debug;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +22,6 @@ import java.util.Objects;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.dialog.DialogAdapter;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.MusicListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.ServiceGetList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentBlackList;
@@ -132,9 +126,9 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
                 }
                 break;
             case R.id.statistics:
-                if(!viewPagerAdapter.checkIfContains(getResources().getString(R.string.statistics))) {
+                if(!viewPagerAdapter.checkIfContains(getResources().getString(R.string.statistics_string))) {
                     createFragment(new FragmentStatistics(),getResources().getString(
-                            R.string.statistics),R.drawable.ic_statistics_fragment);
+                            R.string.statistics_string),R.drawable.ic_statistics_fragment);
                 }
                 break;
             case R.id.settings:
