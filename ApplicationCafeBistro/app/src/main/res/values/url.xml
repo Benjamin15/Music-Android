@@ -18,8 +18,8 @@
     <string name="reverse">http://192.168.2.48:8080/superviseur/inversion</string>
     <string name="logout_admin">http://192.168.2.48:8080/superviseur/logout</string>
     <string name="admin_password">http://192.168.2.48:8080/superviseur/changement_mdp</string>
+    <string name="statistics">http://192.168.2.48:8080/superviseur/statistiques</string>
     <string name="GET">GET</string>
     <string name="POST">POST</string>
-
 </resources>
 
