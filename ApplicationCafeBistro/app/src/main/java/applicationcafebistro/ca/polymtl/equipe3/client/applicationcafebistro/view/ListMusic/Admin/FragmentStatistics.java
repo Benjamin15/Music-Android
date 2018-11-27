@@ -14,9 +14,6 @@ import org.json.JSONObject;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.FragmentCommonList;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.FragmentPersonalList;
-import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 public class FragmentStatistics extends Fragment implements ComponentsListener {
     private View view;
@@ -46,7 +43,7 @@ public class FragmentStatistics extends Fragment implements ComponentsListener {
     public void getStatistics(){
         final String GET = "GET";
         CommunicationRest communication = new CommunicationRest(
-                getContext().getString(R.string.statistics),
+                getContext().getString(R.string.statistics_string),
                 GET,
                 this.view,
                 this
