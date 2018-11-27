@@ -49,7 +49,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
                 adapter.removeItem(viewHolder.getAdapterPosition());
             } else {
                 CommunicationRest communication = new CommunicationRest(
-                        ListMusic.view.getResources().getString(R.string.delete_music) +
+                        ListMusic.view.getResources().getString(R.string.delete_music_admin) +
                                 adapter.getMusics().get(position).getId(),
                         DELETE,
                         ListMusic.view);
