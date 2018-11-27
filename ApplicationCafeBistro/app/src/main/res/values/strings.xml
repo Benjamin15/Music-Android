@@ -13,6 +13,7 @@
     <string name="login_text">Name</string>
     <string name="unban">Unban</string>
     <string name="admin_username">admin</string>
+    <string name="pc">pc</string>
     <string name="sign_up">Submit now</string>
     <string name="supprimer">supprimer</string>
     <string name="banish">Banish</string>
@@ -41,4 +42,6 @@
     <string name="statistics_users">utilisateurs</string>
     <string name="statistics_deleted_songs">elimines</string>
     <string name="statistics_average_time">temps</string>
+    <string name="volume_status_string">Volume: </string>
+    <string name="mute_status_string">Sourdine: </string>
 </resources>

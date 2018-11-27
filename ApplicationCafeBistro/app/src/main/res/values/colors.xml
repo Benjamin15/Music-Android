@@ -22,5 +22,5 @@
     <color name="statistics_yellow">#ffc73b</color>
     <color name="statistics_blue">#424b99</color>
     <color name="statistics_green">#44c283</color>
-
+    <color name="colorSeekBar">#f4a70c</color>
 </resources>
