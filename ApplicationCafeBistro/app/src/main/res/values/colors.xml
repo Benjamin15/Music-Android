@@ -18,4 +18,5 @@
     <color name="light_darker_orange">#c6c4c2</color>
     <color name="lighterGrey">#a4a4a4</color>
     <color name="admin_login_dialog">#232323</color>
+    <color name="colorSeekBar">#f4a70c</color>
 </resources>

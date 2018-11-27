@@ -13,6 +13,7 @@
     <string name="login_text">Name</string>
     <string name="unban">Unban</string>
     <string name="admin_username">admin</string>
+    <string name="pc">pc</string>
     <string name="sign_up">Submit now</string>
     <string name="supprimer">supprimer</string>
     <string name="banish">Banish</string>
@@ -37,4 +38,6 @@
     <string name="users_list">Users</string>
     <string name="black_list">BlackList</string>
     <string name="admin_welcome_message">Admin privileges have been accorded to you</string>
+    <string name="volume_status_string">Volume: </string>
+    <string name="mute_status_string">Sourdine: </string>
 </resources>

@@ -1,10 +1,10 @@
 package applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic;
 
 import android.content.Intent;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -69,9 +69,14 @@ public class FragmentCommonList extends Fragment {
     }
 
     private void adjustInterface(){
+        CoordinatorLayout layout = getView().findViewById(R.id.common_list_fragment);
         if(DeviceInformation.isAdmin){
-            CoordinatorLayout layout = getView().findViewById(R.id.common_list_fragment);
             layout.removeView(getView().findViewById(R.id.floating_add_music));
+        }
+        else{
+            layout.removeView(getView().findViewById(R.id.floating_sound_button));
+            layout.removeView(getView().findViewById(R.id.seekBar));
+            layout.removeView(getView().findViewById(R.id.floating_get_volume_button));
         }
     }
 }
