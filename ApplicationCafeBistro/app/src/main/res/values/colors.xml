@@ -18,4 +18,9 @@
     <color name="light_darker_orange">#c6c4c2</color>
     <color name="lighterGrey">#a4a4a4</color>
     <color name="admin_login_dialog">#232323</color>
+    <color name="statistics_orange">#ff6e35</color>
+    <color name="statistics_yellow">#ffc73b</color>
+    <color name="statistics_blue">#424b99</color>
+    <color name="statistics_green">#44c283</color>
+
 </resources>

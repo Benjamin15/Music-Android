@@ -37,4 +37,8 @@
     <string name="users_list">Users</string>
     <string name="black_list">BlackList</string>
     <string name="admin_welcome_message">Admin privileges have been accorded to you</string>
+    <string name="statistics_songs">chansons</string>
+    <string name="statistics_users">utilisateurs</string>
+    <string name="statistics_deleted_songs">elimines</string>
+    <string name="statistics_average_time">temps</string>
 </resources>
