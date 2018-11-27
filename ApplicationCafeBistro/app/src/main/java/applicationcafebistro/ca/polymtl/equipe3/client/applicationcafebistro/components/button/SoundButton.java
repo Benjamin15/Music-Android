@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.View;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
@@ -16,6 +17,8 @@ public class SoundButton extends FloatingActionButton implements View.OnClickLis
     private Integer tag;
     private Integer previousTag;
     private Integer progress;
+    private CommunicationRest communicationRest;
+    private boolean isInitialized;
 
     public SoundButton(Context context) {
         super(context);
@@ -37,8 +40,7 @@ public class SoundButton extends FloatingActionButton implements View.OnClickLis
 
     private void init() {
         this.setOnClickListener(this);
-        setVolumeStatusIcon(0);
-        previousTag = tag;
+        initVolume();
     }
 
     public void setVolumeStatusIcon(int progress){
@@ -65,22 +67,10 @@ public class SoundButton extends FloatingActionButton implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if(tag.equals(R.drawable.ic_volume_muted)){
-            //unmute(view);
-            CommunicationRest communication = new CommunicationRest(
-                    getResources().getString(R.string.unmute),
-                    getResources().getString(R.string.POST),
-                    view,
-                    this);
-            communication.send();
+            unmute(view);
         }
         else{
-            //mute(view);
-            CommunicationRest communication = new CommunicationRest(
-                    getResources().getString(R.string.mute),
-                    getResources().getString(R.string.POST),
-                    view,
-                    this);
-            communication.send();
+            mute(view);
         }
     }
 
@@ -104,22 +94,40 @@ public class SoundButton extends FloatingActionButton implements View.OnClickLis
         communication.send();
     }
 
+    private void initVolume(){
+        CommunicationRest communication = new CommunicationRest(
+                getResources().getString(R.string.get_volume) ,
+                getResources().getString(R.string.GET),
+                this,
+                this);
+        communication.send();
+    }
+
     @Override
     public void update(JSONObject json) {
-        if(tag.equals(R.drawable.ic_volume_muted)){
-            if(progress.equals(0)){
-                tag = R.drawable.ic_volume_third;
-                this.setImageResource(R.drawable.ic_volume_third);
+        try {
+            if(!isInitialized) {
+                isInitialized = true;
+                this.setVolumeStatusIcon(json.getInt(getResources().getString(R.string.volume)));
+            }
+            else if(tag.equals(R.drawable.ic_volume_muted)){
+                if(progress.equals(0)){
+                    tag = R.drawable.ic_volume_third;
+                    this.setImageResource(R.drawable.ic_volume_third);
+                }
+                else{
+                    this.setImageResource(previousTag);
+                    tag = previousTag;
+                }
             }
             else{
-                this.setImageResource(previousTag);
-                tag = previousTag;
+                previousTag = tag;
+                this.setImageResource(R.drawable.ic_volume_muted);
+                tag = R.drawable.ic_volume_muted;
             }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        else{
-            previousTag = tag;
-            this.setImageResource(R.drawable.ic_volume_muted);
-            tag = R.drawable.ic_volume_muted;
-        }
+
     }
 }

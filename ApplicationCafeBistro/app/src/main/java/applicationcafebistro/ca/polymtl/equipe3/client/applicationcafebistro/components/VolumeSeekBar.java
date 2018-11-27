@@ -17,8 +17,9 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 
 public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar implements SeekBar.OnSeekBarChangeListener, ComponentsListener {
     private Context context;
-    private SoundButton soundButton;
+    public static SoundButton soundButton;
     private int prevProgress;
+    private boolean isInitialized = false;
 
     public VolumeSeekBar(Context context) {
         super(context);
@@ -50,17 +51,24 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-        if(soundButton == null)
-            soundButton = ((Activity)context).findViewById(R.id.floating_sound_button);
-        soundButton.setVolumeStatusIcon(progress);
-        int diff = progress - prevProgress;
-        if(diff > 0){
-            increaseVolume(diff);
+        if(isInitialized){
+            if(soundButton == null){
+                soundButton = ((Activity)context).findViewById(R.id.floating_sound_button);
+                this.soundButton.setVolumeStatusIcon(progress);
+            }
+            else{
+                this.soundButton.setVolumeStatusIcon(progress);
+            }
+            int diff = progress - prevProgress;
+            if(diff > 0){
+                increaseVolume(diff);
+            }
+            else{
+                decreaseVolume(Math.abs(diff));
+            }
+            prevProgress = progress;
         }
-        else{
-            decreaseVolume(Math.abs(diff));
-        }
-        prevProgress = progress;
+
     }
 
     @Override
@@ -71,6 +79,10 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
+    }
+
+    public void setInitialized(boolean initialized) {
+        isInitialized = initialized;
     }
 
     private void increaseVolume(int percent){
@@ -97,8 +109,12 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
     @Override
     public void update(JSONObject json) {
         try {
-            this.setProgress(json.getInt("volume"));
-            prevProgress = this.getProgress();
+            if(!isInitialized){
+                int volume = json.getInt("volume");
+                this.setProgress(volume);
+                isInitialized = true;
+                prevProgress = this.getProgress();
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
