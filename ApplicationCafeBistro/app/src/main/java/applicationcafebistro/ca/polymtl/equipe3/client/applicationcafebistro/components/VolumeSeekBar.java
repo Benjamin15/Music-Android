@@ -8,7 +8,6 @@ import android.widget.SeekBar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
@@ -23,22 +22,24 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
 
     public VolumeSeekBar(Context context) {
         super(context);
-        init();
         this.context = context;
+        init();
     }
 
     public VolumeSeekBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         init();
     }
 
     public VolumeSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.context = context;
         init();
     }
 
     private void init(){
-        soundButton = ((Activity)context).findViewById(R.id.floating_sound_button);
+        this.setOnSeekBarChangeListener(this);
         CommunicationRest communication = new CommunicationRest(
                 getResources().getString(R.string.get_volume) ,
                 getResources().getString(R.string.GET),
@@ -49,6 +50,8 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+        if(soundButton == null)
+            soundButton = ((Activity)context).findViewById(R.id.floating_sound_button);
         soundButton.setVolumeStatusIcon(progress);
         int diff = progress - prevProgress;
         if(diff > 0){

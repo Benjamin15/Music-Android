@@ -26,7 +26,7 @@
         android:focusable="true"
         app:backgroundTint="@color/colorAccent"/>
 
-    <SeekBar
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.VolumeSeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

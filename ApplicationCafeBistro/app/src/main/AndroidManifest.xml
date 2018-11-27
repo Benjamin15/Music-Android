@@ -19,7 +19,7 @@
         android:largeHeap="true"
         >
         <activity
-            android:name=".view.ListMusic.ListMusic"
+            android:name=".view.Identification"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
@@ -28,8 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.Identification"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".view.ListMusic.ListMusic"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".view.Explorer.Explorer"
             android:screenOrientation="portrait"/>
 
