@@ -45,7 +45,7 @@ public class FragmentUsersList extends Fragment {
     private void initRecyclerView() {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_users_list);
         ListUserAdapter mAdapter = new ListUserAdapter();
-        listenerUsers = new UserListener(mAdapter, getContext().getString(R.string.users_list));
+        listenerUsers = new UserListener(mAdapter, getContext().getString(R.string.users_list),getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
