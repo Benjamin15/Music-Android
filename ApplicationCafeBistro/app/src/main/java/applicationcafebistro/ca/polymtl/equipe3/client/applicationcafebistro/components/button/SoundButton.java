@@ -36,9 +36,9 @@ public class SoundButton extends FloatingActionButton implements View.OnClickLis
     }
 
     private void init() {
-        setOnClickListener(this);
-        previousTag = R.drawable.ic_volume_third;
+        this.setOnClickListener(this);
         setVolumeStatusIcon(0);
+        previousTag = tag;
     }
 
     public void setVolumeStatusIcon(int progress){
@@ -65,28 +65,26 @@ public class SoundButton extends FloatingActionButton implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if(tag.equals(R.drawable.ic_volume_muted)){
-            mute(view);
+            //unmute(view);
+            CommunicationRest communication = new CommunicationRest(
+                    getResources().getString(R.string.unmute),
+                    getResources().getString(R.string.POST),
+                    view,
+                    this);
+            communication.send();
         }
         else{
-            unmute(view);
+            //mute(view);
+            CommunicationRest communication = new CommunicationRest(
+                    getResources().getString(R.string.mute),
+                    getResources().getString(R.string.POST),
+                    view,
+                    this);
+            communication.send();
         }
     }
 
-    @Override
-    public void update(JSONObject json) {
-        if(tag.equals(R.drawable.ic_volume_muted)){
-            if(progress.equals(0)){
-                this.setImageResource(R.drawable.ic_volume_third);
-            }
-            else{
-                this.setImageResource(previousTag);
-            }
-        }
-        else{
-            previousTag = tag;
-            setVolumeStatusIcon(0);
-        }
-    }
+
 
     public void mute(View view){
         CommunicationRest communication = new CommunicationRest(
@@ -104,7 +102,24 @@ public class SoundButton extends FloatingActionButton implements View.OnClickLis
                 view,
                 this);
         communication.send();
+    }
 
-
+    @Override
+    public void update(JSONObject json) {
+        if(tag.equals(R.drawable.ic_volume_muted)){
+            if(progress.equals(0)){
+                tag = R.drawable.ic_volume_third;
+                this.setImageResource(R.drawable.ic_volume_third);
+            }
+            else{
+                this.setImageResource(previousTag);
+                tag = previousTag;
+            }
+        }
+        else{
+            previousTag = tag;
+            this.setImageResource(R.drawable.ic_volume_muted);
+            tag = R.drawable.ic_volume_muted;
+        }
     }
 }

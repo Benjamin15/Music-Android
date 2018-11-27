@@ -77,7 +77,7 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
         HashMap map = new HashMap();
         map.put(getContext().getString(R.string.pc), percent);
         CommunicationRest communication = new CommunicationRest(
-                getResources().getString(R.string.increase_volume) ,
+                getResources().getString(R.string.increase_volume) + Integer.toString(percent) ,
                 getResources().getString(R.string.POST),
                 this,
                 this);
@@ -88,7 +88,7 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
         HashMap map = new HashMap();
         map.put(getContext().getString(R.string.pc), percent);
         CommunicationRest communication = new CommunicationRest(
-                getResources().getString(R.string.decrease_volume) ,
+                getResources().getString(R.string.decrease_volume) + Integer.toString(percent) ,
                 getResources().getString(R.string.POST),
                 this,
                 this);
@@ -98,7 +98,6 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
     public void update(JSONObject json) {
         try {
             this.setProgress(json.getInt("volume"));
-            soundButton.setVolumeStatusIcon(this.getProgress());
             prevProgress = this.getProgress();
         } catch (JSONException e) {
             e.printStackTrace();
