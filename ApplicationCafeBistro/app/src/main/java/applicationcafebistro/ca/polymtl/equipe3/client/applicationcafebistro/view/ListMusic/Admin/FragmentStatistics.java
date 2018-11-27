@@ -43,7 +43,7 @@ public class FragmentStatistics extends Fragment implements ComponentsListener {
     public void getStatistics(){
         final String GET = "GET";
         CommunicationRest communication = new CommunicationRest(
-                getContext().getString(R.string.statistics_string),
+                getContext().getString(R.string.statistics_url),
                 GET,
                 this.view,
                 this
