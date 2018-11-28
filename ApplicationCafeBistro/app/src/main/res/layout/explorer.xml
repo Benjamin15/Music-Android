@@ -14,7 +14,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"
-        app:backgroundTint="@color/colorAccent"
+        app:backgroundTint="@color/black_color"
         app:srcCompat="@drawable/ic_quit_explorer" />
 
     <ListView

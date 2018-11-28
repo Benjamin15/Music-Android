@@ -32,10 +32,6 @@ public class FragmentStatistics extends Fragment implements ComponentsListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.statistics_fragment, container, false);
-        postedSongs =  view.findViewById(R.id.posted_songs);
-        averageTime =  view.findViewById(R.id.average_time);
-        deletedSongs =  view.findViewById(R.id.deleted_songs);
-        users = view.findViewById(R.id.distinct_users);
         getStatistics();
         return view;
     }
@@ -45,7 +41,7 @@ public class FragmentStatistics extends Fragment implements ComponentsListener {
         CommunicationRest communication = new CommunicationRest(
                 getContext().getString(R.string.statistics_url),
                 GET,
-                this.view,
+                view,
                 this
         );
         communication.send(null);
@@ -54,10 +50,14 @@ public class FragmentStatistics extends Fragment implements ComponentsListener {
     @Override
     public void update(JSONObject json) {
         try {
-            postedSongs.setText(json.getInt(getContext().getString(R.string.statistics_songs)));
+            postedSongs =  view.findViewById(R.id.posted_songs);
+            averageTime =  view.findViewById(R.id.average_time);
+            deletedSongs =  view.findViewById(R.id.deleted_songs);
+            users = view.findViewById(R.id.distinct_users);
+            postedSongs.setText(Integer.toString(json.getInt(getContext().getString(R.string.statistics_songs))));
             averageTime.setText(json.getString(getContext().getString(R.string.statistics_average_time)));
-            deletedSongs.setText(json.getInt(getContext().getString(R.string.statistics_deleted_songs)));
-            users.setText(json.getInt(getContext().getString(R.string.statistics_users)));
+            deletedSongs.setText(Integer.toString(json.getInt(getContext().getString(R.string.statistics_deleted_songs))));
+            users.setText(Integer.toString(json.getInt(getContext().getString(R.string.statistics_users))));
         } catch (JSONException e) {
             e.printStackTrace();
         }
