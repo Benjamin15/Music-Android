@@ -41,7 +41,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
         if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
             if (!DeviceInformation.isAdmin) {
                 CommunicationRest communication = new CommunicationRest(
-                        ListMusic.view.getResources().getString(R.string.delete_music_admin) + Integer.toString(DeviceInformation.idUser) + "/" +
+                        ListMusic.view.getResources().getString(R.string.delete_music) + Integer.toString(DeviceInformation.idUser) + "/" +
                                 adapter.getMusics().get(position).getId(),
                         DELETE,
                         ListMusic.view);
