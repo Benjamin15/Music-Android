@@ -46,7 +46,7 @@ public class AdminLoginButton extends AppCompatButton
         map.put(getContext().getString(R.string.username),getContext().getString(R.string.admin_username) );
         map.put(getContext().getString(R.string.password), password);
         CommunicationRest communication = new CommunicationRest(
-                getResources().getString(R.string.log_admin)+ getContext().getString(R.string.body),
+                getResources().getString(R.string.log_admin),
                 POST,
                 view,
                 this);

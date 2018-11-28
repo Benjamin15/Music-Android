@@ -61,7 +61,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
 
     @Override
     public void onMoved(RecyclerView.ViewHolder viewHolder, int positionStart, int positionEnd) {
-        if (DeviceInformation.isAdmin) {
+        if (DeviceInformation.isAdmin && (positionStart != 0 || positionEnd != 0)) {
             final String POST = "POST";
             Map body = new HashMap<String, Integer>();
             body.put("une", adapter.getMusics().get(positionStart).getId());
