@@ -70,4 +70,15 @@ public class FragmentBlackList extends Fragment {
         //  initSnackBar();
         return view;
     }
+
+    private void getBlackList(){
+        final String GET = "GET";
+        CommunicationRest communication = new CommunicationRest(
+                getResources().getString(R.string.list_users),
+                GET,
+                view,
+                FragmentUsersList.listenerUsers, FragmentBlackList.listenerUsers
+        );
+        communication.send(null);
+    }
 }

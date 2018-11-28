@@ -60,6 +60,11 @@ public class FragmentUsersList extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.users_list_fragment, container, false);
         initRecyclerView();
+        getUsersList();
+//            initSnackBar();
+        return view;
+    }
+    private void getUsersList(){
         final String GET = "GET";
         CommunicationRest communication = new CommunicationRest(
                 getResources().getString(R.string.list_users),
@@ -68,8 +73,5 @@ public class FragmentUsersList extends Fragment {
                 FragmentUsersList.listenerUsers, FragmentBlackList.listenerUsers
         );
         communication.send(null);
-//            initSnackBar();
-        return view;
     }
-
 }

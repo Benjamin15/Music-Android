@@ -38,7 +38,7 @@ public class MusicListener implements RecyclerMusicTouchHelperListener, Componen
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int position) {
         final String DELETE = "DELETE";
-        if (viewHolder instanceof ListMusicAdapter.MyViewHolder) {
+        if (viewHolder instanceof ListMusicAdapter.MyViewHolder && position != 0) {
             if (!DeviceInformation.isAdmin) {
                 CommunicationRest communication = new CommunicationRest(
                         ListMusic.view.getResources().getString(R.string.delete_music) + Integer.toString(DeviceInformation.idUser) + "/" +
