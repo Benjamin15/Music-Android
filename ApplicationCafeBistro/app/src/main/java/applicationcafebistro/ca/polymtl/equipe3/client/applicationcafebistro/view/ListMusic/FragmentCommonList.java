@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.RefreshComponent;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.ListMusicAdapter;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.MusicListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.list.RecyclerMusicTouchHelper;
@@ -76,7 +77,10 @@ public class FragmentCommonList extends Fragment {
         else{
             layout.removeView(getView().findViewById(R.id.floating_sound_button));
             layout.removeView(getView().findViewById(R.id.seekBar));
-            layout.removeView(getView().findViewById(R.id.floating_get_volume_button));
+            RefreshComponent refreshComponent = getView().findViewById(R.id.refresher);
+            refreshComponent.setRefreshing(false);
+            refreshComponent.setEnabled(false);
+
         }
     }
 }

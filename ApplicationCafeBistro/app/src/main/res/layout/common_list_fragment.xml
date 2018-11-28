@@ -9,11 +9,20 @@
     android:background="@drawable/musical_background_playlist"
     tools:context="applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.FragmentCommonList">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.RefreshComponent
+        android:id="@+id/refresher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
+    </applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.RefreshComponent>
+
 
     <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.SoundButton
         android:id="@+id/floating_sound_button"
@@ -42,6 +51,8 @@
         android:thumb="@drawable/thumb_drawable"
         android:thumbOffset="0dp" />
 
+
+
     <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.AddMusicButton
         android:id="@+id/floating_add_music"
         android:layout_width="wrap_content"
@@ -53,16 +64,6 @@
         app:backgroundTint="@color/black_color"
         app:srcCompat="@drawable/ic_add_music" />
 
-    <applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.button.VolumeStatusButton
-        android:id="@+id/floating_get_volume_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:backgroundTint="@color/colorAccent"
-        app:srcCompat="@drawable/ic_get_volume" />
 
 
 </android.support.design.widget.CoordinatorLayout>
