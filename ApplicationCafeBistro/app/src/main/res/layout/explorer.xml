@@ -17,8 +17,10 @@
         app:backgroundTint="@color/black_color"
         app:srcCompat="@drawable/ic_quit_explorer" />
 
-    <ListView
-        android:id="@+id/directories"
-        android:layout_width="wrap_content"
-        android:layout_height="381dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
 </android.support.design.widget.CoordinatorLayout>
