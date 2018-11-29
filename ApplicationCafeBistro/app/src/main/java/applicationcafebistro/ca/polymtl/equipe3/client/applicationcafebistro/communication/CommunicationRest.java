@@ -16,6 +16,7 @@ import java.util.Map;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.exception.ManagerException;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.VolleySingleton;
 
 public class CommunicationRest {
 
@@ -65,8 +66,7 @@ public class CommunicationRest {
         JSONObject body = null;
         if (parameters != null)
             body = createJsonObject(parameters);
-        RequestQueue requestQueue = Volley.newRequestQueue(view.getContext());
-        requestQueue.start();
+        VolleySingleton volley = VolleySingleton.getInstance(view.getContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (type, url, body, new Response.Listener<JSONObject>() {
                     @Override
@@ -89,7 +89,7 @@ public class CommunicationRest {
                         }
                     }
                 });
-        requestQueue.add(jsonObjectRequest);
+        volley.addToRequestQueue(jsonObjectRequest);
     }
 
     /**

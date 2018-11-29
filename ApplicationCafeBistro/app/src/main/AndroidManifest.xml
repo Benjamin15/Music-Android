@@ -34,15 +34,6 @@
         <activity android:name=".view.Explorer.Explorer"
             android:screenOrientation="portrait"/>
 
-        <receiver
-            android:name=".view.Explorer.ExplorerReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.MEDIA_REMOVED" />
-                <action android:name="android.intent.action.MEDIA_MOUNTED" />
-            </intent-filter>
-        </receiver>
-
         <service android:name=".service.ServiceGetList" />
     </application>
 </manifest>

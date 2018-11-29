@@ -24,6 +24,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.dialog.DialogAdapter;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.ServiceGetList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.VolleySingleton;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentBlackList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentStatistics;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentUsersList;
@@ -38,6 +39,13 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
     private Intent intent;
     private DrawerLayout drawerLayout;
     private final List<Integer> icons = new ArrayList<>();
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        VolleySingleton volleySingleton = VolleySingleton.getInstance(getApplicationContext());
+        volleySingleton.cancelAll();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

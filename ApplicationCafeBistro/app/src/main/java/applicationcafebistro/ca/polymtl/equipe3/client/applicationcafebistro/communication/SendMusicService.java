@@ -21,6 +21,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.exception.ManagerException;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.FileEncoder;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.VolleySingleton;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.ListMusic;
 
 /**
@@ -45,7 +46,7 @@ public class SendMusicService {
      */
     public void sendMusic(File music, String title) {
         final String stringMusic = FileEncoder.encodeFileToBase64(music);
-        RequestQueue requestQueue = Volley.newRequestQueue(this.context);
+        VolleySingleton volley = VolleySingleton.getInstance(this.context);
         String urlParameter = null;
         try {
             urlParameter = URLEncoder.encode(title, context.getString(R.string.utf8));
@@ -99,6 +100,6 @@ public class SendMusicService {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
                 0,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        requestQueue.add(stringRequest);
+        volley.addToRequestQueue(stringRequest);
     }
 }
