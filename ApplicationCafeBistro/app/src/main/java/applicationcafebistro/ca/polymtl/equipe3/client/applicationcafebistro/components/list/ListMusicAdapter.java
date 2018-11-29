@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -41,6 +42,11 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
             holder.mac.setText("Mac :" + music.getUser().getMac());
             holder.ip.setText("Id :" + Integer.toString(music.getUser().getId()));
             holder.id.setText("Ip :" + music.getUser().getIp());
+        }
+        if(position == 0){
+            holder.musicPlaying.setVisibility(View.VISIBLE);
+        }else{
+            holder.musicPlaying.setVisibility(View.GONE);
         }
         System.out.println("idUser : " + DeviceInformation.idUser);
         if (music.getUser().getId() == DeviceInformation.idUser)
@@ -95,6 +101,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private final TextView title, artist, duration, suggest_by, mac, ip, id;
         public final RelativeLayout viewForeground;
+        private final ImageView musicPlaying;
 
         MyViewHolder(View view) {
             super(view);
@@ -111,6 +118,7 @@ public class ListMusicAdapter extends RecyclerView.Adapter<ListMusicAdapter.MyVi
                 ip.setVisibility(View.GONE);
                 id.setVisibility(View.GONE);
             }
+            musicPlaying = view.findViewById(R.id.playing);
         }
     }
 }
