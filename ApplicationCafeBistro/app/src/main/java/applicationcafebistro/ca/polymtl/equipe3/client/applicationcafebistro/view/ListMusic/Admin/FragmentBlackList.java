@@ -38,7 +38,6 @@ public class FragmentBlackList extends Fragment {
     private void initSnackBar() {
         Intent intent = new Intent(getActivity(), ServiceGetList.class);
         SnackBarSuccess.make(view, getContext(), intent.getStringExtra(getString(R.string.welcome_message_key)), 3000);
-        SnackBarSuccess.show();
     }
 
     private void initRecyclerView() {
@@ -67,7 +66,7 @@ public class FragmentBlackList extends Fragment {
                 FragmentUsersList.listenerUsers, FragmentBlackList.listenerUsers
         );
         communication.send(null);
-        //  initSnackBar();
+        //initSnackBar();
         return view;
     }
 

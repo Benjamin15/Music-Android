@@ -65,7 +65,7 @@ public class FragmentCommonList extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.common_list_fragment,container,false);
         initRecyclerView();
-        initSnackBar();
+        //initSnackBar();
         return view;
     }
 

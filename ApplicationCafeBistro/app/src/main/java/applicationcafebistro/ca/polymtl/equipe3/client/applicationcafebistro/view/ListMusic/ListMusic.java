@@ -15,12 +15,15 @@ import android.view.MenuItem;
 import android.view.View;
 
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.R;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.communication.CommunicationRest;
+import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.ComponentsListener;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.components.dialog.DialogAdapter;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.service.ServiceGetList;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.utils.DeviceInformation;
@@ -29,7 +32,7 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.vie
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentStatistics;
 import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.view.ListMusic.Admin.FragmentUsersList;
 
-public class ListMusic extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ListMusic extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ComponentsListener {
 
     public static View view;
     private ActionBarDrawerToggle toggle;
@@ -144,14 +147,13 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
                 DialogAdapter dialogAdapter = new DialogAdapter(dialog);
                 break;
             case R.id.logout:
-                DeviceInformation.isAdmin = false;
                 final String POST = "POST";
                 CommunicationRest communication = new CommunicationRest(
                         getResources().getString(R.string.logout_admin),
                         POST,
-                        view);
+                        view,this);
                 communication.send();
-                finish();
+
                 break;
         }
         return true;
@@ -174,5 +176,12 @@ public class ListMusic extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+
+    @Override
+    public void update(JSONObject json) {
+        DeviceInformation.isAdmin = false;
+        finish();
     }
 }

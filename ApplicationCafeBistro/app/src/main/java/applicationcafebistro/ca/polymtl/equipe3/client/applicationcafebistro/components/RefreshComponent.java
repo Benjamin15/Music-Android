@@ -60,10 +60,10 @@ public class RefreshComponent extends SwipeRefreshLayout implements ComponentsLi
             SoundButton soundButton= ((Activity)context).findViewById(R.id.floating_sound_button);
             if(volumeSeekBar != null && volumeSeekBar.getProgress() != currentVolume){
                 volumeSeekBar.setInitialized(false);
-                soundButton.setVolumeStatusIcon(currentVolume);
                 getVolume(this, volumeSeekBar);
             }
 
+            soundButton.setVolumeStatusIcon(currentVolume);
             VolumeSnackBar.make(ListMusic.view, context, Integer.toString(currentVolume), 3000, soundButton.getTag());
             VolumeSnackBar.show();
             setRefreshing(false);

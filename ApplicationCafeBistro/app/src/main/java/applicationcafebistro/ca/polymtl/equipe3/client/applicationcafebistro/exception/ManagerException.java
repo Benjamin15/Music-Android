@@ -39,7 +39,9 @@ public class ManagerException {
      * This method display the message than we find as an error
      */
     public void display() {
-        SnackBarError.make(view, view.getContext(), message, 3000);
-        SnackBarError.show();
+        if(view.getParent()!= null) {
+            SnackBarError.make(view, view.getContext(), message, 3000);
+            SnackBarError.show();
+        }
     }
 }

@@ -16,18 +16,21 @@ public class SnackBarError {
 
     /**
      * This method build the error message
+     *
      * @param view
      * @param context
      * @param text
      * @param duration
      */
     public static void make(View view, Context context, String text, int duration) {
-        snackbar = Snackbar.make(view, text, duration);
-        View snackbarView = snackbar.getView();
-        TextView textView = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_information, 0, 0, 0);
-        textView.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.snackbar_icon_padding));
-        snackbar.getView().setBackgroundColor(view.getResources().getColor(R.color.colorError));
+        if (view != null) {
+            snackbar = Snackbar.make(view, text, duration);
+            View snackbarView = snackbar.getView();
+            TextView textView = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_information, 0, 0, 0);
+            textView.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.snackbar_icon_padding));
+            snackbar.getView().setBackgroundColor(view.getResources().getColor(R.color.colorError));
+        }
     }
 
     /**
