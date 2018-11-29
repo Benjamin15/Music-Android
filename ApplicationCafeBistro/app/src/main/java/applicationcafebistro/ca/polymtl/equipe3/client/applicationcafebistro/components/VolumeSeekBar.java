@@ -51,7 +51,18 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        prevProgress = seekBar.getProgress();
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
         if(isInitialized){
+            int progress = seekBar.getProgress();
             if(soundButton == null){
                 soundButton = ((Activity)context).findViewById(R.id.floating_sound_button);
                 this.soundButton.setVolumeStatusIcon(progress);
@@ -63,22 +74,11 @@ public class VolumeSeekBar extends android.support.v7.widget.AppCompatSeekBar im
             if(diff > 0){
                 increaseVolume(diff);
             }
-            else{
+            else if (diff < 0){
                 decreaseVolume(Math.abs(diff));
             }
             prevProgress = progress;
         }
-
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
     }
 
     public void setInitialized(boolean initialized) {
