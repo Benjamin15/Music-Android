@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="error_400">Votre requête json est non valide</string>
+    <string name="error_400">Votre requête est non valide</string>
     <string name="error_401">Vous avez besoin de vous authentifier</string>
     <string name="error_403">L\'accés vous a été refusé</string>
     <string name="error_405">Vous ne pouvez pas supprimer cette chanson</string>
