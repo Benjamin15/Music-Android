@@ -14,6 +14,12 @@ import applicationcafebistro.ca.polymtl.equipe3.client.applicationcafebistro.com
 
 public class SoundButton extends FloatingActionButton implements View.OnClickListener, ComponentsListener {
     private final Context context;
+
+    @Override
+    public Integer getTag() {
+        return tag;
+    }
+
     private Integer tag;
     private Integer previousTag;
     private Integer progress;
