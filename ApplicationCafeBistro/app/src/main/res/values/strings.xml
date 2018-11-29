@@ -19,6 +19,7 @@
     <string name="banish">Banish</string>
     <string name="utf8">UTF-8</string>
     <string name="welcome_message_key">welcomeMessage</string>
+    <string name="welcome_message_user">Welcome to Cafe-Bistro Elevation\'s application !</string>
     <string name="login_welcome_message1">Welcome To Cafe Elevation</string>
     <string name="login_welcome_message2">Get started with our Playlist !</string>
     <string name="wlan0">wlan0</string>

@@ -37,8 +37,11 @@ public class FragmentCommonList extends Fragment {
         super.onCreate(savedInstanceState);
     }
     private void initSnackBar(){
-        Intent intent = new Intent(getActivity(), ServiceGetList.class);
-        SnackBarSuccess.make(view, getContext(), intent.getStringExtra(getString(R.string.welcome_message_key)), 3000);
+        if(!DeviceInformation.isAdmin){
+            SnackBarSuccess.make(view, getContext(),getResources().getString(R.string.welcome_message_user), 3000);
+        }else{
+            SnackBarSuccess.make(view, getContext(),getResources().getString(R.string.admin_welcome_message), 3000);
+        }
         SnackBarSuccess.show();
     }
     private void initRecyclerView(){
@@ -65,7 +68,7 @@ public class FragmentCommonList extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.common_list_fragment,container,false);
         initRecyclerView();
-        //initSnackBar();
+        initSnackBar();
         return view;
     }
 

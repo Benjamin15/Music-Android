@@ -31,11 +31,7 @@ public class FragmentPersonalList extends Fragment {
     public FragmentPersonalList(){
 
     }
-    private void initSnackBar(){
-        Intent intent = new Intent(getActivity(), ServiceGetList.class);
-        SnackBarSuccess.make(view, getContext(), intent.getStringExtra(getString(R.string.welcome_message_key)), 3000);
-        SnackBarSuccess.show();
-    }
+
     private void initRecyclerView(){
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         ListMusicAdapter mAdapter = new ListMusicAdapter();
@@ -55,7 +51,6 @@ public class FragmentPersonalList extends Fragment {
                                      Bundle savedInstanceState){
         view= inflater.inflate(R.layout.personal_list_fragment,container,false);
         initRecyclerView();
-        initSnackBar();
         return view;
     }
 
